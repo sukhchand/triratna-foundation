@@ -1,5 +1,7 @@
+import { LoginComponent } from './../login/login.component';
 import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,21 +11,22 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 export class HeaderComponent implements OnInit {
 
   closeResult: string;
-  constructor(private modalService: NgbModal) { }
+  selectedCountry: string = "India";
+  countryList:string[] = [];
+  isAuthenticated: boolean = JSON.parse(localStorage.getItem("isAuthenticated"));
+  constructor(private modalService: NgbModal, private router: Router) { }
 
   ngOnInit() {
+    this.countryList = ["India", "Nepal", "USA"];
   }
-  open(content) {
-    this.modalService.open(content, { centered: true });
+  openLoginPopup() {
+    this.modalService.open(LoginComponent, { centered: true });
   }
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
+
+  signOut() {
+    localStorage.removeItem("isAuthenticated");
+    this.isAuthenticated = false;
+    this.router.navigate(['']);
   }
 
 }
