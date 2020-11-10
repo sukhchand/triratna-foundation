@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark" style="margin-bottom: 50px;">
-    <a class="navbar-brand" href="#">Fixed navbar</a>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top tp-header" style="margin-bottom: 50px;">
+    <a class="navbar-brand" href="#"><img src="assets/images/logo.jpeg" alt="Logo" style="width:40px;"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -9,6 +9,36 @@
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="/">Home</a>
             </li>
+            <li class="dropdown">
+                <a href="" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">
+                About Us </a>
+                <ul class="dropdown-menu">
+                    <li class=""><a href="aboutUs/aboutUs.html">Who we are</a></li>
+                    <li class=""><a href="aboutUs/mgmt_team3.html">Management Team</a></li>
+                    <!-- <li class=""><a href="aboutUs/Amazing_team.html">Our Amazing Team</a></li> -->
+                    <li class=""><a href="aboutUs/OurDigitalPlaybook.html">Our Digital Playbook</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown" routerLinkActive="active">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    Services
+                </a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" routerLink="services/food_cloths_and_shelter">Food, Cloths &Shelter</a>
+                  <a class="dropdown-item" routerLink="services/health_hygiene_and_sanitation">Health, Hygiene&Sanitation</a>
+                  <a class="dropdown-item" routerLink="services/fresh_air_clean_water">Fresh Air & Clean Water</a>
+                  <a class="dropdown-item" routerLink="services/organic_soil_and_green_view">Organic Soil & Green View</a>
+                  <a class="dropdown-item" routerLink="services/safety_and_protection">Safety& Protection</a>
+                  <a class="dropdown-item" routerLink="services/animal_safety_rights">Animal Safety & Rights</a>
+                  <a class="dropdown-item" routerLink="services/save_children_vulnerable_and_old">Save Children, Vulnerable & Old</a>
+                  <a class="dropdown-item" routerLink="services/emergency_reliefs">Emergency Reliefs</a>
+                  <a class="dropdown-item" routerLink="services/education_and_training">Education & Training</a>
+                  <a class="dropdown-item" routerLink="services/teaching_of_buddha_and_spirituality">Teaching of Buddha & Spirituality</a>
+                  <a class="dropdown-item" routerLink="services/rehearsal_of_panchasila">Rehearsal of Panchasila</a>
+                  <a class="dropdown-item" routerLink="services/forgiveness_and_reconciliation">Forgiveness & Reconciliation</a>
+                  <a class="dropdown-item" routerLink="services/research_and_innovation">Research & Innovation</a>
+                </div>
+              </li>
             <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link" routerLink="leadership">Leadership</a>
             </li>
