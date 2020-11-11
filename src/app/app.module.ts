@@ -39,6 +39,7 @@ import { NewsComponent } from './news/news.component';
 import { VideosComponent } from './videos/videos.component';
 import { PhotosComponent } from './photos/photos.component';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     NgbModule,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

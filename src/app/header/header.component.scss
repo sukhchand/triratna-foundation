@@ -1,3 +1,4 @@
+// Login popup CSS Start
 .login-card {
     padding: 40px;
     width: auo;
@@ -45,6 +46,14 @@
   }
 .login-modal-body {
     padding: 0;
+}
+// Login popup CSS End
+// Header CSS Start
+.tp-header .navbar-default .navbar-nav>li>a {
+  color: #687074;
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: uppercase;
 }  
 @media (min-width: 992px) {
   /*Navbar Collapse*/
@@ -101,6 +110,9 @@
       font-weight: 400;
       padding: 8px 15px;
       border-bottom: solid 1px #dedede;
+      display: block;
+      clear: both;
+      line-height: 1.42857143;
   }
   .tp-header .dropdown-menu>li>a {
       /*Transition for fixed header*/
@@ -154,7 +166,7 @@
 
 @media (max-width: 991px) {
   .tp-header .dropdown-submenu>a:after {
-      content: " ";
+      content: "";
   }
   .tp-header .dropdown>a:after {
       top: 9px;
@@ -168,3 +180,4 @@
       content: " ";
   }
 }
+// Header CSS End

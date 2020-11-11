@@ -8,3 +8,167 @@
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+// Services CSS Start
+.page-banner.tram-banner .banner-text h2{
+    color: #00BCD4;
+}
+
+.page-banner {
+    height: 250px;
+    background-position-x: 90%;
+    background-position-y: 5px;
+    background-repeat: no-repeat;
+}
+
+.service-banner-1 {
+    background: #c6087a;
+}
+.service-banner-2 {
+    background: #0899c6;
+}
+
+.service-banner-3 {
+    background: #9708c6;
+}
+
+.service-banner-4 {
+    background: #0889c6;
+}
+
+.service-banner-5 {
+    background: #08c689;
+}
+
+.service-banner-6 {
+    background: #c64508;
+}
+
+.service-banner-7 {
+    background: #08c6c6;
+}
+
+.service-banner-8 {
+    background: #434D7A;
+}
+
+.service-banner-9 {
+    background: #6308c6;
+}
+
+.service-banner-10 {
+    background: #4CAF50;
+}
+
+.service-banner-11 {
+    background: #26A69A;
+}
+
+.service-banner-12 {
+    background: #08c6a2;
+}
+
+.service-banner-13 {
+    background: #08c6c6;
+}
+
+.page-banner .banner-text {
+    text-align: center;
+    height: 250px;
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.page-banner .banner-text>h3 {
+    color: azure;
+    font-size: 25px;
+    font-weight: 200;
+}
+
+.page-banner.NIH-banner .banner-text>h3, .page-banner.NPPES-banner .banner-text>h3, .page-banner.CIO-SP3-banner .banner-text>h3 {
+    line-height: 1.41;
+    font-size: 28px;
+}
+
+.page-banner .banner-text h4 {
+    color: azure;
+    font-size: 18px;
+    font-weight: 200;
+    display: inline;
+}
+
+.page-banner .banner-text p {
+    color: azure;
+    font-size: 18px;
+    font-weight: 200;
+    display: inline;
+}
+
+.bg-white {
+    background: #fff;
+}
+
+.bg-grey {
+    background: #F1F1F1;
+}
+
+.page-banner .banner-text h2 {
+    color: azure;
+    font-size: 30px;
+}
+@media only screen and (max-width: 992px) {
+    .page-banner {
+        height: auto;
+    }
+    .page-banner .banner-text h2 {
+        font-size: 26px;
+        line-height: 1.2;
+    }
+    .page-banner .banner-text p {
+        font-size: 16px;
+    }
+    .page-banner .banner-text>h3 {
+        color: azure;
+        font-size: 20px;
+        font-weight: 200;
+    }
+    .page-banner .banner-text h4 {
+        color: azure;
+        font-size: 14px;
+        font-weight: 200;
+        display: inline;
+    }
+    .page-banner .banner-text {
+        padding: 20px 0;
+        text-align: left;
+        width: auto;
+        height: auto;
+    }
+}
+// Services CSS End
+
+// Common CSS Start
+.paddingtop-20 {
+    padding-top: 20px;
+}
+.paddingtop-30 {
+    padding-top: 20px;
+}
+.paddingbottom-10 {
+    padding-bottom: 10px;
+}
+.paddingbottom-30 {
+    padding-bottom: 30px;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: #687074;
+}
+h2 {
+    color: #1A93C1;
+    text-transform: none;
+    font-size: 28px;
+}
+.color-red {
+    color: red;
+}
+// Common CSS End
