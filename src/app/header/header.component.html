@@ -1,4 +1,4 @@
-<div class="tp-header">
+<div class="tf-header">
     <nav class="navbar navbar-expand-md navbar-default bg-light fixed-top">
         <a class="navbar-brand" href="#"><img src="assets/images/logo.svg" alt="Logo" style="width:40px;"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
@@ -14,18 +14,19 @@
                     <a href="" class="" data-hover="dropdown" data-toggle="dropdown">
                     About Us </a>
                     <ul class="dropdown-menu">
-                        <li class=""><a class="dropdown-item">Who we are</a></li>
-                        <li class=""><a class="dropdown-item">Management Team</a></li>
-                        <li class=""><a class="dropdown-item">Our Digital Playbook</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="about_us/leadership">Leadership</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="about_us/supporters">Supporters</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="about_us/financials">Financials</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="about_us/careers">Careers</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown" routerLinkActive="active">
-                    <a class="" href="#" id="navbardrop" data-toggle="dropdown">
+                    <a class="" href="#" data-toggle="dropdown">
                         Services
                     </a>
                     <ul class="dropdown-menu">
-                        <li class=""><a class="dropdown-item" routerLink="services/food_cloths_and_shelter">Food, Cloths &Shelter</a></li>
-                        <li class=""><a class="dropdown-item" routerLink="services/health_hygiene_and_sanitation">Health, Hygiene&Sanitation</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="services/food_cloths_and_shelter">Food, Cloths & Shelter</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="services/health_hygiene_and_sanitation">Health, Hygiene & Sanitation</a></li>
                         <li class=""><a class="dropdown-item" routerLink="services/fresh_air_clean_water">Fresh Air & Clean Water</a></li>
                         <li class=""><a class="dropdown-item" routerLink="services/organic_soil_and_green_view">Organic Soil & Green View</a></li>
                         <li class=""><a class="dropdown-item" routerLink="services/safety_and_protection">Safety& Protection</a></li>
@@ -40,48 +41,30 @@
                     </ul>
                 </li>
                 <li class="nav-item" routerLinkActive="active">
-                    <a class="" routerLink="leadership">Leadership</a>
-                </li>
-                <li class="nav-item" routerLinkActive="active">
-                    <a class="" routerLink="supporters">Supporters</a>
-                </li>
-                <li class="nav-item" routerLinkActive="active">
-                    <a class="" routerLink="financials">Financials</a>
-                </li>
-                <li class="nav-item" routerLinkActive="active">
-                    <a class="" routerLink="careers">Careers</a>
-                </li>
-                <li class="nav-item" routerLinkActive="active">
-                    <a class="nav-link" routerLink="volunteers">Volunteers</a>
+                    <a class="" routerLink="volunteers">Volunteers</a>
                 </li>
                 <li class="nav-item dropdown" routerLinkActive="active">
-                    <a class="nav-link dropdown-toggle" routerLink="informations" data-toggle="dropdown">Informations</a>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" routerLink="informations/calendar"
-                        >Calendar</a
-                      >
-                      <a class="dropdown-item" routerLink="informations/events"
-                        >Events</a
-                      >
-                      <a class="dropdown-item" routerLink="informations/stories"
-                        >Stories</a
-                      >
-                      <a class="dropdown-item" routerLink="informations/news"
-                        >News</a
-                      >
-                      <a class="dropdown-item" routerLink="informations/videos"
-                        >Videos</a
-                      >
-                      <a class="dropdown-item" routerLink="informations/photos"
-                        >Photo</a
-                      >
-                    </div>
+                    <a class="" routerLink="informations" data-toggle="dropdown">Informations</a>
+                    <ul class="dropdown-menu">
+                      <li class=""><a class="dropdown-item" routerLink="informations/calendar"
+                        >Calendar</a></li>
+                      <li class=""><a class="dropdown-item" routerLink="informations/events"
+                        >Events</a></li>
+                      <li class=""><a class="dropdown-item" routerLink="informations/stories"
+                        >Stories</a></li>
+                      <li class=""><a class="dropdown-item" routerLink="informations/news"
+                        >News</a></li>
+                      <li class=""><a class="dropdown-item" routerLink="informations/videos"
+                        >Videos</a></li>
+                      <li class=""><a class="dropdown-item" routerLink="informations/photos"
+                        >Photo</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item" routerLinkActive="active">
                     <a class="" routerLink="contact_us">Contact us</a>
                 </li>
             </ul>
-            <select name="selectedCountry" class="form-control" [(ngModel)]="selectedCountry">
+            <select name="selectedCountry" class="form-control" [(ngModel)]="selectedCountry" style="width: 100px;">
                 <option *ngFor="let option of countryList" [value]="option">{{option}}</option>
             </select>
             <div class="form-inline mt-2 mt-md-0">
