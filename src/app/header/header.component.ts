@@ -20,7 +20,11 @@ export class HeaderComponent implements OnInit {
     this.countryList = ["India", "Nepal", "USA"];
   }
   openLoginPopup() {
-    this.modalService.open(LoginComponent, { centered: true });
+    this.modalService.open(LoginComponent, { centered: true }).result.then((data)=> {
+      if(data) {
+        this.isAuthenticated = true;
+      }
+    });
   }
 
   signOut() {

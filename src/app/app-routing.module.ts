@@ -1,3 +1,4 @@
+import { EditNewsComponent } from './edit-profile/components/edit-news/edit-news.component';
 import { PhotosComponent } from './photos/photos.component';
 import { VideosComponent } from './videos/videos.component';
 import { NewsComponent } from './news/news.component';
@@ -28,6 +29,11 @@ import { SafetyandprotectionComponent } from './safetyandprotection/safetyandpro
 import { SavechildrenvulnerableandoldComponent } from './savechildrenvulnerableandold/savechildrenvulnerableandold.component';
 import { SupportersComponent } from './supporters/supporters.component';
 import { TeachingofbuddhaandspiritualityComponent } from './teachingofbuddhaandspirituality/teachingofbuddhaandspirituality.component';
+import { EditCalendarComponent } from './edit-profile/components/edit-calendar/edit-calendar.component';
+import { EditEventsComponent } from './edit-profile/components/edit-events/edit-events.component';
+import { EditStoriesComponent } from './edit-profile/components/edit-stories/edit-stories.component';
+import { EditVideosComponent } from './edit-profile/components/edit-videos/edit-videos.component';
+import { EditPhotosComponent } from './edit-profile/components/edit-photos/edit-photos.component';
 
 
 const routes: Routes = [
@@ -54,7 +60,35 @@ const routes: Routes = [
   { path: 'services/rehearsal_of_panchasila', component: RehearsalofpanchasilaComponent },
   { path: 'services/forgiveness_and_reconciliation', component: ForgivenessandreconciliationComponent },
   { path: 'services/research_and_innovation', component: ResearchandinnovationComponent },
-  { path: 'edit-profile', component: EditProfileComponent},
+  { path: 'edit-profile',
+   component: EditProfileComponent,
+   children: [
+    {
+      path: 'calendar',
+      component: EditCalendarComponent
+    },
+    {
+      path: 'events',
+      component: EditEventsComponent
+    },
+    {
+      path: 'stories',
+      component: EditStoriesComponent
+    },
+    {
+      path: 'news',
+      component: EditNewsComponent
+    },
+    {
+      path: 'videos',
+      component: EditVideosComponent
+    },
+    {
+      path: 'photos',
+      component: EditPhotosComponent
+    }
+   ]
+  },
   { path: 'volunteers', component: VolunteersComponent},
   { path: 'informations', component: InformationsComponent},
   { path: 'informations/calendar', component: CalendarComponent},
