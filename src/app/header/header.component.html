@@ -10,8 +10,8 @@
                 <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                     <a class="" routerLink="/">Home</a>
                 </li>
-                <li class="dropdown">
-                    <a href="" class="" data-hover="dropdown" data-toggle="dropdown">
+                <li class="nav-item dropdown" routerLinkActive="active">
+                    <a>
                     About Us </a>
                     <ul class="dropdown-menu">
                         <li class=""><a class="dropdown-item" routerLink="about_us/leadership">Leadership</a></li>
@@ -21,7 +21,7 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown" routerLinkActive="active">
-                    <a class="" href="#" data-toggle="dropdown">
+                    <a>
                         Services
                     </a>
                     <ul class="dropdown-menu">
@@ -44,7 +44,7 @@
                     <a class="" routerLink="volunteers">Volunteers</a>
                 </li>
                 <li class="nav-item dropdown" routerLinkActive="active">
-                    <a class="" routerLink="informations" data-toggle="dropdown">Informations</a>
+                    <a routerLink="informations">Informations</a>
                     <ul class="dropdown-menu">
                       <li class=""><a class="dropdown-item" routerLink="informations/calendar"
                         >Calendar</a></li>
