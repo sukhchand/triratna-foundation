@@ -7,7 +7,6 @@ import {
   NgbActiveModal,
   NgbModal,
 } from '@ng-bootstrap/ng-bootstrap';
-import { error } from 'console';
 
 @Component({
   selector: 'app-login',
@@ -37,8 +36,6 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     this.loginService.login(this.loginForm.value).subscribe(response => {
       console.log(response);
-    },(error)=>{
-      console.log(error);
     })
     localStorage.setItem('isAuthenticated', 'true');
     this.router.navigate([this.router.url]);

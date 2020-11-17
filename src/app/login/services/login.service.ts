@@ -15,9 +15,7 @@ export class LoginService {
     const path = 'http://localhost:8080/login';
     return this.http.post(path, credentials,{
       headers: new HttpHeaders({
-           'Content-Type':  'application/json',
-           'Access-Control-Allow-Origin': 'http://localhost:8080',
-           'Access-Control-Allow-Credentials': 'true'
+           'Content-Type':  'application/json'
          })
     }).pipe(
       catchError((errorRes) => {
