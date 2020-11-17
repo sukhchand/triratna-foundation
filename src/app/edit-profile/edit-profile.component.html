@@ -1,25 +1,27 @@
-<div class="sideNav">
-  <ul>
-    <li>
-      <a routerLink="calendar">Calendar</a>
-    </li>
-    <li>
-      <a routerLink="events">Events</a>
-    </li>
-    <li>
-      <a routerLink="stories">Stories</a>
-    </li>
-    <li>
-      <a routerLink="news">News</a>
-    </li>
-    <li>
-      <a routerLink="videos">Videos</a>
-    </li>
-    <li>
-      <a routerLink="photos">Photos</a>
-    </li>
-  </ul>
-</div>
-<div class="container-fluid" >
-  <router-outlet></router-outlet>
+<div class="row">
+  <div class="col-2 sidenav">
+    <ul>
+      <li routerLinkActive>
+        <a routerLink="calendar">Calendar</a>
+      </li>
+      <li>
+        <a routerLink="events">Events</a>
+      </li>
+      <li>
+        <a routerLink="stories">Stories</a>
+      </li>
+      <li>
+        <a routerLink="news">News</a>
+      </li>
+      <li>
+        <a routerLink="videos">Videos</a>
+      </li>
+      <li>
+        <a routerLink="photos">Photos</a>
+      </li>
+    </ul>
+  </div>
+  <div class="col">
+    <router-outlet></router-outlet>
+  </div>
 </div>

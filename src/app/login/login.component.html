@@ -5,10 +5,10 @@
           <span aria-hidden="true">&times;</span>
       </button>
       <h1>Log-in</h1><br>
-      <form>
-          <input type="text" name="user" placeholder="Username">
-          <input type="password" name="pass" placeholder="Password">
-          <input type="submit" name="login" (click)="onSubmit()" class="login login-submit" value="login">
+      <form [formGroup]="loginForm" >
+        <input type="text" name="user" placeholder="Username" formControlName="username">
+        <input type="password" name="pass" placeholder="Password" formControlName="password">
+        <input type="submit" name="login" (click)="onSubmit()" class="login login-submit" value="login">
       </form>
 
       <div class="login-help">

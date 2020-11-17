@@ -11,16 +11,17 @@ import { EditStoriesComponent } from './components/edit-stories/edit-stories.com
 import { EditEventsComponent } from './components/edit-events/edit-events.component';
 import { EditCalendarComponent } from './components/edit-calendar/edit-calendar.component';
 
-
-
 @NgModule({
-  declarations: [EditNewsComponent,EditProfileComponent, EditVideosComponent, EditPhotosComponent, EditStoriesComponent, EditEventsComponent, EditCalendarComponent],
-  imports: [
-    CommonModule,
-    AppRoutingModule,
-    FormsModule,
-    RouterModule
+  declarations: [
+    EditNewsComponent,
+    EditProfileComponent,
+    EditVideosComponent,
+    EditPhotosComponent,
+    EditStoriesComponent,
+    EditEventsComponent,
+    EditCalendarComponent,
   ],
-  exports:[EditProfileComponent]
+  imports: [CommonModule, AppRoutingModule, FormsModule, RouterModule],
+  exports: [EditProfileComponent],
 })
-export class EditProfileModule { }
+export class EditProfileModule {}
