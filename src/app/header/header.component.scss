@@ -186,4 +186,22 @@
       content: " ";
   }
 }
+
+.tf-header .user-dropdown.dropdown>a, .tf-header .user-dropdown.dropdown>a:hover {
+  cursor: pointer;
+  text-decoration: none;
+  color: #35404f;
+}
+.tf-header .user-dropdown.dropdown>a:after,
+.tf-header .user-dropdown.dropdown-submenu>a:after {
+  top: 17px;
+  right: -10px;
+}
+.country-drpdwn {
+  width: 100px;
+  padding: 0;
+  height: 25px;
+  border-radius: 0;
+  margin-right: 10px;
+}
 // Header CSS End

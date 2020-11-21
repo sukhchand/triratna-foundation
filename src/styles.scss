@@ -13,7 +13,10 @@
 .page-banner.tram-banner .banner-text h2{
     color: #00BCD4;
 }
-
+.join-us-banner {
+    background: #007bc6 url('assets/images/join-us.svg');
+    background-size: 25%;
+}
 .page-banner {
     height: 250px;
     background-position-x: 90%;
@@ -159,6 +162,12 @@
 }
 .paddingbottom-50 {
     padding-bottom: 50px;
+}
+.margin-top-20 {
+    margin-top: 20px;
+}
+.margin-bottom-20 {
+    margin-bottom: 20px;
 }
 h1, h2, h3, h4, h5, h6 {
     color: #687074;

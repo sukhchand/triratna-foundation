@@ -12,7 +12,7 @@
                 </li>
                 <li class="nav-item dropdown" routerLinkActive="active">
                     <a>
-                    About Us </a>
+                        About Us </a>
                     <ul class="dropdown-menu">
                         <li class=""><a class="dropdown-item" routerLink="about_us/leadership">Leadership</a></li>
                         <li class=""><a class="dropdown-item" routerLink="about_us/supporters">Supporters</a></li>
@@ -25,19 +25,36 @@
                         Services
                     </a>
                     <ul class="dropdown-menu">
-                        <li class=""><a class="dropdown-item" routerLink="services/food_cloths_and_shelter">Food, Cloths & Shelter</a></li>
-                        <li class=""><a class="dropdown-item" routerLink="services/health_hygiene_and_sanitation">Health, Hygiene & Sanitation</a></li>
-                        <li class=""><a class="dropdown-item" routerLink="services/fresh_air_clean_water">Fresh Air & Clean Water</a></li>
-                        <li class=""><a class="dropdown-item" routerLink="services/organic_soil_and_green_view">Organic Soil & Green View</a></li>
-                        <li class=""><a class="dropdown-item" routerLink="services/safety_and_protection">Safety& Protection</a></li>
-                        <li class=""><a class="dropdown-item" routerLink="services/animal_safety_rights">Animal Safety & Rights</a></li>
-                        <li class=""><a class="dropdown-item" routerLink="services/save_children_vulnerable_and_old">Save Children, Vulnerable & Old</a></li>
-                        <li class=""><a class="dropdown-item" routerLink="services/emergency_reliefs">Emergency Reliefs</a></li>
-                        <li class=""><a class="dropdown-item" routerLink="services/education_and_training">Education & Training</a></li>
-                        <li class=""><a class="dropdown-item" routerLink="services/teaching_of_buddha_and_spirituality">Teaching of Buddha & Spirituality</a></li>
-                        <li class=""><a class="dropdown-item" routerLink="services/rehearsal_of_panchasila">Rehearsal of Panchasila</a></li>
-                        <li class=""><a class="dropdown-item" routerLink="services/forgiveness_and_reconciliation">Forgiveness & Reconciliation</a></li>
-                        <li class=""><a class="dropdown-item" routerLink="services/research_and_innovation">Research & Innovation</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="services/food_cloths_and_shelter">Food, Cloths
+                                & Shelter</a></li>
+                        <li class=""><a class="dropdown-item"
+                                routerLink="services/health_hygiene_and_sanitation">Health, Hygiene & Sanitation</a>
+                        </li>
+                        <li class=""><a class="dropdown-item" routerLink="services/fresh_air_clean_water">Fresh Air &
+                                Clean Water</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="services/organic_soil_and_green_view">Organic
+                                Soil & Green View</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="services/safety_and_protection">Safety&
+                                Protection</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="services/animal_safety_rights">Animal Safety &
+                                Rights</a></li>
+                        <li class=""><a class="dropdown-item"
+                                routerLink="services/save_children_vulnerable_and_old">Save Children, Vulnerable &
+                                Old</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="services/emergency_reliefs">Emergency
+                                Reliefs</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="services/education_and_training">Education &
+                                Training</a></li>
+                        <li class=""><a class="dropdown-item"
+                                routerLink="services/teaching_of_buddha_and_spirituality">Teaching of Buddha &
+                                Spirituality</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="services/rehearsal_of_panchasila">Rehearsal of
+                                Panchasila</a></li>
+                        <li class=""><a class="dropdown-item"
+                                routerLink="services/forgiveness_and_reconciliation">Forgiveness & Reconciliation</a>
+                        </li>
+                        <li class=""><a class="dropdown-item" routerLink="services/research_and_innovation">Research &
+                                Innovation</a></li>
                     </ul>
                 </li>
                 <li class="nav-item" routerLinkActive="active">
@@ -46,32 +63,46 @@
                 <li class="nav-item dropdown" routerLinkActive="active">
                     <a routerLink="informations">Informations</a>
                     <ul class="dropdown-menu">
-                      <li class=""><a class="dropdown-item" routerLink="informations/calendar"
-                        >Calendar</a></li>
-                      <li class=""><a class="dropdown-item" routerLink="informations/events"
-                        >Events</a></li>
-                      <li class=""><a class="dropdown-item" routerLink="informations/stories"
-                        >Stories</a></li>
-                      <li class=""><a class="dropdown-item" routerLink="informations/news"
-                        >News</a></li>
-                      <li class=""><a class="dropdown-item" routerLink="informations/videos"
-                        >Videos</a></li>
-                      <li class=""><a class="dropdown-item" routerLink="informations/photos"
-                        >Photo</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="informations/calendar">Calendar</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="informations/events">Events</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="informations/stories">Stories</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="informations/news">News</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="informations/videos">Videos</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="informations/photos">Photo</a></li>
                     </ul>
                 </li>
                 <li class="nav-item" routerLinkActive="active">
                     <a class="" routerLink="contact_us">Contact us</a>
                 </li>
             </ul>
-            <select name="selectedCountry" class="form-control" [(ngModel)]="selectedCountry" style="width: 100px;">
+            <select name="selectedCountry" class="form-control country-drpdwn" [(ngModel)]="selectedCountry">
                 <option *ngFor="let option of countryList" [value]="option">{{option}}</option>
             </select>
             <div class="form-inline mt-2 mt-md-0">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="openLoginPopup()" *ngIf="!isAuthenticated">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="openLoginPopup()"
+                    *ngIf="!isAuthenticated">
                     Login
                 </button>
-                <div class="btn-group" ngbDropdown display="dynamic" *ngIf="isAuthenticated">
+                <div class="btn-group user-dropdown" ngbDropdown display="dynamic" *ngIf="isAuthenticated">
+                    <a ngbDropdownToggle>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td rowspan="2"><img src="assets/images/man.svg" alt="Logo" style="width:32px;margin-right: 5px;"></td>
+                                <td style="text-align:right;"> <span title="User" class="user-name">User</span></td>
+                            </tr>
+                        </table>
+                    </a>
+                    <ul class="dropdown-menu" ngbDropdownMenu>
+                        <li>
+                            <a ngbDropdownItem routerLink="edit-profile">Edit</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a ngbDropdownItem (click)="signOut()">Sign Out</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- <div class="btn-group" ngbDropdown display="dynamic" *ngIf="isAuthenticated">
                     <button class="btn btn-outline-primary" ngbDropdownToggle>
                         User
                     </button>
@@ -79,7 +110,7 @@
                         <button ngbDropdownItem routerLink="edit-profile">Edit</button>
                         <button ngbDropdownItem (click)="signOut()">Sign Out</button>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </nav>

@@ -11,5 +11,6 @@ export class LeadershipComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
 
 }
