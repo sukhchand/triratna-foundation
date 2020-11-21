@@ -1,18 +1,102 @@
 <div class="modal-body login-modal-body">
   <div class="login-card">
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="activeModal.close()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h1>{{ formType }}</h1>
+    <br />
+    <form [formGroup]="loginForm" *ngIf="formType == 'login'">
+      <input
+        type="text"
+        name="user"
+        placeholder="Username"
+        formControlName="username"
+      />
+      <input
+        type="password"
+        name="pass"
+        placeholder="Password"
+        formControlName="password"
+      />
+      <input
+        type="submit"
+        name="login"
+        (click)="onSubmit()"
+        class="login login-submit"
+        value="login"
+        [disabled]="!loginForm.valid"
+      />
+    </form>
+    <form [formGroup]="signupForm" *ngIf="formType == 'register'">
+      <input
+        type="text"
+        name="user"
+        placeholder="Username"
+        formControlName="username"
+      />
+      <input
+        type="password"
+        name="pass"
+        placeholder="Password"
+        formControlName="password"
+      />
+      <input
+        type="password"
+        name="pass"
+        placeholder="Confirm Password"
+        formControlName="newPassword"
+      />
+      <select
+        class="custom-select"
+        (change)="changeRole($event)"
+        formControlName="roles"
+        aria-placeholder="Login As"
+      >
+        <option value="" disabled>Login As</option>
+        <option *ngFor="let userrole of userroles" [ngValue]="userrole">
+          {{ userrole }}
+        </option>
+      </select>
+      <input
+        type="submit"
+        name="login"
+        (click)="onSubmit()"
+        class="login login-submit"
+        value="Create User"
+        [disabled]="!signupForm.valid"
+      />
+    </form>
+    <form [formGroup]="forgotPasswordForm" *ngIf="formType == 'forgotPassword'">
+      <input
+        type="text"
+        name="user"
+        placeholder="Email"
+        formControlName="email"
+      />
+      <input
+        type="text"
+        name="pass"
+        placeholder="Confirm Email"
+        formControlName="confirmemail"
+      />
+      <input
+        type="submit"
+        name="login"
+        (click)="onSubmit()"
+        class="login login-submit"
+        value="Forgot Password"
+        [disabled]="!forgotPasswordForm.valid"
+      />
+    </form>
 
-      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-          <span aria-hidden="true">&times;</span>
-      </button>
-      <h1>Log-in</h1><br>
-      <form [formGroup]="loginForm" >
-        <input type="text" name="user" placeholder="Username" formControlName="username">
-        <input type="password" name="pass" placeholder="Password" formControlName="password">
-        <input type="submit" name="login" (click)="onSubmit()" class="login login-submit" value="login">
-      </form>
-
-      <div class="login-help">
-          <a href="#">Register</a> • <a href="#">Forgot Password</a>
-      </div>
+    <div class="login-help">
+      <span (click)="changeForm('register')">Register</span> •
+      <span (click)="changeForm('forgotPassword')">Forgot Password</span>
+    </div>
   </div>
 </div>
