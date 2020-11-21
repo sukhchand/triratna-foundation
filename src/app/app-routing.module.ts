@@ -1,3 +1,4 @@
+import { ProfileComponent } from './edit-profile/components/profile/profile.component';
 import { EditNewsComponent } from './edit-profile/components/edit-news/edit-news.component';
 import { PhotosComponent } from './photos/photos.component';
 import { VideosComponent } from './videos/videos.component';
@@ -34,6 +35,7 @@ import { EditEventsComponent } from './edit-profile/components/edit-events/edit-
 import { EditStoriesComponent } from './edit-profile/components/edit-stories/edit-stories.component';
 import { EditVideosComponent } from './edit-profile/components/edit-videos/edit-videos.component';
 import { EditPhotosComponent } from './edit-profile/components/edit-photos/edit-photos.component';
+import { AuthGuardService } from './login/services/auth-guard.service';
 
 
 const routes: Routes = [
@@ -62,29 +64,46 @@ const routes: Routes = [
   { path: 'services/research_and_innovation', component: ResearchandinnovationComponent },
   { path: 'edit-profile',
    component: EditProfileComponent,
+   canActivate: [AuthGuardService],
    children: [
     {
+      path: '',
+      redirectTo: 'profile',
+      canActivate: [AuthGuardService]
+    },
+    {
+      path: 'profile',
+      component: ProfileComponent,
+      canActivate: [AuthGuardService]
+    },
+    {
       path: 'calendar',
-      component: EditCalendarComponent
+      component: EditCalendarComponent,
+      canActivate: [AuthGuardService]
     },
     {
       path: 'events',
+      canActivate: [AuthGuardService],
       component: EditEventsComponent
     },
     {
       path: 'stories',
+      canActivate: [AuthGuardService],
       component: EditStoriesComponent
     },
     {
       path: 'news',
+      canActivate: [AuthGuardService],
       component: EditNewsComponent
     },
     {
       path: 'videos',
+      canActivate: [AuthGuardService],
       component: EditVideosComponent
     },
     {
       path: 'photos',
+      canActivate: [AuthGuardService],
       component: EditPhotosComponent
     }
    ]

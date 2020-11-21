@@ -1,0 +1,180 @@
+<div class="col">
+  <form [formGroup]="profileForm">
+    <!-- <div>
+      <label>Username : </label>
+      <input
+      type="text"
+      name="user"
+      placeholder="Username"
+      formControlName="username"
+    />
+    </div> -->
+    <div>
+      <label>First Name : </label>
+      <input
+      type="text"
+      name="user"
+      placeholder="First Name"
+      formControlName="firstName"
+    />
+    </div>
+    <div>
+      <label>Middle Name : </label>
+      <input
+      type="text"
+      name="user"
+      placeholder="Middle Name"
+      formControlName="middleName"
+    />
+    </div>
+    <div>
+      <label>Last Name : </label>
+      <input
+      type="text"
+      name="user"
+      placeholder="Last Name"
+      formControlName="lastName"
+    />
+    </div>
+    <div>
+      <label>Display Name : </label>
+      <input
+      type="text"
+      name="user"
+      placeholder="Display Name"
+      formControlName="displayName"
+    />
+    </div>
+    <div>
+      <label>User Type : </label>
+      <input
+      type="text"
+      name="user"
+      placeholder="User Type"
+      formControlName="userType"
+    />
+    </div>
+    <div>
+      <label>Email Id : </label>
+      <input
+      type="text"
+      name="user"
+      placeholder="Email Id"
+      formControlName="emailId"
+    />
+    </div>
+    <div>
+      <label>Primary Contact Country Code : </label>
+      <input
+      type="text"
+      name="user"
+      placeholder="Primary Contact Country Code"
+      formControlName="primaryContactCountryCode"
+      (keypress)="onlyNumberKey($event)"
+    />
+    </div>
+    <div>
+      <label>Secondary Contact Country Code : </label>
+      <input
+      type="text"
+      name="user"
+      placeholder="Secondary Contact Country Code"
+      formControlName="secondaryContactCountryCode"
+      (keypress)="onlyNumberKey($event)"
+    />
+    </div>
+    <div>
+      <label>Primary Contact Number : </label>
+      <input
+      type="text"
+      name="user"
+      placeholder="Primary Contact Number"
+      formControlName="primaryContactNo"
+      (keypress)="onlyNumberKey($event)"
+    />
+    </div>
+    <div>
+      <label>Secondary Contact Number : </label>
+      <input
+      type="text"
+      name="user"
+      placeholder="Secondary Contact Number"
+      formControlName="secondaryContactNo"
+      (keypress)="onlyNumberKey($event)"
+    />
+    </div>
+    <div>
+      <label>Country : </label>
+      <input
+      type="text"
+      name="user"
+      placeholder="Country"
+      formControlName="country"
+    />
+    </div>
+    <div>
+      <label>Country Code : </label>
+      <input
+      type="text"
+      name="user"
+      placeholder="Country Code"
+      formControlName="countryCode"
+      (keypress)="onlyNumberKey($event)"
+    />
+    </div>
+    <div>
+      <label>Street : </label>
+      <input
+      type="text"
+      name="user"
+      placeholder="Street"
+      formControlName="street"
+    />
+    </div>
+    <div>
+      <label>Street Line : </label>
+      <input
+      type="text"
+      name="user"
+      placeholder="Street Line"
+      formControlName="streetLine"
+    />
+    </div>
+    <div>
+      <label>City : </label>
+      <input
+      type="text"
+      name="user"
+      placeholder="City"
+      formControlName="city"
+    />
+    </div>
+    <div>
+      <label>State : </label>
+      <input
+      type="text"
+      name="user"
+      placeholder="State"
+      formControlName="state"
+    />
+    </div>
+    <div>
+      <label>Zip Code : </label>
+      <input
+      type="text"
+      name="user"
+      placeholder="Zip Code"
+      formControlName="zipCode"
+      (keypress)="onlyNumberKey($event)"
+    />
+    </div>
+    <input
+      type="submit"
+      name="login"
+      (click)="onSubmit()"
+      class="login login-submit"
+      value="Submit"
+      [disabled]="!profileForm.valid"
+    />
+  </form>
+</div>

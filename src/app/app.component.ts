@@ -1,3 +1,4 @@
+import { LoginService } from './login/services/login.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'triratna-foundation';
+
+  constructor(public loginService: LoginService) {
+  }
+
+  ngOnInit() {
+    this.loginService.autoLogin();
+  }
 }
