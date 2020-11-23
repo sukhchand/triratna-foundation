@@ -13,7 +13,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, public loginService: LoginService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.profileForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       middleName: ['', Validators.required],
