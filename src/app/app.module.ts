@@ -45,6 +45,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { AuthInterceptorService } from './login/services/auth-interceptor.service';
+import { SharedComponent } from './shared/shared.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { AuthInterceptorService } from './login/services/auth-interceptor.servic
     StoriesComponent,
     NewsComponent,
     VideosComponent,
-    PhotosComponent
+    PhotosComponent,
+    SharedComponent
   ],
   imports: [
     BrowserModule,
