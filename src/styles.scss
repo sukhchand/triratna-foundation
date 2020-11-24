@@ -17,13 +17,15 @@
     background: #007bc6 url('assets/images/join-us.svg');
     background-size: 25%;
 }
+.financials-banner {
+    background: #434D7A  url('assets/images/financial.svg');
+}
 .page-banner {
     height: 250px;
     background-position-x: 90%;
     background-position-y: 5px;
     background-repeat: no-repeat;
 }
-
 .service-banner-1 {
     background: #c6087a;
 }
@@ -151,6 +153,49 @@
 // Services CSS End
 
 // Common CSS Start
+.main-list {
+    list-style: none;
+    padding: 0;
+    margin-left: 25px;
+}
+.listblue a {
+    color:#3D80BB
+}
+
+.main-list li {
+    margin-left: 20px;
+    position: relative;
+    margin-bottom: 10px;
+    font-size: 1em;
+    text-align: left;
+}
+
+.main-list li:before {
+    content: "";
+    display: inline-block;
+    height: 14px;
+    width: 14px;
+    background: #F09200;
+    border-radius: 50%;
+    margin-right: 0.5em;
+    position: absolute;
+    left: -20px;
+    top: 3px;
+}
+
+.main-list li:after {
+    content: "";
+    display: inline-block;
+    height: 6px;
+    width: 6px;
+    background: #fff;
+    border-radius: 50%;
+    margin-right: 0.5em;
+    position: absolute;
+    left: -16px;
+    top: 7px;
+    z-index: 1;
+}
 .paddingtop-20 {
     padding-top: 20px;
 }
