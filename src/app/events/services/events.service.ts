@@ -11,11 +11,10 @@ import { Router } from '@angular/router';
 export class EventsService {
 
   constructor(private http: HttpClient, private router: Router) { }
-  public signup(credentials:any) {
-    credentials.roles = [];
-    const path =`${BASE_URL}/user/credential`;
+  public getEvents() {
+    const path =`${BASE_URL}/event/get`;
     return this.http
-      .post(path, credentials)
+      .post(path, {id: JSON.parse(localStorage.getItem('userData')).user.id})
       .pipe(map((response: any) => response));
   }
 }

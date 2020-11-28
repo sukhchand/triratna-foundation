@@ -19,7 +19,6 @@ export class EventsComponent implements OnInit {
 
   constructor(
     private modalService: NgbModal,
-    public activeModal: NgbActiveModal,
     private router: Router,
     private formBuilder: FormBuilder,
     public EventsService: EventsService
@@ -31,8 +30,9 @@ export class EventsComponent implements OnInit {
     this.signup();
   }
   public signup() {
-    this.EventsService.signup("abc").subscribe(result => {
-      this.activeModal.close("signup");
+    this.EventsService.getEvents().subscribe(result => {
+      debugger;
+      // this.activeModal.close("signup");
     }, (error) => {
       console.log(error);
     })

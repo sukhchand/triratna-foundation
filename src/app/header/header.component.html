@@ -1,6 +1,6 @@
 <div class="tf-header">
     <nav class="navbar navbar-expand-md navbar-default bg-light fixed-top">
-        <a class="navbar-brand" href="#"><img src="assets/images/logo.svg" alt="Logo" style="width:40px;"></a>
+        <a class="navbar-brand" href="#"><img src="assets/images/logo.svg" alt="Logo" style="height:57px;"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -10,21 +10,20 @@
                 <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                     <a class="" routerLink="/">Home</a>
                 </li>
-                <li class="nav-item dropdown" routerLinkActive="active">
-                    <a>
-                        About Us </a>
-                    <ul class="dropdown-menu">
+                <li class="nav-item dropdown" routerLinkActive="active" ngbDropdown >
+                    <a ngbDropdownToggle>About Us </a>
+                    <ul class="dropdown-menu" ngbDropdownMenu >
                         <li class=""><a class="dropdown-item" routerLink="about_us/leadership">Leadership</a></li>
                         <li class=""><a class="dropdown-item" routerLink="about_us/supporters">Supporters</a></li>
                         <li class=""><a class="dropdown-item" routerLink="about_us/financials">Financials</a></li>
                         <li class=""><a class="dropdown-item" routerLink="about_us/careers">Careers</a></li>
                     </ul>
                 </li>
-                <li class="nav-item dropdown" routerLinkActive="active">
-                    <a>
+                <li class="nav-item dropdown" routerLinkActive="active" ngbDropdown>
+                    <a ngbDropdownToggle>
                         Services
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu" ngbDropdownMenu>
                         <li class=""><a class="dropdown-item" routerLink="services/food_cloths_and_shelter">Food, Cloths
                                 & Shelter</a></li>
                         <li class=""><a class="dropdown-item"
@@ -60,9 +59,9 @@
                 <li class="nav-item" routerLinkActive="active">
                     <a class="" routerLink="volunteers">Volunteers</a>
                 </li>
-                <li class="nav-item dropdown" routerLinkActive="active">
-                    <a routerLink="informations">Informations</a>
-                    <ul class="dropdown-menu">
+                <li class="nav-item dropdown" routerLinkActive="active" ngbDropdown>
+                    <a routerLink="informations" ngbDropdownToggle>Informations</a>
+                    <ul class="dropdown-menu" ngbDropdownMenu>
                         <li class=""><a class="dropdown-item" routerLink="informations/calendar">Calendar</a></li>
                         <li class=""><a class="dropdown-item" routerLink="informations/events">Events</a></li>
                         <li class=""><a class="dropdown-item" routerLink="informations/stories">Stories</a></li>

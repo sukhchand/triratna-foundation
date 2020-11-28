@@ -203,12 +203,14 @@ input[type=password]:hover {
     top: 9px;
     right: 15px;
     content: "\f107";
+    border: none;
   }
 }
 
 @media (min-width: 992px) {
   .tf-header .dropdown>a:after {
     content: " ";
+    border: none;
   }
 }
 
