@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-shared',
@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shared.component.scss']
 })
 export class SharedComponent implements OnInit {
-
+  @Input() result;
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  //console.log(result);
 }

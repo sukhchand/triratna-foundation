@@ -11,10 +11,16 @@ import { Router } from '@angular/router';
 export class EventsService {
 
   constructor(private http: HttpClient, private router: Router) { }
-  public getEvents() {
+  // public getEvents() {
+  //   const path =`${BASE_URL}/event/get`;
+  //   return this.http
+  //     .post(path, {id: JSON.parse(localStorage.getItem('userData')).user.id})
+  //     .pipe(map((response: any) => response));
+  // }
+  public getEvents(obj:any) {
     const path =`${BASE_URL}/event/get`;
     return this.http
-      .post(path, {id: JSON.parse(localStorage.getItem('userData')).user.id})
+      .post(path, obj)
       .pipe(map((response: any) => response));
   }
 }

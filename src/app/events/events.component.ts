@@ -16,23 +16,31 @@ import {
   providers: [EventsService]
 })
 export class EventsComponent implements OnInit {
-
+  eventResult:any;
+  myDate: Date;
+  obj: any;
+  
   constructor(
     private modalService: NgbModal,
     private router: Router,
     private formBuilder: FormBuilder,
-    public EventsService: EventsService
+    public EventsService: EventsService,
   ) {}
 
   ngOnInit(): void {
+    this.getEvents();
+    this.myDate= new Date(); 
+    this.obj={
+      a:1,
+      b:20,
+      myDate: new Date()
+    }
   }
-  onSubmit(): void {
-    this.signup();
-  }
-  public signup() {
-    this.EventsService.getEvents().subscribe(result => {
+  
+  public getEvents() {
+    this.EventsService.getEvents(this.obj).subscribe(result => {
+      this.eventResult=result;
       debugger;
-      // this.activeModal.close("signup");
     }, (error) => {
       console.log(error);
     })

@@ -29,7 +29,7 @@
         (click)="onSubmit()"
         class="login login-submit"
         value="login"
-        [disabled]="!loginForm.valid"
+        [disabled]="!loginForm.valid" class="btn btn-info"
       />
     </form>
     <form [formGroup]="signupForm" *ngIf="formType == 'register'">
@@ -52,7 +52,7 @@
         formControlName="newPassword"
       />
       <select
-        class="custom-select"
+        class="custom-select" style="margin-bottom: 10px;"
         (change)="changeRole($event)"
         formControlName="roles"
         aria-placeholder="Login As"
@@ -68,7 +68,7 @@
         (click)="onSubmit()"
         class="login login-submit"
         value="Create User"
-        [disabled]="!signupForm.valid"
+        [disabled]="!signupForm.valid" class="btn btn-info"
       />
     </form>
     <form [formGroup]="forgotPasswordForm" *ngIf="formType == 'forgotPassword'">
@@ -90,7 +90,7 @@
         (click)="onSubmit()"
         class="login login-submit"
         value="Forgot Password"
-        [disabled]="!forgotPasswordForm.valid"
+        [disabled]="!forgotPasswordForm.valid" class="btn btn-info"
       />
     </form>
 
