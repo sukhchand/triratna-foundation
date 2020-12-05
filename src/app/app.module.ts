@@ -1,7 +1,7 @@
+import { EditGalleryComponent } from './edit-profile/components/edit-gallery/edit-gallery.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,12 +40,17 @@ import { NewsComponent } from './news/news.component';
 import { VideosComponent } from './videos/videos.component';
 import { PhotosComponent } from './photos/photos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { AuthInterceptorService } from './login/services/auth-interceptor.service';
 import { SharedComponent } from './shared/shared.component';
+import { EditNewsComponent } from './edit-profile/components/edit-news/edit-news.component';
+import { EditStoriesComponent } from './edit-profile/components/edit-stories/edit-stories.component';
+import { EditEventsComponent } from './edit-profile/components/edit-events/edit-events.component';
+import { EditCalendarComponent } from './edit-profile/components/edit-calendar/edit-calendar.component';
+import { EventPopupComponent } from './edit-profile/components/edit-calendar/components/event-popup/event-popup.component';
+import { ProfileComponent } from './edit-profile/components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +87,15 @@ import { SharedComponent } from './shared/shared.component';
     NewsComponent,
     VideosComponent,
     PhotosComponent,
-    SharedComponent
+    SharedComponent,
+    EditNewsComponent,
+    EditProfileComponent,
+    EditStoriesComponent,
+    EditEventsComponent,
+    EditCalendarComponent,
+    EditGalleryComponent,
+    ProfileComponent,
+    EventPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -90,11 +103,10 @@ import { SharedComponent } from './shared/shared.component';
     NgbModule,
     FontAwesomeModule,
     FormsModule,
-    CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,
-    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
+    BrowserAnimationsModule
   ],
   providers: [
     {

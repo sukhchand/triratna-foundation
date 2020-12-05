@@ -1,84 +1,78 @@
-import { CalendarFormatter } from './calendar.provider';
+// import { CalendarFormatter } from './calendar.provider';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { CalendarEvent, CalendarEventTitleFormatter, CalendarView } from 'angular-calendar';
-import { isSameDay, isSameMonth, setHours, setMinutes } from 'date-fns';
+// import { CalendarEvent, CalendarEventTitleFormatter, CalendarView } from 'angular-calendar';
+// import { isSameDay, isSameMonth, setHours, setMinutes } from 'date-fns';
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./calendar.component.scss'],
-  providers: [
-    {
-      provide: CalendarEventTitleFormatter,
-      useClass: CalendarFormatter
-    }
-  ]
+  styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
 
   constructor() { }
 
-  locale: string = 'en';
-  activeDayIsOpen: boolean = false;
+  // locale: string = 'en';
+  // activeDayIsOpen: boolean = false;
 
-  colors: any = {
-    red: {
-      primary: '#ad2121',
-      secondary: '#FAE3E3',
-    },
-    blue: {
-      primary: '#1e90ff',
-      secondary: '#D1E8FF',
-    },
-    yellow: {
-      primary: '#e3bc08',
-      secondary: '#FDF1BA',
-    },
-  };
+  // colors: any = {
+  //   red: {
+  //     primary: '#ad2121',
+  //     secondary: '#FAE3E3',
+  //   },
+  //   blue: {
+  //     primary: '#1e90ff',
+  //     secondary: '#D1E8FF',
+  //   },
+  //   yellow: {
+  //     primary: '#e3bc08',
+  //     secondary: '#FDF1BA',
+  //   },
+  // };
 
-  view: CalendarView = CalendarView.Month;
+  // view: CalendarView = CalendarView.Month;
 
-  viewDate: Date = new Date();
+  // viewDate: Date = new Date();
 
-  events: CalendarEvent[] = [
-    {
-      title: 'No event end date',
-      start: setHours(setMinutes(new Date(), 0), 3),
-      color: this.colors.blue,
-    },
-    {
-      title: 'No event end date',
-      start: setHours(setMinutes(new Date('Wed Nov 19 2020 15:51:24 GMT+0530'), 0), 5),
-      color: this.colors.yellow,
-    },
-  ];
+  // events: CalendarEvent[] = [
+  //   {
+  //     title: 'No event end date',
+  //     start: setHours(setMinutes(new Date(), 0), 3),
+  //     color: this.colors.blue,
+  //   },
+  //   {
+  //     title: 'No event end date',
+  //     start: setHours(setMinutes(new Date('Wed Nov 19 2020 15:51:24 GMT+0530'), 0), 5),
+  //     color: this.colors.yellow,
+  //   },
+  // ];
 
   ngOnInit(): void {
   }
 
-  eventClicked(event: CalendarEvent<any>): void {
-    console.log("event")
-  }
+  // eventClicked(event: CalendarEvent<any>): void {
+  //   console.log("event")
+  // }
 
-  dayClicked({
-    date,
-    events,
-  }: {
-    date: Date;
-    events: CalendarEvent<any>[];
-  }): void {
-    if (isSameMonth(date, this.viewDate)) {
-      if (
-        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
-        events.length === 0
-      ) {
-        this.activeDayIsOpen = false;
-      } else {
-        this.activeDayIsOpen = true;
-        this.viewDate = date;
-      }
-    }
-  }
+  // dayClicked({
+  //   date,
+  //   events,
+  // }: {
+  //   date: Date;
+  //   events: CalendarEvent<any>[];
+  // }): void {
+  //   if (isSameMonth(date, this.viewDate)) {
+  //     if (
+  //       (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
+  //       events.length === 0
+  //     ) {
+  //       this.activeDayIsOpen = false;
+  //     } else {
+  //       this.activeDayIsOpen = true;
+  //       this.viewDate = date;
+  //     }
+  //   }
+  // }
 
 }

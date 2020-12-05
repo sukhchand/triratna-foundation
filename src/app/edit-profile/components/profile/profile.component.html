@@ -1,5 +1,15 @@
 <div class="col">
-  <form formGroup="profileForm">
+  <form [formGroup]="profileForm">
+    <div>
+      <label>User ID : </label>
+      <input
+      type="text"
+      name="user"
+      placeholder="User Id"
+      formControlName="id"
+      disabled
+    />
+    </div>
     <div>
       <label>First Name : </label>
       <input
@@ -159,13 +169,69 @@
       (keypress)="onlyNumberKey($event)"
     />
     </div>
-    <input
+    <button
       type="submit"
-      name="login"
-      (click)="onSubmit()"
-      class="login login-submit"
-      value="Submit"
-      [disabled]="!profileForm.valid"
+      (click)="updateUserDetails()"
+      [disabled]="userCredentailsForm.invalid"
+    >Submit</button>
+  </form>
+
+  <form [formGroup]="userCredentailsForm">
+    <div>
+      <label>User ID : </label>
+      <input
+      type="text"
+      name="user"
+      placeholder="User Id"
+      formControlName="id"
+      disabled
     />
+    </div>
+    <div>
+      <label>Username : </label>
+      <input
+      type="text"
+      name="user"
+      placeholder="Username"
+      formControlName="username"
+    />
+    </div>
+    <div>
+      <label>Password : </label>
+      <input
+      type="password"
+      name="user"
+      placeholder="Password"
+      formControlName="password"
+    />
+    </div>
+    <div>
+      <label>New Password : </label>
+      <input
+      type="text"
+      name="user"
+      placeholder="New Password"
+      formControlName="newPassword"
+    />
+    </div>
+    <div>
+      <label>Roles : </label>
+      <select
+        class="custom-select"
+        (change)="changeRole($event)"
+        formControlName="roles"
+        aria-placeholder="Login As"
+      >
+        <option value="" disabled>Login As</option>
+        <option *ngFor="let userrole of userroles" [ngValue]="userrole">
+          {{ userrole }}
+        </option>
+      </select>
+    </div>
+    <button
+      type="submit"
+      (click)="updateCredentialForUser()"
+      [disabled]="userCredentailsForm.invalid"
+    >Submit</button>
   </form>
 </div>

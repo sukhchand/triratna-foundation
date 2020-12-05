@@ -1,3 +1,4 @@
+import { EditGalleryComponent } from './edit-profile/components/edit-gallery/edit-gallery.component';
 import { ProfileComponent } from './edit-profile/components/profile/profile.component';
 import { EditNewsComponent } from './edit-profile/components/edit-news/edit-news.component';
 import { PhotosComponent } from './photos/photos.component';
@@ -33,8 +34,6 @@ import { TeachingofbuddhaandspiritualityComponent } from './teachingofbuddhaands
 import { EditCalendarComponent } from './edit-profile/components/edit-calendar/edit-calendar.component';
 import { EditEventsComponent } from './edit-profile/components/edit-events/edit-events.component';
 import { EditStoriesComponent } from './edit-profile/components/edit-stories/edit-stories.component';
-import { EditVideosComponent } from './edit-profile/components/edit-videos/edit-videos.component';
-import { EditPhotosComponent } from './edit-profile/components/edit-photos/edit-photos.component';
 import { AuthGuardService } from './login/services/auth-guard.service';
 
 
@@ -98,14 +97,9 @@ const routes: Routes = [
       component: EditNewsComponent
     },
     {
-      path: 'videos',
+      path: 'gallery',
       canActivate: [AuthGuardService],
-      component: EditVideosComponent
-    },
-    {
-      path: 'photos',
-      canActivate: [AuthGuardService],
-      component: EditPhotosComponent
+      component: EditGalleryComponent
     }
    ]
   },
