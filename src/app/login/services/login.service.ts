@@ -59,11 +59,18 @@ export class LoginService {
       .pipe(map((response: any) => response));
   }
 
-  public updateUser(credentials:any) {
-    credentials.roles = [];
+  public updateUser(userDetails:any) {
+    const path =`${BASE_URL}/user`;
+    return this.http
+      .put(path, userDetails)
+      .pipe(map((response: any) => response));
+  }
+
+  public updateCredentialForUser(credentialDetails:any) {
+    credentialDetails.roles = [];
     const path =`${BASE_URL}/user/credential`;
     return this.http
-      .put(path, credentials)
+      .put(path, credentialDetails)
       .pipe(map((response: any) => response));
   }
 

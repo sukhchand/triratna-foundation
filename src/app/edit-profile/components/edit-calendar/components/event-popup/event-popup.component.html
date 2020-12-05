@@ -1,0 +1,59 @@
+<div class="modal-body login-modal-body">
+  <div>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="activeModal.close()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h1>Create Event</h1>
+    <br />
+    <form [formGroup]="eventForm">
+      <input
+        type="text"
+        name="eventName"
+        placeholder="Event Name"
+        formControlName="eventName"
+      />
+      <textarea
+        type="text"
+        name="description"
+        placeholder="Event Description"
+        formControlName="description"
+      ></textarea>
+      <input
+        type="text"
+        name="location"
+        placeholder="Event Location"
+        formControlName="location"
+      />
+      <input
+        type="text"
+        name="organizer"
+        placeholder="Event Organizer"
+        formControlName="organizer"
+      />
+      <input
+        type="text"
+        name="contactInfo"
+        placeholder="Event Contacts"
+        formControlName="contactInfo"
+        (keypress)="onlyNumberKey($event)"
+      />
+      <input type="date"
+       value="eventDate"
+       >
+      <!-- <input
+        type="text"
+        name="eventDate"
+        placeholder="Event Date"
+        formControlName="eventDate"
+      /> -->
+      <input type="submit" *ngIf="!data.event" (click)="onSubmit()" value="Create Event" />
+      <input type="submit" *ngIf="data.event" (click)="onSubmit()" value="Update Event" />
+
+    </form>
+  </div>
+</div>
