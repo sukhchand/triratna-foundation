@@ -47,12 +47,9 @@
           >{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span
         >
       </div>
-      <div *ngIf="day.badgeTotal == 0">
+      <div *ngIf="day.badgeTotal == 0 && (day.isToday || day.isFuture)">
         <i class="fa fa-plus-circle" (click)="createEvent(day.date)"></i>
       </div>
-      <small *ngIf="day.badgeTotal > 0" style="margin: 5px;"
-        >There are {{ day.events.length }} events on this day</small
-      >
     </ng-template>
   </div>
 </div>

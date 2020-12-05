@@ -42,7 +42,6 @@
         formControlName="contactInfo"
         (keypress)="onlyNumberKey($event)"
       />
-      {{getFormattedDate()}}
       <input type="date"
        value="eventDate"
        >
@@ -52,8 +51,8 @@
         placeholder="Event Date"
         formControlName="eventDate"
       /> -->
-      <input type="submit" *ngIf="!data.event.meta.event.id" (click)="onSubmit()" value="Create Event" />
-      <input type="submit" *ngIf="data.event.meta.event.id" (click)="onSubmit()" value="Update Event" />
+      <input type="submit" *ngIf="!data.event" (click)="onSubmit()" value="Create Event" />
+      <input type="submit" *ngIf="data.event" (click)="onSubmit()" value="Update Event" />
 
     </form>
   </div>

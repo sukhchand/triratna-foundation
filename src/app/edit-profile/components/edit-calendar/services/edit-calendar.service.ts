@@ -35,10 +35,10 @@ export class EditCalendarService extends CalendarEventTitleFormatter {
       .pipe(map((response: any) => response));
   }
   public deleteEvents(id:string) {
-    const path = `${BASE_URL}/event/delete`;
+    const path = `${BASE_URL}/event/delete/${id}`;
     const params = {id};
     return this.http
-      .delete(path,{params})
+      .delete(path)
       .pipe(map((response: any) => response));
   }
 }

@@ -1,5 +1,11 @@
+import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  OnInit,
+} from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
   CalendarEvent,
@@ -31,47 +37,25 @@ export class EditCalendarComponent implements OnInit {
   events: CalendarEvent[];
   events$: Observable<CalendarEvent[]>;
   refresh: Subject<any> = new Subject();
+  locale: string = 'en';
+  activeDayIsOpen: boolean = false;
+  selectedDate: any;
+  view: CalendarView = CalendarView.Month;
+  viewDate: Date = new Date();
+
   constructor(
     public editCalendarService: EditCalendarService,
     private modalService: NgbModal,
-    private http: HttpClient
+    private http: HttpClient,
+    @Inject(DOCUMENT) private document: Document
   ) {
     this.getEvents();
   }
-  x = false;
-
-  locale: string = 'en';
-  activeDayIsOpen: boolean = false;
-
-  selectedDate: any;
-
-  colors: any = {
-    red: {
-      primary: '#ad2121',
-      secondary: '#FAE3E3',
-    },
-    blue: {
-      primary: '#1e90ff',
-      secondary: '#D1E8FF',
-    },
-    yellow: {
-      primary: '#e3bc08',
-      secondary: '#FDF1BA',
-    },
-  };
-
-  view: CalendarView = CalendarView.Month;
-
-  viewDate: Date = new Date();
 
   ngOnInit(): void {
     this.getEvents();
     this.events = this.allEvents;
     this.refresh.next();
-  }
-
-  eventClicked(event: CalendarEvent<any>): void {
-    debugger;
   }
 
   dayClicked({
@@ -90,41 +74,18 @@ export class EditCalendarComponent implements OnInit {
         this.activeDayIsOpen = false;
       } else {
         this.activeDayIsOpen = true;
+        events[0] = this.disableActions(date, events[0]);
         this.viewDate = date;
       }
     }
   }
 
-  // getEvents() {
-  //   this.editCalendarService.getEvents().subscribe((results) => {
-  //     results.response.forEach((event) => {
-  //       this.events.push({
-  //         title: event.eventName,
-  //         start: new Date(event.eventDate),
-  //         end: new Date(event.eventDate),
-  //         actions: [
-  //           {
-  //             label: '<i class="fa fa-edit"></i>',
-  //             onClick: ({ event }: { event: CalendarEvent }): void => {
-  //               debugger;
-  //               this.createEvent(this.selectedDate, event);
-  //             },
-  //           },
-  //           {
-  //             label: '<i class="fa fa-trash"></i>',
-  //             onClick: ({ event }: { event: CalendarEvent }): void => {
-  //               this.events = this.events.filter((iEvent) => iEvent !== event);
-  //               console.log('Event deleted', event);
-  //             },
-  //           },
-  //         ],
-  //         meta: {
-  //           event
-  //         },
-  //       });
-  //     });
-  //   });
-  // }
+  disableActions(date, events): any {
+    if (new Date() > new Date(date)) {
+      delete events.actions;
+    }
+    return events;
+  }
 
   getEvents() {
     this.events$ = this.http
@@ -141,7 +102,7 @@ export class EditCalendarComponent implements OnInit {
               },
               actions: [
                 {
-                  label: `<div *ngIf=${this.x}><i class="fa fa-edit"></i></div>`,
+                  label: `<i class="fa fa-edit"></i>`,
                   onClick: ({ event }: { event: CalendarEvent }): void => {
                     this.createEvent(this.selectedDate, event);
                   },
@@ -152,7 +113,7 @@ export class EditCalendarComponent implements OnInit {
                     this.events = this.events.filter(
                       (iEvent) => iEvent !== event
                     );
-                    this.editCalendarService.deleteEvents(event.meta.event.id);
+                    this.deleteEvent(event.meta.event.id);
                   },
                 },
               ],
@@ -163,13 +124,13 @@ export class EditCalendarComponent implements OnInit {
   }
 
   deleteEvent(event) {
-    debugger;
-    this.editCalendarService.deleteEvents(event).subscribe(response => {
-      debugger;
-    })
+    this.editCalendarService.deleteEvents(event).subscribe((response) => {
+      this.document.location.reload();
+    });
   }
 
   createEvent(day, event?) {
+    this.activeDayIsOpen = false;
     const eventModal = this.modalService.open(EventPopupComponent, {
       centered: true,
     });
@@ -178,7 +139,7 @@ export class EditCalendarComponent implements OnInit {
       event,
     };
     eventModal.result.then((data) => {
-      console.log(data);
+      this.document.location.reload();
     });
   }
 }

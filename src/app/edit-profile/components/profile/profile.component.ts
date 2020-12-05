@@ -59,13 +59,13 @@ export class ProfileComponent implements OnInit {
     let user = this.profileForm.value;
     user['id'] = this.userId;
     this.loginService.updateUser(this.profileForm.value).subscribe((res) => {
-      debugger;
+      console.log(res);
     });
   }
 
   updateCredentialForUser() {
     this.loginService.updateCredentialForUser(this.userCredentailsForm.value).subscribe((res) => {
-      debugger;
+      console.log(res);
     });
 
   }

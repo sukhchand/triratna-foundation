@@ -53,19 +53,18 @@ export class EventPopupComponent implements OnInit {
     );
   }
   onSubmit() {
-    if (this.data.event.meta.event.id) {
+    if (this.data.event) {
       let eventData = this.eventForm.value;
 
       eventData['id'] = this.data.event.meta.event.id;
       this.editCalendarService.updateEvent(eventData).subscribe((results) => {
-        console.log(results);
+        this.close();
       });
     } else {
       this.editCalendarService
         .createEvent(this.eventForm.value)
         .subscribe((results) => {
           this.close();
-          console.log(results);
         });
     }
   }
