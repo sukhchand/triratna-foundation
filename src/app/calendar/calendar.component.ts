@@ -2,6 +2,7 @@ import { CalendarFormatter } from './calendar.provider';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CalendarEvent, CalendarEventTitleFormatter, CalendarView } from 'angular-calendar';
 import { isSameDay, isSameMonth, setHours, setMinutes } from 'date-fns';
+import { CalendarService } from './services/calendar.service';
 
 @Component({
   selector: 'app-calendar',
@@ -16,69 +17,24 @@ import { isSameDay, isSameMonth, setHours, setMinutes } from 'date-fns';
   ]
 })
 export class CalendarComponent implements OnInit {
-
+  calendarResult:any;
+  myDate: Date;
+  obj: any;
   constructor() { }
 
-  locale: string = 'en';
-  activeDayIsOpen: boolean = false;
-
-  colors: any = {
-    red: {
-      primary: '#ad2121',
-      secondary: '#FAE3E3',
-    },
-    blue: {
-      primary: '#1e90ff',
-      secondary: '#D1E8FF',
-    },
-    yellow: {
-      primary: '#e3bc08',
-      secondary: '#FDF1BA',
-    },
-  };
-
-  view: CalendarView = CalendarView.Month;
-
-  viewDate: Date = new Date();
-
-  events: CalendarEvent[] = [
-    {
-      title: 'No event end date',
-      start: setHours(setMinutes(new Date(), 0), 3),
-      color: this.colors.blue,
-    },
-    {
-      title: 'No event end date',
-      start: setHours(setMinutes(new Date('Wed Nov 19 2020 15:51:24 GMT+0530'), 0), 5),
-      color: this.colors.yellow,
-    },
-  ];
-
   ngOnInit(): void {
-  }
-
-  eventClicked(event: CalendarEvent<any>): void {
-    console.log("event")
-  }
-
-  dayClicked({
-    date,
-    events,
-  }: {
-    date: Date;
-    events: CalendarEvent<any>[];
-  }): void {
-    if (isSameMonth(date, this.viewDate)) {
-      if (
-        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
-        events.length === 0
-      ) {
-        this.activeDayIsOpen = false;
-      } else {
-        this.activeDayIsOpen = true;
-        this.viewDate = date;
-      }
+    this.obj={
+      endTime: new Date()
     }
+    this.getEvents();
+  }
+  
+  public getEvents() {
+    this.CalendarService.getEvents(this.obj).subscribe(result => {
+      this.calendarResult=result;
+    }, (error) => {
+      console.log(error);
+    })
   }
 
 }

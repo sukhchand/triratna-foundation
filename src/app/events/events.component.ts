@@ -28,19 +28,15 @@ export class EventsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getEvents();
-    this.myDate= new Date(); 
     this.obj={
-      a:1,
-      b:20,
-      myDate: new Date()
+      startTime: new Date()
     }
+    this.getEvents();
   }
   
   public getEvents() {
     this.EventsService.getEvents(this.obj).subscribe(result => {
       this.eventResult=result;
-      debugger;
     }, (error) => {
       console.log(error);
     })

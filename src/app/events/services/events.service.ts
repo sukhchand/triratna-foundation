@@ -22,5 +22,6 @@ export class EventsService {
     return this.http
       .post(path, obj)
       .pipe(map((response: any) => response));
+      
   }
 }

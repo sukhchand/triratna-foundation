@@ -1,35 +1,22 @@
-{{result.errorCode}}
 <div class="container-fluid">
-    <div class="row paddingtop-50 paddingbottom-50">
-        <div class="col-md-4">
-            <div class="card" style="width:400px;margin: 0 auto;">
-                <img class="card-img-top" src="assets/images/img_avatar1.png" alt="Card image" style="width:100%">
-                <div class="card-body">
-                    <h4 class="card-title">John Doe</h4>
-                    <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-                    <a href="#" class="btn btn-primary">See Profile</a>
+    <section *ngFor="let response of result.response">
+        <div class="container">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card-img-bottom">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-block">
+                            <h4 class="card-title">{{response.eventName}}</h4>
+                            <h3>{{response.eventDate | date:'MMM dd yyyy'}}</h3>
+                            <p class="card-text">{{response.description}}</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card" style="width:400px;margin: 0 auto;">
-                <img class="card-img-top" src="assets/images/img_avatar1.png" alt="Card image" style="width:100%">
-                <div class="card-body">
-                    <h4 class="card-title">John Doe</h4>
-                    <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-                    <a href="#" class="btn btn-primary">See Profile</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card" style="width:400px;margin: 0 auto;">
-                <img class="card-img-top" src="assets/images/img_avatar1.png" alt="Card image" style="width:100%">
-                <div class="card-body">
-                    <h4 class="card-title">John Doe</h4>
-                    <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-                    <a href="#" class="btn btn-primary">See Profile</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    </section>
 </div>
