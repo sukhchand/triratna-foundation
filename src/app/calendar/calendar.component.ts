@@ -1,5 +1,6 @@
 // import { CalendarFormatter } from './calendar.provider';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { CalendarService } from './services/calendar.service';
 
 
 @Component({
@@ -12,21 +13,21 @@ export class CalendarComponent implements OnInit {
   calendarResult:any;
   myDate: Date;
   obj: any;
-  constructor() { }
+  constructor(public calendarService:CalendarService) { }
   ngOnInit(): void {
     this.obj={
       startTime: new Date()
     }
     this.getEvents();
   }
-  
+
   public getEvents() {
-    this.CalendarService.getEvents(this.obj).subscribe(result => {
+    this.calendarService.getEvents(this.obj).subscribe(result => {
       this.calendarResult=result;
     }, (error) => {
       console.log(error);
     })
   }
 
-  
+
 }
