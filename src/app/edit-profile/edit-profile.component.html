@@ -1,21 +1,24 @@
-<div class="row">
+<div class="row" style="margin: 0">
   <div class="col-2 sidenav">
-    <ul>
-      <li routerLinkActive>
+    <ul class="edit-nav-menu">
+      <li routerLinkActive="active">
+        <a routerLink="profile">Profile</a>
+      </li>
+      <li routerLinkActive="active">
         <a routerLink="calendar">Calendar</a>
       </li>
-      <li>
+      <li routerLinkActive="active">
         <a routerLink="stories">Stories</a>
       </li>
-      <li>
+      <li routerLinkActive="active">
         <a routerLink="news">News</a>
       </li>
-      <li>
+      <li routerLinkActive="active">
         <a routerLink="gallery">Gallery</a>
       </li>
     </ul>
   </div>
-  <div class="col">
+  <div class="col-10 paddingtop-20 paddingbottom-20">
     <router-outlet></router-outlet>
   </div>
 </div>

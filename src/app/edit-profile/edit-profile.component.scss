@@ -2,11 +2,11 @@
   width: 160px;
   background-color: #111;
   overflow-x: hidden;
-  padding-top: 20px;
+  padding: 0;
   a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 20px;
     color: #818181;
     display: block;
     &:hover {
@@ -15,3 +15,15 @@
   }
 }
 
+.edit-nav-menu {
+  padding: 0;
+  list-style: none;
+}
+
+.edit-nav-menu li.active {
+  background-color:#adb5bd;
+}
+
+.edit-nav-menu li.active a {
+  color: #fff;
+}

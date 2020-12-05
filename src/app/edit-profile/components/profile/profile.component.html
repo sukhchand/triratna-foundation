@@ -1,237 +1,245 @@
-<div class="col">
+<div class="">
   <form [formGroup]="profileForm">
-    <div>
-      <label>User ID : </label>
-      <input
-      type="text"
-      name="user"
-      placeholder="User Id"
-      formControlName="id"
-      disabled
-    />
+    <div class="row" style="margin: 0">
+      <div class="col-sm-3">
+        <label>User ID : </label>
+        <input  class="form-control"
+        type="text"
+        name="user"
+        placeholder="User Id"
+        formControlName="id"
+        disabled
+      />
+      </div>
+      <div class="col-sm-3">
+        <label>First Name : </label>
+        <input  class="form-control"
+        type="text"
+        name="user"
+        placeholder="First Name"
+        formControlName="firstName"
+      />
+      </div>
+      <div class="col-sm-3">
+        <label>Middle Name : </label>
+        <input  class="form-control"
+        type="text"
+        name="user"
+        placeholder="Middle Name"
+        formControlName="middleName"
+      />
+      </div>
+      <div class="col-sm-3">
+        <label>Last Name : </label>
+        <input  class="form-control"
+        type="text"
+        name="user"
+        placeholder="Last Name"
+        formControlName="lastName"
+      />
+      </div>
+      <div class="col-sm-3">
+        <label>Display Name : </label>
+        <input  class="form-control"
+        type="text"
+        name="user"
+        placeholder="Display Name"
+        formControlName="displayName"
+      />
+      </div>
+      <div class="col-sm-3">
+        <label>User Type : </label>
+        <input  class="form-control"
+        type="text"
+        name="user"
+        placeholder="User Type"
+        formControlName="userType"
+      />
+      </div>
+      <div class="col-sm-3">
+        <label>Email Id : </label>
+        <input  class="form-control"
+        type="text"
+        name="user"
+        placeholder="Email Id"
+        formControlName="emailId"
+      />
+      </div>
+      <div class="col-sm-3">
+        <label>Primary Contact Country Code : </label>
+        <input  class="form-control"
+        type="text"
+        name="user"
+        placeholder="Primary Contact Country Code"
+        formControlName="primaryContactCountryCode"
+        (keypress)="onlyNumberKey($event)"
+      />
+      </div>
+      <div class="col-sm-3">
+        <label>Secondary Contact Country Code : </label>
+        <input  class="form-control"
+        type="text"
+        name="user"
+        placeholder="Secondary Contact Country Code"
+        formControlName="secondaryContactCountryCode"
+        (keypress)="onlyNumberKey($event)"
+      />
+      </div>
+      <div class="col-sm-3">
+        <label>Primary Contact Number : </label>
+        <input  class="form-control"
+        type="text"
+        name="user"
+        placeholder="Primary Contact Number"
+        formControlName="primaryContactNo"
+        (keypress)="onlyNumberKey($event)"
+      />
+      </div>
+      <div class="col-sm-3">
+        <label>Secondary Contact Number : </label>
+        <input  class="form-control"
+        type="text"
+        name="user"
+        placeholder="Secondary Contact Number"
+        formControlName="secondaryContactNo"
+        (keypress)="onlyNumberKey($event)"
+      />
+      </div>
+      <div class="col-sm-3">
+        <label>Country : </label>
+        <input  class="form-control"
+        type="text"
+        name="user"
+        placeholder="Country"
+        formControlName="country"
+      />
+      </div>
+      <div class="col-sm-3">
+        <label>Country Code : </label>
+        <input  class="form-control"
+        type="text"
+        name="user"
+        placeholder="Country Code"
+        formControlName="countryCode"
+        (keypress)="onlyNumberKey($event)"
+      />
+      </div>
+      <div class="col-sm-3">
+        <label>Street : </label>
+        <input  class="form-control"
+        type="text"
+        name="user"
+        placeholder="Street"
+        formControlName="street"
+      />
+      </div>
+      <div class="col-sm-3">
+        <label>Street Line : </label>
+        <input  class="form-control"
+        type="text"
+        name="user"
+        placeholder="Street Line"
+        formControlName="streetLine"
+      />
+      </div>
+      <div class="col-sm-3">
+        <label>City : </label>
+        <input  class="form-control"
+        type="text"
+        name="user"
+        placeholder="City"
+        formControlName="city"
+      />
+      </div>
+      <div class="col-sm-3">
+        <label>State : </label>
+        <input  class="form-control"
+        type="text"
+        name="user"
+        placeholder="State"
+        formControlName="state"
+      />
+      </div>
+      <div class="col-sm-3">
+        <label>Zip Code : </label>
+        <input  class="form-control"
+        type="text"
+        name="user"
+        placeholder="Zip Code"
+        formControlName="zipCode"
+        (keypress)="onlyNumberKey($event)"
+      />
+      </div>
+      <div class="col-sm-3">
+        <button style="margin-top: 35px;"
+          type="submit"
+          (click)="updateUserDetails()"
+          [disabled]="userCredentailsForm.invalid"
+        >Submit</button>
+      </div>
     </div>
-    <div>
-      <label>First Name : </label>
-      <input
-      type="text"
-      name="user"
-      placeholder="First Name"
-      formControlName="firstName"
-    />
-    </div>
-    <div>
-      <label>Middle Name : </label>
-      <input
-      type="text"
-      name="user"
-      placeholder="Middle Name"
-      formControlName="middleName"
-    />
-    </div>
-    <div>
-      <label>Last Name : </label>
-      <input
-      type="text"
-      name="user"
-      placeholder="Last Name"
-      formControlName="lastName"
-    />
-    </div>
-    <div>
-      <label>Display Name : </label>
-      <input
-      type="text"
-      name="user"
-      placeholder="Display Name"
-      formControlName="displayName"
-    />
-    </div>
-    <div>
-      <label>User Type : </label>
-      <input
-      type="text"
-      name="user"
-      placeholder="User Type"
-      formControlName="userType"
-    />
-    </div>
-    <div>
-      <label>Email Id : </label>
-      <input
-      type="text"
-      name="user"
-      placeholder="Email Id"
-      formControlName="emailId"
-    />
-    </div>
-    <div>
-      <label>Primary Contact Country Code : </label>
-      <input
-      type="text"
-      name="user"
-      placeholder="Primary Contact Country Code"
-      formControlName="primaryContactCountryCode"
-      (keypress)="onlyNumberKey($event)"
-    />
-    </div>
-    <div>
-      <label>Secondary Contact Country Code : </label>
-      <input
-      type="text"
-      name="user"
-      placeholder="Secondary Contact Country Code"
-      formControlName="secondaryContactCountryCode"
-      (keypress)="onlyNumberKey($event)"
-    />
-    </div>
-    <div>
-      <label>Primary Contact Number : </label>
-      <input
-      type="text"
-      name="user"
-      placeholder="Primary Contact Number"
-      formControlName="primaryContactNo"
-      (keypress)="onlyNumberKey($event)"
-    />
-    </div>
-    <div>
-      <label>Secondary Contact Number : </label>
-      <input
-      type="text"
-      name="user"
-      placeholder="Secondary Contact Number"
-      formControlName="secondaryContactNo"
-      (keypress)="onlyNumberKey($event)"
-    />
-    </div>
-    <div>
-      <label>Country : </label>
-      <input
-      type="text"
-      name="user"
-      placeholder="Country"
-      formControlName="country"
-    />
-    </div>
-    <div>
-      <label>Country Code : </label>
-      <input
-      type="text"
-      name="user"
-      placeholder="Country Code"
-      formControlName="countryCode"
-      (keypress)="onlyNumberKey($event)"
-    />
-    </div>
-    <div>
-      <label>Street : </label>
-      <input
-      type="text"
-      name="user"
-      placeholder="Street"
-      formControlName="street"
-    />
-    </div>
-    <div>
-      <label>Street Line : </label>
-      <input
-      type="text"
-      name="user"
-      placeholder="Street Line"
-      formControlName="streetLine"
-    />
-    </div>
-    <div>
-      <label>City : </label>
-      <input
-      type="text"
-      name="user"
-      placeholder="City"
-      formControlName="city"
-    />
-    </div>
-    <div>
-      <label>State : </label>
-      <input
-      type="text"
-      name="user"
-      placeholder="State"
-      formControlName="state"
-    />
-    </div>
-    <div>
-      <label>Zip Code : </label>
-      <input
-      type="text"
-      name="user"
-      placeholder="Zip Code"
-      formControlName="zipCode"
-      (keypress)="onlyNumberKey($event)"
-    />
-    </div>
-    <button
-      type="submit"
-      (click)="updateUserDetails()"
-      [disabled]="userCredentailsForm.invalid"
-    >Submit</button>
   </form>
 
   <form [formGroup]="userCredentailsForm">
-    <div>
-      <label>User ID : </label>
-      <input
-      type="text"
-      name="user"
-      placeholder="User Id"
-      formControlName="id"
-      disabled
-    />
+    <div class="row" style="margin: 0">
+      <div class="col-sm-3">
+        <label>User ID : </label>
+        <input class="form-control"
+        type="text"
+        name="user"
+        placeholder="User Id"
+        formControlName="id"
+        disabled
+      />
+      </div>
+      <div class="col-sm-3">
+        <label>Username : </label>
+        <input class="form-control"
+        type="text"
+        name="user"
+        placeholder="Username"
+        formControlName="username"
+      />
+      </div>
+      <div class="col-sm-3">
+        <label>Password : </label>
+        <input class="form-control"
+        type="password"
+        name="user"
+        placeholder="Password"
+        formControlName="password"
+      />
+      </div>
+      <div class="col-sm-3">
+        <label>New Password : </label>
+        <input class="form-control"
+        type="text"
+        name="user"
+        placeholder="New Password"
+        formControlName="newPassword"
+      />
+      </div>
+      <div class="col-sm-3">
+        <label>Roles : </label>
+        <select
+          class="custom-select"
+          (change)="changeRole($event)"
+          formControlName="roles"
+          aria-placeholder="Login As"
+        >
+          <option value="" disabled>Login As</option>
+          <option *ngFor="let userrole of userroles" [ngValue]="userrole">
+            {{ userrole }}
+          </option>
+        </select>
+      </div>
+      <div class="col-sm-3">
+        <button style="margin-top: 35px;"
+          type="submit"
+          (click)="updateCredentialForUser()"
+          [disabled]="userCredentailsForm.invalid"
+        >Submit</button>
+      </div>
     </div>
-    <div>
-      <label>Username : </label>
-      <input
-      type="text"
-      name="user"
-      placeholder="Username"
-      formControlName="username"
-    />
-    </div>
-    <div>
-      <label>Password : </label>
-      <input
-      type="password"
-      name="user"
-      placeholder="Password"
-      formControlName="password"
-    />
-    </div>
-    <div>
-      <label>New Password : </label>
-      <input
-      type="text"
-      name="user"
-      placeholder="New Password"
-      formControlName="newPassword"
-    />
-    </div>
-    <div>
-      <label>Roles : </label>
-      <select
-        class="custom-select"
-        (change)="changeRole($event)"
-        formControlName="roles"
-        aria-placeholder="Login As"
-      >
-        <option value="" disabled>Login As</option>
-        <option *ngFor="let userrole of userroles" [ngValue]="userrole">
-          {{ userrole }}
-        </option>
-      </select>
-    </div>
-    <button
-      type="submit"
-      (click)="updateCredentialForUser()"
-      [disabled]="userCredentailsForm.invalid"
-    >Submit</button>
   </form>
 </div>

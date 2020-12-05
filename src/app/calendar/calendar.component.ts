@@ -16,7 +16,7 @@ export class CalendarComponent implements OnInit {
   constructor(public calendarService:CalendarService) { }
   ngOnInit(): void {
     this.obj={
-      startTime: new Date()
+      endTime: new Date()
     }
     this.getEvents();
   }
