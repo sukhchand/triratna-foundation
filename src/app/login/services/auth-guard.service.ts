@@ -22,17 +22,13 @@ export class AuthGuardService {
       return this.loginService.user.pipe(
         take(1),
         map(user => {
-          const isAuth = !!user;
+          // const isAuth = !!user;
+          const isAuth = !!localStorage.getItem('userData');
           if (isAuth) {
             return true;
           }
           return this.router.createUrlTree(['']);
         })
-        // tap(isAuth => {
-        //   if (!isAuth) {
-        //     this.router.navigate(['/auth']);
-        //   }
-        // })
       );
   }
 }

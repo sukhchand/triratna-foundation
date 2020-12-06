@@ -33,6 +33,7 @@ export class HeaderComponent implements OnInit {
     if(!JSON.parse(localStorage.getItem('userData'))){
       this.isAuthenticated = false;
     }
+    this.router.navigateByUrl('/');
   }
 
 }

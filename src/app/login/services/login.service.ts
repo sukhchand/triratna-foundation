@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginService {
   user = new BehaviorSubject<any>(null);
+  userData: any;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -21,6 +22,7 @@ export class LoginService {
         return throwError(errorRes.message);
       }),
       tap((resData: any) => {
+        this.userData = resData;
         this.user.next(resData);
         localStorage.setItem('userData', JSON.stringify(resData));
       })
@@ -48,7 +50,13 @@ export class LoginService {
     const path =`${BASE_URL}/user/${userId}`;
     return this.http
       .get(path)
-      .pipe(map((response: any) => response));
+      .pipe(map((response: any) => {
+        this.user.next(this.userData);
+      }),
+      catchError((errorRes) => {
+        this.user.next(this.userData);
+        return throwError(errorRes.message);
+      }));
   }
 
   public signup(credentials:any) {
@@ -75,6 +83,7 @@ export class LoginService {
   }
 
   public signOut() {
+    this.user.next(null);
     localStorage.removeItem('userData');
     return true;
   }

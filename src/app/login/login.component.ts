@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate([this.router.url]);
         this.activeModal.close("login");
       },(error) => {
-        if(error.error.message[0] == "Not found") {
+        if(error) {
           this.activeModal.close("login");
           this.router.navigateByUrl("/edit-profile");
           // this.router.navigate(['edit-profile']);
