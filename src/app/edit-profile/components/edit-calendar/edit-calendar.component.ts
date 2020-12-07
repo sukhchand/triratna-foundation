@@ -139,7 +139,9 @@ export class EditCalendarComponent implements OnInit {
       event,
     };
     eventModal.result.then((data) => {
-      this.document.location.reload();
+      if(data) {
+        this.document.location.reload();
+      }
     });
   }
 }

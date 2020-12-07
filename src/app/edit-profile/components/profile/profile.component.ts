@@ -18,8 +18,11 @@ export class ProfileComponent implements OnInit {
   profileForm: FormGroup;
   userCredentailsForm: FormGroup;
   userId: string = JSON.parse(localStorage.getItem('userData')).user.id;
-  userroles: any = ['ADMIN', 'STUDENT', 'TEACHER'];
+  userroles: any = ['MONKS', 'DEVOTEE', 'WELLWISHER', 'SPONSOR', 'DONOR', 'ORG'];
   countryData: any = COUNTRY_DATA;
+  countryPhoneCode: any;
+  profileError: string ='';
+  userCredentailsError: string ='';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -55,7 +58,23 @@ export class ProfileComponent implements OnInit {
       roles: ['', Validators.required],
 
     });
+    this.sortBy('dial_code');
+    this.sortBy('name');
   }
+
+  sortBy(field: string) {
+
+    this.countryData.sort((a: any, b: any) => {
+        if (a[field] < b[field]) {
+            return -1;
+        } else if (a[field] > b[field]) {
+            return 1;
+        } else {
+            return 0;
+        }
+    });
+    this.countryPhoneCode = this.countryData;
+}
 
   primaryCountryCode(code) {
     console.log(code);
@@ -79,12 +98,16 @@ export class ProfileComponent implements OnInit {
     user['id'] = this.userId;
     this.loginService.updateUser(this.profileForm.value).subscribe((res) => {
       console.log(res);
+    },(error) => {
+      this.profileError = error;
     });
   }
 
   updateCredentialForUser() {
     this.loginService.updateCredentialForUser(this.userCredentailsForm.value).subscribe((res) => {
       console.log(res);
+    },(error) => {
+      this.userCredentailsError = error;
     });
 
   }

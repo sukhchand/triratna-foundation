@@ -10,7 +10,8 @@
     </button>
     <h1>{{ formType }}</h1>
     <br />
-    <form [formGroup]="loginForm" *ngIf="formType == 'login'">
+    <span class="error" *ngIf="error.length>0">{{error}}</span>
+    <form [formGroup]="loginForm" *ngIf="formType == 'Login'">
       <input
         type="text"
         name="user"
@@ -33,7 +34,7 @@
         [disabled]="!loginForm.valid"
       />
     </form>
-    <form [formGroup]="signupForm" *ngIf="formType == 'register'">
+    <form [formGroup]="signupForm" *ngIf="formType == 'Register'">
       <input
         type="text"
         name="user"
@@ -52,17 +53,6 @@
         placeholder="Confirm Password"
         formControlName="newPassword"
       />
-      <select
-        class="custom-select" style="margin-bottom: 10px;"
-        (change)="changeRole($event)"
-        formControlName="roles"
-        aria-placeholder="Login As"
-      >
-        <option value="" disabled>Login As</option>
-        <option *ngFor="let userrole of userroles" [ngValue]="userrole">
-          {{ userrole }}
-        </option>
-      </select>
       <input
         type="submit"
         name="login"
@@ -72,7 +62,7 @@
         [disabled]="!signupForm.valid" class="btn btn-info"
       />
     </form>
-    <form [formGroup]="forgotPasswordForm" *ngIf="formType == 'forgotPassword'">
+    <form [formGroup]="forgotPasswordForm" *ngIf="formType == 'Forgot Password'">
       <input
         type="text"
         name="user"
@@ -96,8 +86,8 @@
     </form>
 
     <div class="login-help">
-      <span (click)="changeForm('register')">Register</span> •
-      <span (click)="changeForm('forgotPassword')">Forgot Password</span>
+      <span (click)="changeForm('Register')">Register</span> •
+      <span (click)="changeForm('Forgot Password')">Forgot Password</span>
     </div>
   </div>
 </div>

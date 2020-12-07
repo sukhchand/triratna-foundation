@@ -5,7 +5,6 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 })
 export class AutofocusDirective implements OnInit {
 
-  // @Input('autofocus') isFocused: boolean;
 
   constructor(private hostElement: ElementRef) { }
 

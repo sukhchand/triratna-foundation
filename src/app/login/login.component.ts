@@ -19,7 +19,8 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   signupForm: FormGroup;
   forgotPasswordForm: FormGroup;
-  formType: string = 'login';
+  formType: string = 'Login';
+  error: string = '';
   public userroles: any = ['ADMIN', 'STUDENT', 'TEACHER'];
 
   constructor(
@@ -38,11 +39,11 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if(this.formType == 'login') {
+    if(this.formType == 'Login') {
       this.login();
-    } else if(this.formType =='register') {
+    } else if(this.formType =='Register') {
       this.signup();
-    } else if(this.formType == 'forgotPassword') {
+    } else if(this.formType == 'Forgot Password') {
       this.forgotPassword();
     }
   }
@@ -64,29 +65,29 @@ export class LoginComponent implements OnInit {
       this.loginService.getUserById(response.user.id).subscribe(result => {
         console.log(response);
         this.router.navigate([this.router.url]);
-        this.activeModal.close("login");
+        this.activeModal.close("Login");
       },(error) => {
         if(error) {
-          this.activeModal.close("login");
+          this.activeModal.close("Login");
           this.router.navigateByUrl("/edit-profile");
           // this.router.navigate(['edit-profile']);
         }
       });
     },(error) => {
-      console.log(error);
+      this.error = error;
     });
   }
 
   changeForm(formType:string) {
     this.formType = formType;
-    if(this.formType == 'register') {
+    if(this.formType == 'Register') {
       this.signupForm = this.formBuilder.group({
         username: ['', Validators.required],
         password: ['', Validators.required],
         newPassword: ['', Validators.required],
         roles: ['', Validators.required]
       });
-    } else if(this.formType == 'forgotPassword') {
+    } else if(this.formType == 'Forgot Password') {
       this.forgotPasswordForm = this.formBuilder.group({
         email: ['', Validators.required],
         confirmemail: ['', Validators.required]

@@ -12,6 +12,7 @@ export class EventPopupComponent implements OnInit {
   @Input() data: any = '';
   eventForm: FormGroup;
   eventData: any;
+  error: string = '';
 
   constructor(
     public activeModal: NgbActiveModal,
@@ -26,7 +27,7 @@ export class EventPopupComponent implements OnInit {
       location: ['', Validators.required],
       organizer: ['', Validators.required],
       contactInfo: ['', Validators.required],
-      eventDate: [this.getFormattedDate(), Validators.required],
+      eventDate: [this.data.day, Validators.required],
     });
     this.eventData = this.data.event;
     if (this.eventData) {
@@ -47,9 +48,9 @@ export class EventPopupComponent implements OnInit {
     return (
       this.data.day.getFullYear() +
       '-' +
-      this.data.day.getMonth() +
+      (this.data.day.getDate()<10? '0'+this.data.day.getDate() : this.data.day.getDate()) +
       '-' +
-      (this.data.day.getDate()<10? '0'+this.data.day.getDate() : this.data.day.getDate())
+      this.data.day.getMonth()
     );
   }
   onSubmit() {
@@ -59,12 +60,16 @@ export class EventPopupComponent implements OnInit {
       eventData['id'] = this.data.event.meta.event.id;
       this.editCalendarService.updateEvent(eventData).subscribe((results) => {
         this.close();
+      }, error => {
+        this.error = error;
       });
     } else {
       this.editCalendarService
         .createEvent(this.eventForm.value)
         .subscribe((results) => {
           this.close();
+        }, error => {
+          this.error = error;
         });
     }
   }

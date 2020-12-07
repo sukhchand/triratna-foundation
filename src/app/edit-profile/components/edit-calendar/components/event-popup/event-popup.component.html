@@ -10,6 +10,7 @@
     </button>
     <h1>Create Event</h1>
     <br />
+    <span class="error" *ngIf="error.length>0">{{error}}</span>
     <form [formGroup]="eventForm">
       <input
         type="text"
@@ -42,13 +43,6 @@
         placeholder="Event Contacts"
         formControlName="contactInfo"
         (keypress)="onlyNumberKey($event)"
-      />
-      <input
-        type="text"
-        name="eventDate"
-        placeholder="Event Date"
-        formControlName="eventDate"
-        disabled
       />
       <input type="submit" *ngIf="!data.event" (click)="onSubmit()" value="Create Event" class="btn btn-info"/>
       <input type="submit" *ngIf="data.event" (click)="onSubmit()" value="Update Event" class="btn btn-info"/>

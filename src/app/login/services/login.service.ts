@@ -19,7 +19,7 @@ export class LoginService {
     const path = `${BASE_URL}/login`;
     return this.http.post(path, credentials).pipe(
       catchError((errorRes) => {
-        return throwError(errorRes.message);
+        return throwError(errorRes.error.message);
       }),
       tap((resData: any) => {
         this.userData = resData;
@@ -71,7 +71,11 @@ export class LoginService {
     const path =`${BASE_URL}/user`;
     return this.http
       .put(path, userDetails)
-      .pipe(map((response: any) => response));
+      .pipe(map((response: any) => response),
+      catchError((errorRes) => {
+        console.log(errorRes);
+        return throwError(errorRes.error.message);
+      }));
   }
 
   public updateCredentialForUser(credentialDetails:any) {
@@ -79,7 +83,11 @@ export class LoginService {
     const path =`${BASE_URL}/user/credential`;
     return this.http
       .put(path, credentialDetails)
-      .pipe(map((response: any) => response));
+      .pipe(map((response: any) => response),
+      catchError((errorRes) => {
+        console.log(errorRes);
+        return throwError(errorRes.error.message);
+      }));
   }
 
   public signOut() {
