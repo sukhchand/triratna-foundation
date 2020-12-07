@@ -6,6 +6,7 @@ import {
   ReactiveFormsModule,
   FormControl,
 } from '@angular/forms';
+import { COUNTRY_DATA } from 'src/app/constant';
 import { LoginService } from 'src/app/login/services/login.service';
 
 @Component({
@@ -18,6 +19,7 @@ export class ProfileComponent implements OnInit {
   userCredentailsForm: FormGroup;
   userId: string = JSON.parse(localStorage.getItem('userData')).user.id;
   userroles: any = ['ADMIN', 'STUDENT', 'TEACHER'];
+  countryData: any = COUNTRY_DATA;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -54,6 +56,23 @@ export class ProfileComponent implements OnInit {
 
     });
   }
+
+  primaryCountryCode(code) {
+    console.log(code);
+  }
+  secondaryCountryCode(code) {
+    console.log(code);
+  }
+  selectedCountry(code) {
+
+    this.countryData.filter(country => {
+      let selctedCountry = code.target.value.split(': ')[1];
+      if(country.name == selctedCountry) {
+        this.profileForm.controls['countryCode'].setValue(country.code);
+      }
+    })
+  }
+
 
   updateUserDetails() {
     let user = this.profileForm.value;

@@ -51,6 +51,7 @@ import { EditEventsComponent } from './edit-profile/components/edit-events/edit-
 import { EditCalendarComponent } from './edit-profile/components/edit-calendar/edit-calendar.component';
 import { EventPopupComponent } from './edit-profile/components/edit-calendar/components/event-popup/event-popup.component';
 import { ProfileComponent } from './edit-profile/components/profile/profile.component';
+import { AutofocusDirective } from './autofocus/autofocus.directive';
 
 @NgModule({
   declarations: [
@@ -95,7 +96,8 @@ import { ProfileComponent } from './edit-profile/components/profile/profile.comp
     EditCalendarComponent,
     EditGalleryComponent,
     ProfileComponent,
-    EventPopupComponent
+    EventPopupComponent,
+    AutofocusDirective
   ],
   imports: [
     BrowserModule,

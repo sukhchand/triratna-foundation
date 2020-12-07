@@ -1,4 +1,4 @@
-<div class="modal-body login-modal-body">
+<div class="modal-body event-modal-body">
   <div>
     <button
       type="button"
@@ -16,6 +16,7 @@
         name="eventName"
         placeholder="Event Name"
         formControlName="eventName"
+        autofocus
       />
       <textarea
         type="text"
@@ -42,17 +43,15 @@
         formControlName="contactInfo"
         (keypress)="onlyNumberKey($event)"
       />
-      <input type="date"
-       value="eventDate"
-       >
-      <!-- <input
+      <input
         type="text"
         name="eventDate"
         placeholder="Event Date"
         formControlName="eventDate"
-      /> -->
-      <input type="submit" *ngIf="!data.event" (click)="onSubmit()" value="Create Event" />
-      <input type="submit" *ngIf="data.event" (click)="onSubmit()" value="Update Event" />
+        disabled
+      />
+      <input type="submit" *ngIf="!data.event" (click)="onSubmit()" value="Create Event" class="btn btn-info"/>
+      <input type="submit" *ngIf="data.event" (click)="onSubmit()" value="Update Event" class="btn btn-info"/>
 
     </form>
   </div>

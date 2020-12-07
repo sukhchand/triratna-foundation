@@ -26,7 +26,7 @@ export class EventPopupComponent implements OnInit {
       location: ['', Validators.required],
       organizer: ['', Validators.required],
       contactInfo: ['', Validators.required],
-      eventDate: [this.data.day, Validators.required],
+      eventDate: [this.getFormattedDate(), Validators.required],
     });
     this.eventData = this.data.event;
     if (this.eventData) {

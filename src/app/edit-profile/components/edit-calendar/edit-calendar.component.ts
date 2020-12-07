@@ -5,6 +5,7 @@ import {
   Component,
   Inject,
   OnInit,
+  ViewEncapsulation,
 } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
@@ -31,6 +32,7 @@ import { EditCalendarService } from './services/edit-calendar.service';
     },
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None
 })
 export class EditCalendarComponent implements OnInit {
   allEvents: CalendarEvent[] = [];
@@ -131,9 +133,7 @@ export class EditCalendarComponent implements OnInit {
 
   createEvent(day, event?) {
     this.activeDayIsOpen = false;
-    const eventModal = this.modalService.open(EventPopupComponent, {
-      centered: true,
-    });
+    const eventModal = this.modalService.open(EventPopupComponent);
     eventModal.componentInstance.data = {
       day,
       event,

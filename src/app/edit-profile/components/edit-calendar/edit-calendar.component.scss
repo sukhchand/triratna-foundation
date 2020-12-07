@@ -6,5 +6,20 @@
       flex: none;
     }
   }
+  .cal-event-title {
+    b{
+      margin-right: 10px;
+    }
+  }
+  .cal-open-day-events {
+    .createEventBtn {
+      text-align:end;
+    }
+  }
+  .cal-event-actions{
+    a {
+      margin: 0 10px;
+    }
+  }
 }
 

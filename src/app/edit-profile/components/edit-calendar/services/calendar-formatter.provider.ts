@@ -35,7 +35,7 @@ export class CalendarFormatter {
     }
     eventSlider.insertAdjacentHTML(
       'afterBegin',
-      `<button id="addEvent" class="addEvent"> Create Event</button>`
+      `<div class="createEventBtn"><button id="addEvent" class="addEvent btn btn-primary"> Create Event</button></div>`
     );
     let btn = document.getElementById('addEvent');
     if (btn) {
