@@ -1,1 +1,28 @@
-<p>edit-gallery works!</p>
+<div class="gallery-container">
+  <div class="mediaSelector">
+    <select
+        class="custom-select"
+        (change)="changeRole($event)"
+        [(ngModel)]="mediaType"
+      >
+        <option value="Images">Images</option>
+        <option value="Videos">Videos</option>
+      </select>
+  </div>
+  <div class="mediaList">
+    <div *ngIf="mediaType=='Images'" class="row">
+      <div class="col-4" *ngFor="let item of mediasList | paginate: { itemsPerPage: 10, currentPage: page }">
+        <img src="data:image/png;base64,{{item.thumbnail.data}}"/>
+      </div>
+    </div>
+    <div *ngIf="mediaType=='Videos'" class="row">
+      <div class="col-4" *ngFor="let item of mediasList | paginate: { itemsPerPage: 10, currentPage: page }">
+        {{item.id}}
+      </div>
+    </div>
+
+
+		<pagination-controls (pageChange)="handlePageChange($event)"></pagination-controls>
+  </div>
+
+</div>

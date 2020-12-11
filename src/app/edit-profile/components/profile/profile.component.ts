@@ -30,6 +30,7 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // this.getUserId();
     this.profileForm = this.formBuilder.group({
       id: [this.userId, Validators.required],
       firstName: ['', Validators.required],

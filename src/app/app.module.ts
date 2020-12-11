@@ -1,3 +1,4 @@
+import { NgxPaginationModule } from 'ngx-pagination';
 import { EditGalleryComponent } from './edit-profile/components/edit-gallery/edit-gallery.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -108,7 +109,8 @@ import { AutofocusDirective } from './autofocus/autofocus.directive';
     ReactiveFormsModule,
     HttpClientModule,
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxPaginationModule
   ],
   providers: [
     {
