@@ -53,6 +53,8 @@ import { EditCalendarComponent } from './edit-profile/components/edit-calendar/e
 import { EventPopupComponent } from './edit-profile/components/edit-calendar/components/event-popup/event-popup.component';
 import { ProfileComponent } from './edit-profile/components/profile/profile.component';
 import { AutofocusDirective } from './autofocus/autofocus.directive';
+import { AlbumComponent } from './edit-profile/components/album/album.component';
+import { CreateAlbumComponent } from './edit-profile/components/create-album/create-album.component';
 
 @NgModule({
   declarations: [
@@ -97,6 +99,8 @@ import { AutofocusDirective } from './autofocus/autofocus.directive';
     EditCalendarComponent,
     EditGalleryComponent,
     ProfileComponent,
+    AlbumComponent,
+    CreateAlbumComponent,
     EventPopupComponent,
     AutofocusDirective
   ],

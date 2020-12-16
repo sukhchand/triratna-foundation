@@ -1,13 +1,5 @@
 <div class="gallery-container" *ngIf="!createAlbumDiv">
   <div class="mediaSelector">
-    <!-- <select
-        class="custom-select"
-        (change)="changeRole($event)"
-        [(ngModel)]="mediaType"
-      >
-        <option value="Images">Images</option>
-        <option value="Videos">Videos</option>
-      </select> -->
     <div class="row">
       <div class="col-sm-12 text-right">
         <button type="button" class="btn btn-info" (click)="openCreateAlbum()">Create Album</button>
@@ -15,9 +7,12 @@
     </div>
   </div>
   <div class="mediaSelector">
-    <div *ngFor="let response of thumbnailphotos">
-      <h1>{{response.result[0].albumName}}</h1>
-      <img src="data:image/png;base64,{{response.result[0].thumbnail.data}}" alt="" width="100" height="100" />
+    <div class="row" *ngFor="let response of getAlbum">
+      <div (click)="clickToAlbum()" class="col-sm-4">
+        <h1>{{response.result[0].albumName}}</h1>
+        <img src="data:image/png;base64,{{response.result[0].thumbnail.data}}" alt="" width="100" height="100" />
+      </div>
+      
     </div>
   </div>
 </div>
@@ -32,18 +27,3 @@
 </div> -->
 
 
-<div class="container">
-  <form [formGroup]="form" (ngSubmit)="submitForm()">
-      <div class="form-group">
-          <input type="file" (change)="uploadFile($event)">
-      </div>
-
-      <div class="form-group input-group-lg">
-          <input class="form-control" placeholder="Name" formControlName="albumName">
-      </div>
-
-      <div class="form-group">
-          <button class="btn btn-danger btn-block btn-lg">Create</button>
-      </div>
-  </form>
-</div>
