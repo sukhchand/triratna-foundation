@@ -12,9 +12,8 @@ import { StoriesService } from './services/stories.service';
 export class StoriesComponent implements OnInit {
 
   eventResult:any;
-  myDate: Date;
-  obj: any;
-  
+  page = 1;
+  pageSize = 10;
   constructor(
     private modalService: NgbModal,
     private router: Router,
@@ -23,14 +22,11 @@ export class StoriesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.obj={
-      startTime: new Date()
-    }
     this.getEvents();
   }
   
   public getEvents() {
-    this.StoriesService.getEvents(this.obj).subscribe(result => {
+    this.StoriesService.getEvents(this.page, this.pageSize).subscribe(result => {
       this.eventResult=result;
     }, (error) => {
       console.log(error);

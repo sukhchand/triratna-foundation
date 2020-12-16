@@ -1,28 +1,49 @@
-<div class="gallery-container">
+<div class="gallery-container" *ngIf="!createAlbumDiv">
   <div class="mediaSelector">
-    <select
+    <!-- <select
         class="custom-select"
         (change)="changeRole($event)"
         [(ngModel)]="mediaType"
       >
         <option value="Images">Images</option>
         <option value="Videos">Videos</option>
-      </select>
-  </div>
-  <div class="mediaList">
-    <div *ngIf="mediaType=='Images'" class="row">
-      <div class="col-4" *ngFor="let item of mediasList | paginate: { itemsPerPage: 10, currentPage: page }">
-        <img src="data:image/png;base64,{{item.thumbnail.data}}"/>
+      </select> -->
+    <div class="row">
+      <div class="col-sm-12 text-right">
+        <button type="button" class="btn btn-info" (click)="openCreateAlbum()">Create Album</button>
       </div>
     </div>
-    <div *ngIf="mediaType=='Videos'" class="row">
-      <div class="col-4" *ngFor="let item of mediasList | paginate: { itemsPerPage: 10, currentPage: page }">
-        {{item.id}}
-      </div>
-    </div>
-
-
-		<pagination-controls (pageChange)="handlePageChange($event)"></pagination-controls>
   </div>
+  <div class="mediaSelector">
+    <div *ngFor="let response of thumbnailphotos">
+      <h1>{{response.result[0].albumName}}</h1>
+      <img src="data:image/png;base64,{{response.result[0].thumbnail.data}}" alt="" width="100" height="100" />
+    </div>
+  </div>
+</div>
+<!-- <div *ngIf="createAlbumDiv">
+  <form [formGroup]="createAlbumForm">
+    <div class="form-group">
+      <label for="email">Album Name</label>
+      <input type="text" class="form-control" formControlName="albumName">
+    </div>
+    <input type="submit" name="Craete Album" (click)="onSubmit()" class="btn btn-info" value="Create Album" />
+  </form>
+</div> -->
 
+
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="submitForm()">
+      <div class="form-group">
+          <input type="file" (change)="uploadFile($event)">
+      </div>
+
+      <div class="form-group input-group-lg">
+          <input class="form-control" placeholder="Name" formControlName="albumName">
+      </div>
+
+      <div class="form-group">
+          <button class="btn btn-danger btn-block btn-lg">Create</button>
+      </div>
+  </form>
 </div>

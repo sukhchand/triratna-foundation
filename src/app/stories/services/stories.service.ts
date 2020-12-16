@@ -10,11 +10,10 @@ import { BASE_URL } from 'src/app/constant';
 export class StoriesService {
 
   constructor(private http: HttpClient, private router: Router) { }
-  public getEvents(obj:any) {
-    const path =`${BASE_URL}/event/get`;
+  public getEvents(page, pageSize) {
+    const path = `${BASE_URL}/story/${page}/${pageSize}`;
     return this.http
-      .post(path, obj)
+      .get(path)
       .pipe(map((response: any) => response));
-      
   }
 }
