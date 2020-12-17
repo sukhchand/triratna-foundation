@@ -1,1 +1,5 @@
-<p>edit-stories works!</p>
+<div class="stories-container">
+  <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="htmlContent" [config]="config"></angular-editor>
+  =====================
+  {{htmlContent}}
+</div>

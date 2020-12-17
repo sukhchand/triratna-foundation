@@ -8,12 +8,14 @@ import { EditGalleryService } from './services/edit-gallery.service';
   styleUrls: ['./edit-gallery.component.scss']
 })
 export class EditGalleryComponent implements OnInit {
-  
+
   getAlbum;
+  createAlbumDiv;
   constructor(public editGalleryService: EditGalleryService, private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
     this.getAllMedias();
+    this.submitImage();
   }
 
   getAllMedias() {
@@ -24,6 +26,17 @@ export class EditGalleryComponent implements OnInit {
   clickToAlbum() {
     alert('hi');
   }
-  
+
+  submitImage() {
+    this.editGalleryService.postAlbum().subscribe((result) => {
+      console.log(result);
+    })
+  }
+
+
+  openCreateAlbum() {
+    console.log('hi');
+  }
+
 
 }

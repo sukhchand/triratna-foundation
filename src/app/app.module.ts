@@ -2,7 +2,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { EditGalleryComponent } from './edit-profile/components/edit-gallery/edit-gallery.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -55,6 +55,7 @@ import { ProfileComponent } from './edit-profile/components/profile/profile.comp
 import { AutofocusDirective } from './autofocus/autofocus.directive';
 import { AlbumComponent } from './edit-profile/components/album/album.component';
 import { CreateAlbumComponent } from './edit-profile/components/create-album/create-album.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
   declarations: [
@@ -114,7 +115,9 @@ import { CreateAlbumComponent } from './edit-profile/components/create-album/cre
     HttpClientModule,
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
     BrowserAnimationsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    HttpClientModule,
+    AngularEditorModule
   ],
   providers: [
     {
@@ -124,6 +127,9 @@ import { CreateAlbumComponent } from './edit-profile/components/create-album/cre
     }
   ],
   bootstrap: [AppComponent],
-  exports: [CalendarComponent]
+  exports: [CalendarComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ]
 })
 export class AppModule { }

@@ -1,3 +1,5 @@
+import { ManageUsersComponent } from './edit-profile/components/manage-users/manage-users.component';
+import { ManageEmailComponent } from './edit-profile/components/manage-email/manage-email.component';
 import { EditGalleryComponent } from './edit-profile/components/edit-gallery/edit-gallery.component';
 import { ProfileComponent } from './edit-profile/components/profile/profile.component';
 import { EditNewsComponent } from './edit-profile/components/edit-news/edit-news.component';
@@ -100,6 +102,16 @@ const routes: Routes = [
       path: 'gallery',
       canActivate: [AuthGuardService],
       component: EditGalleryComponent
+    },
+    {
+      path: 'manage-email',
+      canActivate: [AuthGuardService],
+      component: ManageEmailComponent
+    },
+    {
+      path: 'manage-user',
+      canActivate: [AuthGuardService],
+      component: ManageUsersComponent
     }
    ]
   },
