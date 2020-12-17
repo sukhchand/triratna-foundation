@@ -1,1 +1,7 @@
-<p>create-album works!</p>
+<form [formGroup]="form" (ngSubmit)="submitForm()">
+    <div class="form-group">
+        <label for="email">Album Name</label>
+        <input type="text" class="form-control" formControlName="albumName">
+    </div>
+    <input type="submit" name="Craete Album" class="btn btn-info" value="Create Album" />
+</form>

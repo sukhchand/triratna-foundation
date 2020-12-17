@@ -37,6 +37,8 @@ import { EditCalendarComponent } from './edit-profile/components/edit-calendar/e
 import { EditEventsComponent } from './edit-profile/components/edit-events/edit-events.component';
 import { EditStoriesComponent } from './edit-profile/components/edit-stories/edit-stories.component';
 import { AuthGuardService } from './login/services/auth-guard.service';
+import { AlbumComponent } from './edit-profile/components/album/album.component';
+import { CreateAlbumComponent } from './edit-profile/components/create-album/create-album.component';
 
 
 const routes: Routes = [
@@ -102,6 +104,16 @@ const routes: Routes = [
       path: 'gallery',
       canActivate: [AuthGuardService],
       component: EditGalleryComponent
+    },
+    {
+      path: 'album/:id',
+      canActivate: [AuthGuardService],
+      component: AlbumComponent
+    },
+    {
+      path: 'create-album',
+      canActivate: [AuthGuardService],
+      component: CreateAlbumComponent
     },
     {
       path: 'manage-email',

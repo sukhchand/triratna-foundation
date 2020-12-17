@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { EditGalleryService } from './services/edit-gallery.service';
 
 @Component({
@@ -8,14 +9,12 @@ import { EditGalleryService } from './services/edit-gallery.service';
   styleUrls: ['./edit-gallery.component.scss']
 })
 export class EditGalleryComponent implements OnInit {
-
   getAlbum;
-  createAlbumDiv;
-  constructor(public editGalleryService: EditGalleryService, private sanitizer: DomSanitizer) {}
+
+  constructor(public editGalleryService: EditGalleryService, private router: Router) {}
 
   ngOnInit(): void {
     this.getAllMedias();
-    this.submitImage();
   }
 
   getAllMedias() {
@@ -23,20 +22,13 @@ export class EditGalleryComponent implements OnInit {
       this.getAlbum = result.response;
     });
   }
-  clickToAlbum() {
-    alert('hi');
+
+  clickToAlbum(albumName) {
+    this.router.navigateByUrl('/edit-profile/album/'+ albumName);
   }
-
-  submitImage() {
-    this.editGalleryService.postAlbum().subscribe((result) => {
-      console.log(result);
-    })
+  
+  createAlbum() {
+    this.router.navigateByUrl('/edit-profile/create-album');
   }
-
-
-  openCreateAlbum() {
-    console.log('hi');
-  }
-
 
 }

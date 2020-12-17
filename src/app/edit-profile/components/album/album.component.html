@@ -1,1 +1,11 @@
-<p>album works!</p>
+<div class="mediaSelector">
+    <div class="row">
+        <div class="col-sm-4" *ngFor="let response of thumbnailphotos">
+            <img src="assets/images/close.svg" alt="Close" style="height:20px;cursor: pointer;" (click)="clickToDelete(response.id)">
+            <h1>{{response.albumName}}</h1>
+            <h2>{{response.id}}</h2>
+            <!-- <img src="data:image/png;base64,{{response.result[0].thumbnail.data}}" alt="" width="100" height="100" /> -->
+        </div>
+
+    </div>
+</div>
