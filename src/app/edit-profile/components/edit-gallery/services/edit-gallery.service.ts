@@ -24,5 +24,11 @@ export class EditGalleryService {
     }
     return this.http.post(path,{},httpOptions).pipe(map((response:any) => response));
   }
+  public deleteAlbum(albumName) {
+    const path = `${BASE_URL}/gallery/album/${albumName}`;
+    return this.http
+      .delete(path)
+      .pipe(map((response: any) => response));
+  }
 
 }

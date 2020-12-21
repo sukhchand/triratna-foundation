@@ -31,4 +31,7 @@ export class AlbumComponent implements OnInit {
       this.getAllMedias();
     });
   }
+  addMedia() {
+    this.router.navigateByUrl('/edit-profile/add-media/'+ this.albumName);
+  }
 }

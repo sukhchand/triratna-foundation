@@ -1,11 +1,21 @@
-<div class="mediaSelector">
-    <div class="row">
-        <div class="col-sm-4" *ngFor="let response of thumbnailphotos">
-            <img src="assets/images/close.svg" alt="Close" style="height:20px;cursor: pointer;" (click)="clickToDelete(response.id)">
-            <h1>{{response.albumName}}</h1>
-            <h2>{{response.link}}</h2>
-            <img src="data:image/png;base64,{{response.thumbnail.data}}" alt="" width="100" height="100" />
+<div class="gallery-container">
+    <div class="mediaSelector">
+        <div class="row">
+            <div class="col-sm-12 text-right">
+                <button type="button" class="btn btn-info" (click)="addMedia()">Add Media</button>
+            </div>
         </div>
-
+        <ul class="list-inline">
+            <li class="list-inline-item" *ngFor="let response of thumbnailphotos">
+                <div class="text-right">
+                    <img src="assets/images/close.svg" alt="Close" class="close-album"
+                    (click)="clickToDelete(response.id)">
+                </div>
+                <img src="data:image/png;base64,{{response.thumbnail.data}}" alt="Album"
+                    *ngIf="response.link==undefined" />
+                <img src="assets/images/photo-library.svg" alt="Album" *ngIf="response.link!=undefined" />
+                <h6 title="{{response.link}}">{{response.link}}</h6>
+            </li>
+        </ul>
     </div>
 </div>

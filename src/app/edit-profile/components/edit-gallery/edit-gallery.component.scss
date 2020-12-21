@@ -1,7 +1,25 @@
-.gallery-container {
-  .mediaList {
-    img {
-      width: 100%;
-    }
-  }
+.gallery-container .mediaSelector ul li img {
+  border-radius: 9px;
+  width: 180px;
+}
+
+.gallery-container .mediaSelector ul li h6 {
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.gallery-container .mediaSelector ul li img.close-album {
+    width: 14px;
+    cursor: pointer;
+}
+.gallery-container .mediaSelector .list-inline-item {
+    vertical-align: text-top;
+    text-align: center;
+}
+.gallery-container .mediaSelector .list-inline-item:not(:last-child) {
+    margin-right: 40px;
+}
+.gallery-container .mediaSelector ul li img.close-album {
+  width: 14px;
+  cursor: pointer;
 }

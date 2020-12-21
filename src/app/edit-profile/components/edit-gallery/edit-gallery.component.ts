@@ -30,5 +30,9 @@ export class EditGalleryComponent implements OnInit {
   createAlbum() {
     this.router.navigateByUrl('/edit-profile/create-album');
   }
-
+  clickToDeleteAlbum(albumName) {
+    this.editGalleryService.deleteAlbum(albumName).subscribe((result)=>{
+      this.getAllMedias();
+    });
+  }
 }

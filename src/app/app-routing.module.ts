@@ -43,6 +43,7 @@ import { AlbumComponent } from './edit-profile/components/album/album.component'
 import { CreateAlbumComponent } from './edit-profile/components/create-album/create-album.component';
 import { ViewStoryComponent } from './edit-profile/components/edit-stories/components/view-story/view-story.component';
 import { FullStoryDetailsComponent } from './stories/components/full-story-details/full-story-details.component';
+import { AddMediaComponent } from './edit-profile/components/add-media/add-media.component';
 
 const routes: Routes = [
   {
@@ -168,6 +169,11 @@ const routes: Routes = [
         path: 'create-album',
         canActivate: [AuthGuardService],
         component: CreateAlbumComponent,
+      },
+      {
+        path: 'add-media/:albumName',
+        canActivate: [AuthGuardService],
+        component: AddMediaComponent,
       },
       {
         path: 'manage-email',
