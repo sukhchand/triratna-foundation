@@ -35,16 +35,6 @@
           />
         </div>
         <div class="col-sm-3">
-          <label>Display Name : </label>
-          <input
-            class="form-control"
-            type="text"
-            name="user"
-            placeholder="Display Name"
-            formControlName="displayName"
-          />
-        </div>
-        <div class="col-sm-3">
           <label>User Type : </label>
           <select
             class="custom-select"
@@ -93,30 +83,6 @@
           />
         </div>
         <div class="col-sm-3">
-          <label>Secondary Contact Number : </label>
-          <select
-            class="countryCode col-3"
-            (change)="secondaryCountryCode($event)"
-            formControlName="secondaryContactCountryCode"
-          >
-            <option value="">--</option>
-            <option
-              *ngFor="let country of countryPhoneCode"
-              [ngValue]="country.dial_code"
-            >
-              {{ country.dial_code }}
-            </option>
-          </select>
-          <input
-            class="form-control col-9"
-            type="text"
-            name="user"
-            placeholder="Secondary Contact Number"
-            formControlName="secondaryContactNo"
-            (keypress)="onlyNumberKey($event)"
-          />
-        </div>
-        <div class="col-sm-3">
           <label>Country : </label>
           <select
             class="custom-select"
@@ -132,7 +98,7 @@
             </option>
           </select>
         </div>
-        <div class="col-sm-3">
+        <!-- <div class="col-sm-3">
           <label>Country Code : </label>
           <input
             class="form-control"
@@ -142,7 +108,7 @@
             formControlName="countryCode"
             (keypress)="onlyNumberKey($event)"
           />
-        </div>
+        </div> -->
         <div class="col-sm-3">
           <label>Street : </label>
           <input
@@ -151,16 +117,6 @@
             name="user"
             placeholder="Street"
             formControlName="street"
-          />
-        </div>
-        <div class="col-sm-3">
-          <label>Street Line : </label>
-          <input
-            class="form-control"
-            type="text"
-            name="user"
-            placeholder="Street Line"
-            formControlName="streetLine"
           />
         </div>
         <div class="col-sm-3">

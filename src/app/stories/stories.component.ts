@@ -18,15 +18,15 @@ export class StoriesComponent implements OnInit {
     private modalService: NgbModal,
     private router: Router,
     private formBuilder: FormBuilder,
-    public StoriesService: StoriesService,
+    public storiesService: StoriesService,
   ) {}
 
   ngOnInit(): void {
-    this.getEvents();
+    this.getStories();
   }
 
-  public getEvents() {
-    this.StoriesService.getEvents(this.page, this.pageSize).subscribe(result => {
+  public getStories() {
+    this.storiesService.getStories(this.page, this.pageSize).subscribe(result => {
       this.allStories=result.response;
     }, (error) => {
       console.log(error);

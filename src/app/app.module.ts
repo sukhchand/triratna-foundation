@@ -61,6 +61,7 @@ import { ViewStoryComponent } from './edit-profile/components/edit-stories/compo
 import { FullStoryDetailsComponent } from './stories/components/full-story-details/full-story-details.component';
 import { NewsPopupComponent } from './edit-profile/components/edit-news/components/news-popup/news-popup.component';
 import { ViewNewsComponent } from './edit-profile/components/edit-news/components/view-news/view-news.component';
+import { NewsDetailsComponent } from './news/components/news-details/news-details.component';
 
 @NgModule({
   declarations: [
@@ -113,7 +114,8 @@ import { ViewNewsComponent } from './edit-profile/components/edit-news/component
     ViewStoryComponent,
     FullStoryDetailsComponent,
     NewsPopupComponent,
-    ViewNewsComponent
+    ViewNewsComponent,
+    NewsDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NewsService } from './services/news.service';
 
 @Component({
   selector: 'app-news',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewsComponent implements OnInit {
 
-  constructor() { }
+  allNews:any;
+  page = 1;
+  pageSize = 10;
+
+  constructor(public newsService:NewsService,private router: Router,) { }
 
   ngOnInit(): void {
+    this.getNews();
   }
 
+  public getNews() {
+    this.newsService.getNews(this.page, this.pageSize).subscribe(result => {
+      this.allNews=result.response;
+    }, (error) => {
+      console.log(error);
+    })
+  }
+
+  viewNews(news) {
+    this.router.navigateByUrl('/informations/news/news-details/'+news.id);
+  }
+
+  handlePageChange(event) {
+    this.page = event;
+  }
 }

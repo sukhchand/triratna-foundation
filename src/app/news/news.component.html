@@ -1,1 +1,14 @@
-<p>news works!</p>
+<div class="news-container">
+  <div class="card-list row" *ngFor="let news of allNews | paginate: { itemsPerPage: 10, currentPage: page }" (click)="viewNews(news)">
+    <div class="col-4">
+      <img src="data:image/png;base64,{{news.thumbnail.data}}"/>
+    </div>
+    <div class="col-8">
+      <h3>{{news.heading}}</h3>
+      <span>Created Date: {{news.createdDate| date}}</span>
+      <br>
+      <span>Updated Date: {{news.lastUpdatedDate| date}}</span>
+    </div>
+  </div>
+  <pagination-controls (pageChange)="handlePageChange($event)"></pagination-controls>
+</div>

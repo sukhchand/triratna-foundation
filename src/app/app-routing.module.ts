@@ -1,3 +1,4 @@
+import { NewsDetailsComponent } from './news/components/news-details/news-details.component';
 import { ViewNewsComponent } from './edit-profile/components/edit-news/components/view-news/view-news.component';
 import { ManageUsersComponent } from './edit-profile/components/manage-users/manage-users.component';
 import { ManageEmailComponent } from './edit-profile/components/manage-email/manage-email.component';
@@ -43,7 +44,6 @@ import { CreateAlbumComponent } from './edit-profile/components/create-album/cre
 import { ViewStoryComponent } from './edit-profile/components/edit-stories/components/view-story/view-story.component';
 import { FullStoryDetailsComponent } from './stories/components/full-story-details/full-story-details.component';
 
-
 const routes: Routes = [
   {
     path: '',
@@ -55,116 +55,162 @@ const routes: Routes = [
   { path: 'about_us/financials', component: FinancialsComponent },
   { path: 'about_us/careers', component: CareersComponent },
   { path: 'contact_us', component: ContactusComponent },
-  { path: 'services/food_cloths_and_shelter', component: FoodclothsandshelterComponent },
-  { path: 'services/health_hygiene_and_sanitation', component: HealthhygieneandsanitationComponent },
-  { path: 'services/fresh_air_clean_water', component: FreshaircleanwaterComponent },
-  { path: 'services/organic_soil_and_green_view', component: OrganicsoilandgreenviewComponent },
-  { path: 'services/safety_and_protection', component: SafetyandprotectionComponent },
-  { path: 'services/animal_safety_rights', component: AnimalsafetyrightsComponent },
-  { path: 'services/save_children_vulnerable_and_old', component: SavechildrenvulnerableandoldComponent },
+  {
+    path: 'services/food_cloths_and_shelter',
+    component: FoodclothsandshelterComponent,
+  },
+  {
+    path: 'services/health_hygiene_and_sanitation',
+    component: HealthhygieneandsanitationComponent,
+  },
+  {
+    path: 'services/fresh_air_clean_water',
+    component: FreshaircleanwaterComponent,
+  },
+  {
+    path: 'services/organic_soil_and_green_view',
+    component: OrganicsoilandgreenviewComponent,
+  },
+  {
+    path: 'services/safety_and_protection',
+    component: SafetyandprotectionComponent,
+  },
+  {
+    path: 'services/animal_safety_rights',
+    component: AnimalsafetyrightsComponent,
+  },
+  {
+    path: 'services/save_children_vulnerable_and_old',
+    component: SavechildrenvulnerableandoldComponent,
+  },
   { path: 'services/emergency_reliefs', component: EmergencyreliefsComponent },
-  { path: 'services/education_and_training', component: EducationandtrainingComponent },
-  { path: 'services/teaching_of_buddha_and_spirituality', component: TeachingofbuddhaandspiritualityComponent },
-  { path: 'services/rehearsal_of_panchasila', component: RehearsalofpanchasilaComponent },
-  { path: 'services/forgiveness_and_reconciliation', component: ForgivenessandreconciliationComponent },
-  { path: 'services/research_and_innovation', component: ResearchandinnovationComponent },
-  { path: 'edit-profile',
-   component: EditProfileComponent,
-   canActivate: [AuthGuardService],
-   children: [
-    {
-      path: '',
-      pathMatch: 'full',
-      redirectTo: 'profile',
-      canActivate: [AuthGuardService]
-    },
-    {
-      path: 'profile',
-      component: ProfileComponent,
-      canActivate: [AuthGuardService]
-    },
-    {
-      path: 'calendar',
-      component: EditCalendarComponent,
-      canActivate: [AuthGuardService]
-    },
-    {
-      path: 'events',
-      canActivate: [AuthGuardService],
-      component: EditEventsComponent
-    },
-    {
-      path: 'stories',
-      canActivate: [AuthGuardService],
-      component: EditStoriesComponent,
-      children: [
-        {
-          path: 'view-story/:id',
-          component: ViewStoryComponent,
-          canActivate: [AuthGuardService]
-        }
-      ]
-    },
-    {
-      path: 'news',
-      canActivate: [AuthGuardService],
-      component: EditNewsComponent,
-      children: [
-        {
-          path: 'view-news/:id',
-          component: ViewNewsComponent,
-          canActivate: [AuthGuardService]
-        }
-      ]
-    },
-    {
-      path: 'gallery',
-      canActivate: [AuthGuardService],
-      component: EditGalleryComponent
-    },
-    {
-      path: 'album/:id',
-      canActivate: [AuthGuardService],
-      component: AlbumComponent
-    },
-    {
-      path: 'create-album',
-      canActivate: [AuthGuardService],
-      component: CreateAlbumComponent
-    },
-    {
-      path: 'manage-email',
-      canActivate: [AuthGuardService],
-      component: ManageEmailComponent
-    },
-    {
-      path: 'manage-user',
-      canActivate: [AuthGuardService],
-      component: ManageUsersComponent
-    }
-   ]
+  {
+    path: 'services/education_and_training',
+    component: EducationandtrainingComponent,
   },
-  { path: 'volunteers', component: VolunteersComponent},
-  { path: 'informations', component: InformationsComponent},
-  { path: 'informations/calendar', component: CalendarComponent},
-  { path: 'informations/events', component: EventsComponent},
-  { path: 'informations/stories',
-   component: StoriesComponent,
-   children: [
-    {
-      path: 'full-story-details/:id',
-      component: FullStoryDetailsComponent
-    }
-   ]
+  {
+    path: 'services/teaching_of_buddha_and_spirituality',
+    component: TeachingofbuddhaandspiritualityComponent,
   },
-  { path: 'informations/news', component: NewsComponent},
-  { path: 'informations/videos', component: VideosComponent},
-  { path: 'informations/photos', component: PhotosComponent}
-
+  {
+    path: 'services/rehearsal_of_panchasila',
+    component: RehearsalofpanchasilaComponent,
+  },
+  {
+    path: 'services/forgiveness_and_reconciliation',
+    component: ForgivenessandreconciliationComponent,
+  },
+  {
+    path: 'services/research_and_innovation',
+    component: ResearchandinnovationComponent,
+  },
+  {
+    path: 'edit-profile',
+    component: EditProfileComponent,
+    canActivate: [AuthGuardService],
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'profile',
+        canActivate: [AuthGuardService],
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+        canActivate: [AuthGuardService],
+      },
+      {
+        path: 'calendar',
+        component: EditCalendarComponent,
+        canActivate: [AuthGuardService],
+      },
+      {
+        path: 'events',
+        canActivate: [AuthGuardService],
+        component: EditEventsComponent,
+      },
+      {
+        path: 'stories',
+        canActivate: [AuthGuardService],
+        component: EditStoriesComponent,
+        children: [
+          {
+            path: 'view-story/:id',
+            component: ViewStoryComponent,
+            canActivate: [AuthGuardService],
+          },
+        ],
+      },
+      {
+        path: 'news',
+        canActivate: [AuthGuardService],
+        component: EditNewsComponent,
+        children: [
+          {
+            path: 'view-news/:id',
+            component: ViewNewsComponent,
+            canActivate: [AuthGuardService],
+          },
+        ],
+      },
+      {
+        path: 'gallery',
+        canActivate: [AuthGuardService],
+        component: EditGalleryComponent,
+      },
+      {
+        path: 'album/:id',
+        canActivate: [AuthGuardService],
+        component: AlbumComponent,
+      },
+      {
+        path: 'create-album',
+        canActivate: [AuthGuardService],
+        component: CreateAlbumComponent,
+      },
+      {
+        path: 'manage-email',
+        canActivate: [AuthGuardService],
+        component: ManageEmailComponent,
+      },
+      {
+        path: 'manage-user',
+        canActivate: [AuthGuardService],
+        component: ManageUsersComponent,
+      },
+    ],
+  },
+  { path: 'volunteers', component: VolunteersComponent },
+  { path: 'informations', component: InformationsComponent },
+  { path: 'informations/calendar', component: CalendarComponent },
+  { path: 'informations/events', component: EventsComponent },
+  {
+    path: 'informations/stories',
+    component: StoriesComponent,
+    children: [
+      {
+        path: 'full-story-details/:id',
+        component: FullStoryDetailsComponent,
+      },
+    ],
+  },
+  {
+    path: 'informations/news',
+    component: NewsComponent,
+    children: [
+      {
+        path: 'news-details/:id',
+        component: NewsDetailsComponent,
+      },
+    ],
+  },
+  { path: 'informations/videos', component: VideosComponent },
+  { path: 'informations/photos', component: PhotosComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
