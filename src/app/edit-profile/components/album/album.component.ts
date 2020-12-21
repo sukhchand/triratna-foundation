@@ -20,7 +20,6 @@ export class AlbumComponent implements OnInit {
   getAllMedias() {
     this.route.params.subscribe(params => {
       this.albumName = params['id'];
-      console.log("kjbjhbj" + this.albumName);
     });
     this.albumService.getImages(this.albumName, this.page, this.pageSize).subscribe((result)=>{
       this.thumbnailphotos = result.response;
@@ -29,8 +28,7 @@ export class AlbumComponent implements OnInit {
   clickToDelete(id) {
     this.albumService.deleteImages(id).subscribe((result)=>{
       this.thumbnailphotos = result.response;
+      this.getAllMedias();
     });
-    debugger;
-    this.getAllMedias();
   }
 }

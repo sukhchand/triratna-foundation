@@ -3,5 +3,12 @@
         <label for="email">Album Name</label>
         <input type="text" class="form-control" formControlName="albumName">
     </div>
+    <div class="form-group">
+        <label for="email">Link</label>
+        <input type="text" class="form-control" formControlName="link">
+    </div>
+    <div class="form-group">
+        <input type="file" (change)="uploadFile($event)">
+    </div>
     <input type="submit" name="Craete Album" class="btn btn-info" value="Create Album" />
 </form>
