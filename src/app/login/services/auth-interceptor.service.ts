@@ -14,7 +14,7 @@ export class AuthInterceptorService {
     console.log(req.headers.has('Content-Type'));
     req = req.clone({
       setHeaders: {
-        'Content-Type' : req.headers.has('Content-Type')? 'multipart/form-data': 'application/json; charset=utf-8',
+        'Content-Type' : req.headers.has('Content-Type')? null: 'application/json; charset=utf-8',
         'Accept'       : req.headers.has('Content-Type')? 'multipart/form-data': 'application/json',
         'Authorization': `${this.loginService.getToken()}`,
       },

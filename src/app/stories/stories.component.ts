@@ -11,7 +11,7 @@ import { StoriesService } from './services/stories.service';
 })
 export class StoriesComponent implements OnInit {
 
-  eventResult:any;
+  allStories:any;
   page = 1;
   pageSize = 10;
   constructor(
@@ -24,13 +24,21 @@ export class StoriesComponent implements OnInit {
   ngOnInit(): void {
     this.getEvents();
   }
-  
+
   public getEvents() {
     this.StoriesService.getEvents(this.page, this.pageSize).subscribe(result => {
-      this.eventResult=result;
+      this.allStories=result.response;
     }, (error) => {
       console.log(error);
     })
+  }
+
+  handlePageChange(event) {
+    this.page = event;
+  }
+
+  viewStory(story) {
+    this.router.navigateByUrl('/informations/stories/full-story-details/'+story.id);
   }
 
 }

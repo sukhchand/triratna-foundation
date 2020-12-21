@@ -1,5 +1,31 @@
 <div class="stories-container">
-  <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="htmlContent" [config]="config"></angular-editor>
-  =====================
-  {{htmlContent}}
+  <div class="mediaSelector">
+    <div class="row">
+      <div class="col-sm-12 text-right">
+        <button type="button" class="btn btn-info" (click)="storyPopup()">Create Story</button>
+      </div>
+    </div>
+  </div>
+  <div class="story-card-list">
+    <div class="story-card row" *ngFor="let story of allStories | paginate: { itemsPerPage: 10, currentPage: page }" (click)="viewStory(story)">
+      <div class="col-4">
+        <img src="data:image/png;base64,{{story.thumbnail.data}}"/>
+      </div>
+      <div class="col-6">
+        <h3>{{story.title}}</h3>
+        <span>Created Date: {{story.createdDate| date}}</span>
+        <br>
+        <span>Updated Date: {{story.lastUpdatedDate| date}}</span>
+      </div>
+      <div class="col-2 actions">
+        <button (click)="editStories(story)">Edit</button>
+        <button (click)="deleteStories(story.id)">Delete</button>
+      </div>
+    </div>
+  </div>
+  <pagination-controls (pageChange)="handlePageChange($event)"></pagination-controls>
+</div>
+
+<div *ngIf="getdata">
+  <div [innerHTML]="getdata.response.story.content"></div>
 </div>

@@ -1,3 +1,4 @@
+import { ViewNewsComponent } from './edit-profile/components/edit-news/components/view-news/view-news.component';
 import { ManageUsersComponent } from './edit-profile/components/manage-users/manage-users.component';
 import { ManageEmailComponent } from './edit-profile/components/manage-email/manage-email.component';
 import { EditGalleryComponent } from './edit-profile/components/edit-gallery/edit-gallery.component';
@@ -39,6 +40,8 @@ import { EditStoriesComponent } from './edit-profile/components/edit-stories/edi
 import { AuthGuardService } from './login/services/auth-guard.service';
 import { AlbumComponent } from './edit-profile/components/album/album.component';
 import { CreateAlbumComponent } from './edit-profile/components/create-album/create-album.component';
+import { ViewStoryComponent } from './edit-profile/components/edit-stories/components/view-story/view-story.component';
+import { FullStoryDetailsComponent } from './stories/components/full-story-details/full-story-details.component';
 
 
 const routes: Routes = [
@@ -93,12 +96,26 @@ const routes: Routes = [
     {
       path: 'stories',
       canActivate: [AuthGuardService],
-      component: EditStoriesComponent
+      component: EditStoriesComponent,
+      children: [
+        {
+          path: 'view-story/:id',
+          component: ViewStoryComponent,
+          canActivate: [AuthGuardService]
+        }
+      ]
     },
     {
       path: 'news',
       canActivate: [AuthGuardService],
-      component: EditNewsComponent
+      component: EditNewsComponent,
+      children: [
+        {
+          path: 'view-news/:id',
+          component: ViewNewsComponent,
+          canActivate: [AuthGuardService]
+        }
+      ]
     },
     {
       path: 'gallery',
@@ -131,7 +148,15 @@ const routes: Routes = [
   { path: 'informations', component: InformationsComponent},
   { path: 'informations/calendar', component: CalendarComponent},
   { path: 'informations/events', component: EventsComponent},
-  { path: 'informations/stories', component: StoriesComponent},
+  { path: 'informations/stories',
+   component: StoriesComponent,
+   children: [
+    {
+      path: 'full-story-details/:id',
+      component: FullStoryDetailsComponent
+    }
+   ]
+  },
   { path: 'informations/news', component: NewsComponent},
   { path: 'informations/videos', component: VideosComponent},
   { path: 'informations/photos', component: PhotosComponent}

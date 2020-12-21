@@ -1,1 +1,14 @@
-<app-shared [result]=eventResult></app-shared>
+<div class="stories-container">
+  <div class="card-list row" *ngFor="let story of allStories | paginate: { itemsPerPage: 10, currentPage: page }" (click)="viewStory(story)">
+    <div class="col-4">
+      <img src="data:image/png;base64,{{story.thumbnail.data}}"/>
+    </div>
+    <div class="col-8">
+      <h3>{{story.title}}</h3>
+      <span>Created Date: {{story.createdDate| date}}</span>
+      <br>
+      <span>Updated Date: {{story.lastUpdatedDate| date}}</span>
+    </div>
+  </div>
+  <pagination-controls (pageChange)="handlePageChange($event)"></pagination-controls>
+</div>

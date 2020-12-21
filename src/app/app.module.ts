@@ -56,6 +56,11 @@ import { AutofocusDirective } from './autofocus/autofocus.directive';
 import { AlbumComponent } from './edit-profile/components/album/album.component';
 import { CreateAlbumComponent } from './edit-profile/components/create-album/create-album.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { StoryPopupComponent } from './edit-profile/components/edit-stories/components/story-popup/story-popup.component';
+import { ViewStoryComponent } from './edit-profile/components/edit-stories/components/view-story/view-story.component';
+import { FullStoryDetailsComponent } from './stories/components/full-story-details/full-story-details.component';
+import { NewsPopupComponent } from './edit-profile/components/edit-news/components/news-popup/news-popup.component';
+import { ViewNewsComponent } from './edit-profile/components/edit-news/components/view-news/view-news.component';
 
 @NgModule({
   declarations: [
@@ -103,7 +108,12 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     AlbumComponent,
     CreateAlbumComponent,
     EventPopupComponent,
-    AutofocusDirective
+    AutofocusDirective,
+    StoryPopupComponent,
+    ViewStoryComponent,
+    FullStoryDetailsComponent,
+    NewsPopupComponent,
+    ViewNewsComponent
   ],
   imports: [
     BrowserModule,
@@ -119,13 +129,13 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     HttpClientModule,
     AngularEditorModule
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptorService,
-      multi: true
-    }
-  ],
+  // providers: [
+  //   {
+  //     provide: HTTP_INTERCEPTORS,
+  //     useClass: AuthInterceptorService,
+  //     multi: true
+  //   }
+  // ],
   bootstrap: [AppComponent],
   exports: [CalendarComponent],
   schemas: [

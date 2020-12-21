@@ -1,2 +1,31 @@
+<div class="news-container">
+  <div class="mediaSelector">
+    <div class="row">
+      <div class="col-sm-12 text-right">
+        <button type="button" class="btn btn-info" (click)="newsPopup()">Create News</button>
+      </div>
+    </div>
+  </div>
+  <div class="news-card-list">
+    <div class="news-card row" *ngFor="let news of allNews | paginate: { itemsPerPage: 10, currentPage: page }" (click)="viewNews(news)">
+      <div class="col-4">
+        <img src="data:image/png;base64,{{news.thumbnail?.data}}"/>
+      </div>
+      <div class="col-6">
+        <h3>{{news.heading}}</h3>
+        <span>Created Date: {{news.createdDate| date}}</span>
+        <br>
+        <span>Updated Date: {{news.lastUpdatedDate| date}}</span>
+      </div>
+      <div class="col-2 actions">
+        <button (click)="editNews(news)">Edit</button>
+        <button (click)="deleteNews(news.id)">Delete</button>
+      </div>
+    </div>
+  </div>
+  <pagination-controls (pageChange)="handlePageChange($event)"></pagination-controls>
+</div>
 
-  <p>edit-news works!</p>
+<!-- <div *ngIf="getdata">
+  <div [innerHTML]="getdata.response.story.content"></div>
+</div> -->
