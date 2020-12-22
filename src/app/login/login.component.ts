@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit {
   forgotPasswordForm: FormGroup;
   formType: string = 'Login';
   error: string = '';
-  public userroles: any = ['ADMIN', 'STUDENT', 'TEACHER'];
+  userroles: any = ['MONKS', 'DEVOTEE', 'WELLWISHER', 'SPONSOR', 'DONOR', 'ORG'];
+
 
   constructor(
     private modalService: NgbModal,
@@ -85,7 +86,10 @@ export class LoginComponent implements OnInit {
         username: ['', Validators.required],
         password: ['', Validators.required],
         newPassword: ['', Validators.required],
-        roles: ['', Validators.required]
+        roles: ['', Validators.required],
+        name: ['', Validators.required],
+        email: ['', Validators.required],
+        contact: ['', Validators.required]
       });
     } else if(this.formType == 'Forgot Password') {
       this.forgotPasswordForm = this.formBuilder.group({
@@ -96,4 +100,13 @@ export class LoginComponent implements OnInit {
 
   }
   public changeRole(event: any) {}
+
+  numberOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+
+  }
 }

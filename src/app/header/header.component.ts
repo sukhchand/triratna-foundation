@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
   }
   openLoginPopup() {
     this.modalService.open(LoginComponent, { centered: true }).result.then((data)=> {
-      if(data=="login") {
+      if(data=="Login") {
         this.isAuthenticated = true;
       }
     });

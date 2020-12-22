@@ -9,7 +9,8 @@
   <div class="story-card-list">
     <div class="story-card row" *ngFor="let story of allStories | paginate: { itemsPerPage: 10, currentPage: page }" (click)="viewStory(story)">
       <div class="col-4">
-        <img src="data:image/png;base64,{{story.thumbnail.data}}"/>
+        <img *ngIf="story.thumbnail?.data" src="data:image/png;base64,{{story.thumbnail?.data}}"/>
+        <span *ngIf="!story.thumbnail?.data"><i class="fa fa-book" aria-hidden="true"></i></span>
       </div>
       <div class="col-6">
         <h3>{{story.title}}</h3>

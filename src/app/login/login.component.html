@@ -10,7 +10,7 @@
     </button>
     <h1>{{ formType }}</h1>
     <br />
-    <span class="error" *ngIf="error.length>0">{{error}}</span>
+    <span class="error" *ngIf="error.length > 0">{{ error }}</span>
     <form [formGroup]="loginForm" *ngIf="formType == 'Login'">
       <input
         type="text"
@@ -54,15 +54,47 @@
         formControlName="newPassword"
       />
       <input
+        type="text"
+        name="name"
+        placeholder="Name"
+        formControlName="name"
+      />
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        formControlName="email"
+      />
+      <input
+        type="text"
+        name="contact"
+        (keypress)="numberOnly($event)"
+        placeholder="Contact Number"
+        formControlName="contact"
+      />
+      <select
+        (change)="changeRole($event)"
+        formControlName="roles"
+      >
+        <option value="" disabled>User Type</option>
+        <option *ngFor="let userrole of userroles" [ngValue]="userrole">
+          {{ userrole }}
+        </option>
+      </select>
+      <input
         type="submit"
         name="login"
         (click)="onSubmit()"
         class="login login-submit"
         value="Create User"
-        [disabled]="!signupForm.valid" class="btn btn-info"
+        [disabled]="!signupForm.valid"
+        class="btn btn-info"
       />
     </form>
-    <form [formGroup]="forgotPasswordForm" *ngIf="formType == 'Forgot Password'">
+    <form
+      [formGroup]="forgotPasswordForm"
+      *ngIf="formType == 'Forgot Password'"
+    >
       <input
         type="text"
         name="user"
@@ -81,13 +113,23 @@
         (click)="onSubmit()"
         class="login login-submit"
         value="Forgot Password"
-        [disabled]="!forgotPasswordForm.valid" class="btn btn-info"
+        [disabled]="!forgotPasswordForm.valid"
+        class="btn btn-info"
       />
     </form>
 
     <div class="login-help">
-      <span (click)="changeForm('Register')">Register</span> •
-      <span (click)="changeForm('Forgot Password')">Forgot Password</span>
+      <span *ngIf="formType != 'Login'" (click)="changeForm('Login')"
+        >Login •
+      </span>
+      <span *ngIf="formType != 'Register'" (click)="changeForm('Register')"
+        >Register <span *ngIf="formType != 'Forgot Password'"> • </span></span
+      >
+      <span
+        *ngIf="formType != 'Forgot Password'"
+        (click)="changeForm('Forgot Password')"
+        >Forgot Password</span
+      >
     </div>
   </div>
 </div>

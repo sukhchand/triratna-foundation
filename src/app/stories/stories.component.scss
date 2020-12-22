@@ -1,0 +1,19 @@
+.stories-container {
+  padding: 50px 0 30px;
+  .card-list {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px 0;
+    .story-date {
+      font-size: 12px;
+      label {
+        font-weight: bold;
+      }
+    }
+  }
+  .pagination-container {
+    text-align: center;
+    margin-top: 50px;
+  }
+}
