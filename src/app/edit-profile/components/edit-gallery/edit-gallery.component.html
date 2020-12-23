@@ -13,8 +13,8 @@
           <img src="assets/images/close.svg" alt="Close" class="close-album" (click)="clickToDeleteAlbum(response.result[0].albumName)">
         </div>
         <div (click)="clickToAlbum(response.result[0].albumName)" style="cursor:pointer">
-          <img src="data:image/png;base64,{{response.result[0].thumbnail.data}}" alt="Album"
-            *ngIf="response.result[0].thumbnail.data">
+          <img src="data:image/png;base64,{{response.result[0].thumbnail?.data}}" alt="Album"
+            *ngIf="response.result[0].thumbnail?.data">
           <img src="assets/images/photo-library.svg" alt="Album" *ngIf="response.result[0].thumbnail==null">
           <h6>{{response.result[0].albumName}}</h6>
         </div>
