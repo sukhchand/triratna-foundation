@@ -40,10 +40,12 @@ export class AddMediaComponent implements OnInit {
     var formData: any = new FormData();
     formData.append("albumName", this.form.get('albumName').value);
     formData.append("link", this.form.get('link').value);
-    // formData.append("files", this.form.get('files').value);
-    for (var i = 0; i < this.fileList.length; i++) { 
-      formData.append("files", this.fileList[i]);
+    if (this.fileList!=undefined){
+      for (var i = 0; i < this.fileList.length; i++) { 
+        formData.append("files", this.fileList[i]);
+      }
     }
+    
     this.addMediaService.createAlbum(formData).subscribe((result)=>{
       this.thumbnailphotos = result.response;
       this.router.navigateByUrl('/edit-profile/album/'+ this.defaultAlbumName);
