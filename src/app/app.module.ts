@@ -63,6 +63,8 @@ import { NewsPopupComponent } from './edit-profile/components/edit-news/componen
 import { ViewNewsComponent } from './edit-profile/components/edit-news/components/view-news/view-news.component';
 import { NewsDetailsComponent } from './news/components/news-details/news-details.component';
 import { AddMediaComponent } from './edit-profile/components/add-media/add-media.component';
+import { CommonModule } from '@angular/common';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -131,7 +133,10 @@ import { AddMediaComponent } from './edit-profile/components/add-media/add-media
     BrowserAnimationsModule,
     NgxPaginationModule,
     HttpClientModule,
-    AngularEditorModule
+    AngularEditorModule,
+    CommonModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   // providers: [
   //   {

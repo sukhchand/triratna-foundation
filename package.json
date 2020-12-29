@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^9.1.12",
+    "@angular/animations": "^9.1.13",
     "@angular/common": "~9.1.12",
     "@angular/compiler": "~9.1.12",
     "@angular/core": "~9.1.12",
@@ -31,6 +31,7 @@
     "font-awesome": "^4.7.0",
     "jquery": "^3.5.1",
     "ngx-pagination": "^5.0.0",
+    "ngx-toastr": "^13.2.0",
     "rxjs": "~6.5.4",
     "save": "^2.4.0",
     "tslib": "^1.10.0",
