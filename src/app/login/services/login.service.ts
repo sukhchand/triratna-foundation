@@ -61,7 +61,7 @@ export class LoginService {
 
   public signup(credentials:any) {
     credentials.roles = [];
-    const path =`${BASE_URL}/user/credential`;
+    const path =`${BASE_URL}/user/register`;
     return this.http
       .post(path, credentials)
       .pipe(map((response: any) => response));

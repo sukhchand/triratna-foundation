@@ -14,6 +14,7 @@ export class StoriesComponent implements OnInit {
   allStories:any;
   page = 1;
   pageSize = 10;
+  totalStories = 0;
   constructor(
     private modalService: NgbModal,
     private router: Router,
@@ -22,6 +23,7 @@ export class StoriesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getPagination();
     this.getStories();
   }
 
@@ -30,6 +32,12 @@ export class StoriesComponent implements OnInit {
       this.allStories=result.response;
     }, (error) => {
       console.log(error);
+    })
+  }
+
+  getPagination() {
+    this.storiesService.getPagination().subscribe(result => {
+      this.totalStories = result.response;
     })
   }
 

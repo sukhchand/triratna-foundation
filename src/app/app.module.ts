@@ -65,6 +65,9 @@ import { NewsDetailsComponent } from './news/components/news-details/news-detail
 import { AddMediaComponent } from './edit-profile/components/add-media/add-media.component';
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
+import { ManageUsersComponent } from './edit-profile/components/manage-users/manage-users.component';
+import { CsvModule } from '@ctrl/ngx-csv';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @NgModule({
   declarations: [
@@ -119,10 +122,12 @@ import { ToastrModule } from 'ngx-toastr';
     NewsPopupComponent,
     ViewNewsComponent,
     NewsDetailsComponent,
-    AddMediaComponent
+    AddMediaComponent,
+    ManageUsersComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     NgbModule,
     FontAwesomeModule,
@@ -136,7 +141,9 @@ import { ToastrModule } from 'ngx-toastr';
     AngularEditorModule,
     CommonModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NgxDatatableModule,
+    CsvModule
   ],
   // providers: [
   //   {

@@ -14,12 +14,20 @@ export class EditNewsComponent implements OnInit {
   htmlContent:any ='';
   page = 1;
   pageSize = 10;
+  totalNews = 0;
   allNews: any = [];
 
   constructor(private modalService: NgbModal, private router: Router, public editNewsService: EditNewsService) { }
 
   ngOnInit(): void {
+    this.getPagination();
     this.getAllNews();
+  }
+
+  getPagination() {
+    this.editNewsService.getPagination().subscribe(result => {
+      this.totalNews = result.response;
+    })
   }
 
   getAllNews() {
@@ -59,5 +67,6 @@ export class EditNewsComponent implements OnInit {
 
   handlePageChange(event) {
     this.page = event;
+    this.getAllNews();
   }
 }

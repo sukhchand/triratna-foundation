@@ -1,1 +1,172 @@
-<p>manage-users works!</p>
+<div class="user-container container">
+  <h1>Manage User</h1>
+  <div class="mediaSelector">
+    <div class="row">
+      <div class="col-sm-12 text-right">
+        <a csvLink [data]="users" class="btn btn-info">Export to CSV</a>
+        <!-- <button type="button" class="btn btn-info" (click)="exporttoCSV()">Export to CSV</button> -->
+      </div>
+    </div>
+  </div>
+  <div class="userList-container">
+    <input
+      type="text"
+      style="padding: 8px; margin: 15px auto; width: 30%"
+      placeholder="Type to filter the name column..."
+      (keyup)="updateFilter($event)"
+    />
+    <ngx-datatable
+      #table
+      class="material"
+      [rows]="users"
+      [scrollbarH]="true"
+      [columnMode]="ColumnMode.force"
+      [headerHeight]="50"
+      [footerHeight]="50"
+      [limit]="10"
+      rowHeight="auto"
+    >
+      <ngx-datatable-column name="First Name" [resizeable]="false">
+        <ng-template
+          ngx-datatable-cell-template
+          let-rowIndex="rowIndex"
+          let-value="value"
+          let-row="row"
+        >
+          <span *ngIf="value">{{ value }}</span>
+          <span *ngIf="!value">--</span>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Middle Name" [resizeable]="false">
+        <ng-template
+          ngx-datatable-cell-template
+          let-rowIndex="rowIndex"
+          let-value="value"
+          let-row="row"
+        >
+          <span *ngIf="value">{{ value }}</span>
+          <span *ngIf="!value">--</span>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Last Name" [resizeable]="false">
+        <ng-template
+          ngx-datatable-cell-template
+          let-rowIndex="rowIndex"
+          let-value="value"
+          let-row="row"
+        >
+        <span *ngIf="value">{{ value }}</span>
+        <span *ngIf="!value">--</span>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="User Type" [resizeable]="false">
+        <ng-template
+          ngx-datatable-cell-template
+          let-rowIndex="rowIndex"
+          let-value="value"
+          let-row="row"
+        >
+        <span *ngIf="value">{{ value }}</span>
+        <span *ngIf="!value">--</span>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Activate" [resizeable]="false">
+        <ng-template
+          ngx-datatable-cell-template
+          let-rowIndex="rowIndex"
+          let-value="value"
+          let-row="row"
+        >
+        <input [(ngModel)]="row.active" type="checkbox" (change)="isActive($event, row)"/>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="EmailId" [resizeable]="false">
+        <ng-template
+          ngx-datatable-cell-template
+          let-rowIndex="rowIndex"
+          let-value="value"
+          let-row="row"
+        >
+        <span *ngIf="value">{{ value }}</span>
+        <span *ngIf="!value">--</span>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Contact Number" [resizeable]="false">
+        <ng-template
+          ngx-datatable-cell-template
+          let-rowIndex="rowIndex"
+          let-value="value"
+          let-row="row"
+        >
+        <span *ngIf="row.primaryContactNo">{{ row.primaryContactCountryCode }} {{row.primaryContactNo}}</span>
+        <span *ngIf="!row.primaryContactNo">--</span>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Country" [resizeable]="false">
+        <ng-template
+          ngx-datatable-cell-template
+          let-rowIndex="rowIndex"
+          let-value="value"
+          let-row="row"
+        >
+        <span *ngIf="value">{{ value }}</span>
+        <span *ngIf="!value">--</span>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Street" [resizeable]="false">
+        <ng-template
+          ngx-datatable-cell-template
+          let-rowIndex="rowIndex"
+          let-value="value"
+          let-row="row"
+        >
+        <span *ngIf="value">{{ value }}</span>
+        <span *ngIf="!value">--</span>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="City" [resizeable]="false">
+        <ng-template
+          ngx-datatable-cell-template
+          let-rowIndex="rowIndex"
+          let-value="value"
+          let-row="row"
+        >
+        <span *ngIf="value">{{ value }}</span>
+        <span *ngIf="!value">--</span>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="State" [resizeable]="false">
+        <ng-template
+          ngx-datatable-cell-template
+          let-rowIndex="rowIndex"
+          let-value="value"
+          let-row="row"
+        >
+        <span *ngIf="value">{{ value }}</span>
+        <span *ngIf="!value">--</span>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Zip Code" [resizeable]="false">
+        <ng-template
+          ngx-datatable-cell-template
+          let-rowIndex="rowIndex"
+          let-value="value"
+          let-row="row"
+        >
+        <span *ngIf="value">{{ value }}</span>
+        <span *ngIf="!value">--</span>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Created Date" [resizeable]="false">
+        <ng-template
+          ngx-datatable-cell-template
+          let-rowIndex="rowIndex"
+          let-value="value"
+          let-row="row"
+        >
+          {{ value | date }}
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </div>
+</div>

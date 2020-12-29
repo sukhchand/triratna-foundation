@@ -12,11 +12,19 @@ export class NewsComponent implements OnInit {
   allNews:any;
   page = 1;
   pageSize = 10;
+  totalNews = 0;
 
   constructor(public newsService:NewsService,private router: Router,) { }
 
   ngOnInit(): void {
+    this.getPagination();
     this.getNews();
+  }
+
+  getPagination() {
+    this.newsService.getPagination().subscribe(result => {
+      this.totalNews = result.response;
+    })
   }
 
   public getNews() {

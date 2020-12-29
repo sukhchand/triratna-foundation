@@ -17,11 +17,19 @@ export class EditStoriesComponent implements OnInit {
   page = 1;
   pageSize = 10;
   allStories: any = [];
+  totalStories = 0;
 
   constructor(public editStoriesService: EditStoriesService, private modalService: NgbModal, private router: Router) { }
 
   ngOnInit(): void {
+    this.getPagination();
     this.getAllStories();
+  }
+
+  getPagination() {
+    this.editStoriesService.getPagination().subscribe(result => {
+      this.totalStories = result.response;
+    })
   }
 
   getAllStories() {
@@ -56,6 +64,7 @@ export class EditStoriesComponent implements OnInit {
 
   handlePageChange(event) {
     this.page = event;
+    this.getAllStories();
   }
 
   public viewStory(story){

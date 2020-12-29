@@ -7,24 +7,26 @@
     </div>
   </div>
   <div class="news-card-list">
-    <div class="news-card row" *ngFor="let news of allNews | paginate: { itemsPerPage: 10, currentPage: page }" (click)="viewNews(news)">
+    <div class="news-card row" *ngFor="let news of allNews | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalNews }" (click)="viewNews(news)">
       <div class="col-4">
         <img *ngIf="news.thumbnail?.data" src="data:image/png;base64,{{news.thumbnail?.data}}"/>
         <span *ngIf="!news.thumbnail?.data"><i class="fa fa-newspaper-o" aria-hidden="true"></i></span>
       </div>
       <div class="col-6">
         <h3>{{news.heading}}</h3>
-        <span>Created Date: {{news.createdDate| date}}</span>
-        <br>
-        <span>Updated Date: {{news.lastUpdatedDate| date}}</span>
       </div>
       <div class="col-2 actions">
-        <button (click)="editNews(news)">Edit</button>
-        <button (click)="deleteNews(news.id)">Delete</button>
+        <span (click)="editNews(news)"><i class="fa fa-edit"></i></span>
+        <span (click)="deleteNews(news.id)"><i class="fa fa-trash"></i></span>
+        <div class="news-date">
+          <label>Created Date:</label>  {{news.createdDate| date}}
+        </div>
       </div>
     </div>
   </div>
-  <pagination-controls (pageChange)="handlePageChange($event)"></pagination-controls>
+  <div class="pagination-container">
+    <pagination-controls (pageChange)="handlePageChange($event)"></pagination-controls>
+  </div>
 </div>
 
 <!-- <div *ngIf="getdata">

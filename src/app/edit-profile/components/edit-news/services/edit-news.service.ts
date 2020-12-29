@@ -58,4 +58,15 @@ export class EditNewsService {
       .get(path)
       .pipe(map((response: any) => response));
   }
+
+  public getPagination() {
+    const path = `${BASE_URL}/util/count`;
+    return this.http
+      .post(path, {collectionName: 'news', considerActive: false})
+      .pipe(map((response: any) => response),
+      catchError((errorRes) => {
+        console.log(errorRes);
+        return throwError(errorRes.error.message);
+      }));
+  }
 }

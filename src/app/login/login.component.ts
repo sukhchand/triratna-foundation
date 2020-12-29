@@ -50,7 +50,11 @@ export class LoginComponent implements OnInit {
   }
 
   public signup() {
-    this.loginService.signup(this.signupForm.value).subscribe(result => {
+    let registeredData = new FormData();
+    Object.keys(this.signupForm.value).forEach((signupFormKey,index) => {
+      registeredData.append(signupFormKey,this.signupForm.value[signupFormKey]);
+    });
+    this.loginService.signup(registeredData).subscribe(result => {
       this.activeModal.close("signup");
     }, (error) => {
       console.log(error);
@@ -81,15 +85,16 @@ export class LoginComponent implements OnInit {
 
   changeForm(formType:string) {
     this.formType = formType;
+    this.error ='';
     if(this.formType == 'Register') {
       this.signupForm = this.formBuilder.group({
-        username: ['', Validators.required],
+        userName: ['', Validators.required],
         password: ['', Validators.required],
         newPassword: ['', Validators.required],
-        roles: ['', Validators.required],
+        usertype: ['', Validators.required],
         name: ['', Validators.required],
         email: ['', Validators.required],
-        contact: ['', Validators.required]
+        contactNumber: ['', Validators.required]
       });
     } else if(this.formType == 'Forgot Password') {
       this.forgotPasswordForm = this.formBuilder.group({
