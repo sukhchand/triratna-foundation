@@ -68,6 +68,10 @@ import { ToastrModule } from 'ngx-toastr';
 import { ManageUsersComponent } from './edit-profile/components/manage-users/manage-users.component';
 import { CsvModule } from '@ctrl/ngx-csv';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { ManageEmailComponent } from './edit-profile/components/manage-email/manage-email.component';
+import { UserGroupComponent } from './edit-profile/components/manage-email/components/user-group/user-group.component';
+import { UserGroupPopupComponent } from './edit-profile/components/manage-email/components/user-group-popup/user-group-popup.component';
+import { SendEmailComponent } from './edit-profile/components/manage-email/components/send-email/send-email.component';
 
 @NgModule({
   declarations: [
@@ -123,7 +127,11 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     ViewNewsComponent,
     NewsDetailsComponent,
     AddMediaComponent,
-    ManageUsersComponent
+    ManageUsersComponent,
+    ManageEmailComponent,
+    UserGroupComponent,
+    UserGroupPopupComponent,
+    SendEmailComponent
   ],
   imports: [
     BrowserModule,
@@ -145,13 +153,13 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     NgxDatatableModule,
     CsvModule
   ],
-  // providers: [
-  //   {
-  //     provide: HTTP_INTERCEPTORS,
-  //     useClass: AuthInterceptorService,
-  //     multi: true
-  //   }
-  // ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
   exports: [CalendarComponent],
   schemas: [

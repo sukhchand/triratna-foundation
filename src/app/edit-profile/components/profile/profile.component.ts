@@ -23,6 +23,7 @@ export class ProfileComponent implements OnInit {
   countryPhoneCode: any;
   profileError: string ='';
   userCredentailsError: string ='';
+  userDetails: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,7 +31,7 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // this.getUserId();
+    this.getUserId();
     this.profileForm = this.formBuilder.group({
       id: [this.userId, Validators.required],
       firstName: ['', Validators.required],
@@ -118,6 +119,7 @@ export class ProfileComponent implements OnInit {
   getUserId() {
     this.loginService.getUserById(this.userId).subscribe(
       (result) => {
+        this.userDetails = result;
         console.log(result);
       },
       (error) => {

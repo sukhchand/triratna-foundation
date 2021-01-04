@@ -1,0 +1,89 @@
+<div class="user-group-container container">
+  <div class="mediaSelector">
+    <div class="row">
+      <div class="col-sm-12 text-right">
+        <button type="button" class="btn btn-info" (click)="createDL()">
+          Create User Group
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col user-group-list">
+      <h5>GROUP LIST</h5>
+      <div class="groups">
+        <input
+          type="text"
+          class="form-control"
+          (input)="searchUserGroup($event)"
+          placeholder="Search User Group"
+        />
+        <div
+          *ngFor="let DL of dlList"
+          class="group-card"
+          (click)="selectedDL(DL)"
+        >
+          <span>{{ DL }}</span>
+          <span (click)="deleteDL($event, DL)"
+            ><i class="fa fa-trash" aria-hidden="true"></i
+          ></span>
+        </div>
+      </div>
+    </div>
+    <div class="col dl-list-container">
+      <div *ngIf="selectedGroup">
+        <h5>ASSIGNED USER</h5>
+        <div class="assigned-user">
+          <span
+            *ngIf="!showEmailUsers"
+            (click)="showEmailUsers = true"
+            class="action-btn"
+            ><i class="fa fa-plus-circle" aria-hidden="true"></i
+          ></span>
+          <span
+            *ngIf="showEmailUsers"
+            (click)="showEmailUsers = false"
+            class="action-btn"
+            ><i class="fa fa-minus-circle" aria-hidden="true"></i
+          ></span>
+          <input
+            type="text"
+            class="form-control"
+            (input)="searchAssignedMail($event)"
+            placeholder="Search Assigned Emails"
+          />
+          <div *ngFor="let user of userList" class="email-card">
+            <span>{{ user.emailId }}</span>
+            <span (click)="removeEmailFromDL(user)"
+              ><i class="fa fa-trash" aria-hidden="true"></i
+            ></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col new-email-container">
+      <div *ngIf="showEmailUsers">
+        <h5>SELECT USERS</h5>
+        <div class="email-container">
+          <input
+            type="text"
+            class="form-control"
+            (input)="searcNewMail($event)"
+            placeholder="Search Emails"
+          />
+          <div *ngFor="let user of allUsers" class="emails-list">
+            <input
+              type="checkbox"
+              [value]="user.emailId"
+              (change)="onSelect($event)"
+            />
+            {{ user.emailId }}
+          </div>
+        </div>
+        <button type="button" class="btn btn-info" (click)="addToDL()">
+          Add to Group
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

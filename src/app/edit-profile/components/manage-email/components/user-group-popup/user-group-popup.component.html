@@ -1,0 +1,35 @@
+<div class="modal-body user-group-modal-body">
+  <div>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="activeModal.close()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h1>Create User Group</h1>
+    <div class="container">
+      <form [formGroup]="userGroupForm">
+        <div>
+          <label>Group Name : </label>
+          <input
+            autofocus
+            class="form-control"
+            type="text"
+            name="user"
+            placeholder="Group Name"
+            formControlName="dlName"
+          />
+        </div>
+        <div>
+          <input
+            type="submit"
+            (click)="onSubmit()"
+            class="btn btn-info submit-button"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
