@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
   public login() {
     this.loginService.login(this.loginForm.value).subscribe(response => {
       this.loginService.getUserById(response.user.id).subscribe(result => {
-        console.log(response);
+        console.log(result);
         this.router.navigate([this.router.url]);
         this.activeModal.close("Login");
       },(error) => {

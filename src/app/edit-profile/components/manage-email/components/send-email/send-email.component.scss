@@ -1,0 +1,19 @@
+.send-mail-container {
+  form {
+    width: 100%;
+    textarea {
+      width: 100%;
+      resize: none;
+      height: 250px;
+      padding: 0.375rem 0.75rem;
+    }
+    .submit-button {
+      text-align: center;
+      button {
+        width: 500px;
+        margin: 20px 0 0;
+        font-weight: bolder;
+      }
+    }
+  }
+}

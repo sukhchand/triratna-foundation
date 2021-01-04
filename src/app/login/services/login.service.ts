@@ -52,6 +52,7 @@ export class LoginService {
       .get(path)
       .pipe(map((response: any) => {
         this.user.next(this.userData);
+        return response;
       }),
       catchError((errorRes) => {
         this.user.next(this.userData);

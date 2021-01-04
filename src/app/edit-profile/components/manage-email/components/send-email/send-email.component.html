@@ -1,0 +1,52 @@
+<div class="container send-mail-container">
+  <div class="row">
+    <form [formGroup]="mailForm">
+      <div>
+        <label>From : </label>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="from"
+          formControlName="from"
+          disabled
+        />
+      </div>
+      <div>
+        <label>To : </label>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="To"
+          formControlName="To"
+        />
+      </div>
+      <div>
+        <label>CC : </label>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="cc"
+          formControlName="cc"
+        />
+      </div>
+      <div>
+        <label>Subject : </label>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Subject"
+          formControlName="Subject"
+        />
+      </div>
+      <div>
+        <label>Body : </label>
+        <textarea formControlName="Body" placeholder="Body"></textarea>
+      </div>
+      <div class="submit-button">
+        <button type="button" class="btn btn-info" (click)="sendMail()">
+          SEND
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

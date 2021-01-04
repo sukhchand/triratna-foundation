@@ -1,0 +1,59 @@
+.user-group-container {
+  .mediaSelector {
+    margin: 20px 0;
+  }
+  .user-group-list {
+    .groups {
+      height: 415px;
+      overflow: auto;
+    }
+    .group-card {
+      border-radius: 8px;
+      border: 1px solid #007bff;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      margin: 10px 0;
+      span:last-child {
+        float: right;
+      }
+    }
+  }
+  .dl-list-container {
+    .assigned-user{
+      height: 415px;
+      overflow: auto;
+    }
+    .action-btn {
+      font-size: 25px;
+      display: block;
+      text-align: center;
+    }
+    .email-card {
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 10px;
+      margin: 5px 0;
+      span:last-child {
+        float: right;
+      }
+    }
+  }
+  .new-email-container {
+    .email-container {
+      height: 365px;
+      overflow: auto;
+      margin-bottom: 10px;
+    }
+    .emails-list {
+      border: 1px solid #ccc;
+      padding: 5px;
+      border-radius: 5px;
+      margin: 5px 0;
+      font-weight: 300;
+      input {
+        margin-right: 10px;
+      }
+    }
+  }
+}
