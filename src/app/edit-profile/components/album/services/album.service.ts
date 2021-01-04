@@ -21,4 +21,13 @@ export class AlbumService {
       .delete(path)
       .pipe(map((response: any) => response));
   }
+  public createAlbum(createAlbumData:any) {
+    const path =`${BASE_URL}/gallery`;
+    // let httpOptions = {
+    //   headers: new HttpHeaders().set('Content-Type', 'multipart/form-data')
+    // }
+    return this.http
+      .post(path, createAlbumData)
+      .pipe(map((response: any) => response));
+  }
 }

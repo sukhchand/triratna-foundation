@@ -2,14 +2,14 @@
     <div class="mediaSelector">
         <div class="row">
             <div class="col-sm-12 text-right">
-                <button type="button" class="btn btn-info" (click)="addMedia()">Add Media</button>
+                <button type="button" class="btn btn-info" (click)="addMedia(content)">Add Media</button>
             </div>
         </div>
         <ul class="list-inline">
             <li class="list-inline-item" *ngFor="let response of thumbnailphotos">
                 <div class="text-right">
                     <img src="assets/images/close.svg" alt="Close" class="close-album"
-                    (click)="clickToDelete(response.id)">
+                        (click)="clickToDelete(response.id)">
                 </div>
                 <img src="data:image/png;base64,{{response.thumbnail.data}}" alt="Album"
                     *ngIf="response.link==undefined" />
@@ -19,3 +19,28 @@
         </ul>
     </div>
 </div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Add Media</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="form" (ngSubmit)="submitForm()">
+            <div class="form-group">
+                <label for="email">Album Name</label>
+                <input type="text" class="form-control" formControlName="albumName" disabled>
+            </div>
+            <div class="form-group">
+                <label for="email">Link</label>
+                <input type="text" class="form-control" formControlName="link">
+            </div>
+            <div class="form-group">
+                <input type="file" (change)="uploadFile($event)" multiple>
+            </div>
+            <input type="submit" name="Add Media" class="btn btn-info" value="Add Media" />
+        </form>
+    </div>
+</ng-template>

@@ -2,7 +2,7 @@
   <div class="mediaSelector">
     <div class="row">
       <div class="col-sm-12 text-right">
-        <button type="button" class="btn btn-info" (click)="createAlbum()">Create Album</button>
+        <button type="button" class="btn btn-info" (click)="createAlbum(content)">Create Album</button>
       </div>
     </div>
   </div>
@@ -10,7 +10,8 @@
     <ul class="list-inline">
       <li class="list-inline-item" *ngFor="let response of getAlbum">
         <div class="text-right">
-          <img src="assets/images/close.svg" alt="Close" class="close-album" (click)="clickToDeleteAlbum(response.result[0].albumName)">
+          <img src="assets/images/close.svg" alt="Close" class="close-album"
+            (click)="clickToDeleteAlbum(response.result[0].albumName)">
         </div>
         <div (click)="clickToAlbum(response.result[0].albumName)" style="cursor:pointer">
           <img src="data:image/png;base64,{{response.result[0].thumbnail?.data}}" alt="Album"
@@ -22,3 +23,21 @@
     </ul>
   </div>
 </div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Create Album</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="form" (ngSubmit)="submitForm()">
+      <div class="form-group">
+        <label for="email">Album Name</label>
+        <input type="text" class="form-control" formControlName="albumName">
+      </div>
+      <input type="submit" name="Craete Album" class="btn btn-info" value="Create Album" />
+    </form>
+  </div>
+</ng-template>
