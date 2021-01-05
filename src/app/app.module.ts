@@ -153,13 +153,13 @@ import { SendEmailComponent } from './edit-profile/components/manage-email/compo
     NgxDatatableModule,
     CsvModule
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptorService,
-      multi: true
-    }
-  ],
+  // providers: [
+  //   {
+  //     provide: HTTP_INTERCEPTORS,
+  //     useClass: AuthInterceptorService,
+  //     multi: true
+  //   }
+  // ],
   bootstrap: [AppComponent],
   exports: [CalendarComponent],
   schemas: [

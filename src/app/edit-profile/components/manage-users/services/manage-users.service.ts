@@ -19,7 +19,7 @@ export class ManageUsersService {
   }
 
   public activeUser(userData:any, isActive:boolean) {
-    const path = `${BASE_URL}/active/${userData.id}/${isActive}`;
+    const path = `${BASE_URL}/user/active/${userData.id}/${isActive}`;
     return this.http
       .put(path,{})
       .pipe(map((response: any) => response),
