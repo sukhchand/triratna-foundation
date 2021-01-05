@@ -32,12 +32,12 @@
     </button>
   </div>
   <div class="modal-body">
-    <form [formGroup]="form" (ngSubmit)="submitForm()">
+    <form [formGroup]="form">
       <div class="form-group">
         <label for="email">Album Name</label>
         <input type="text" class="form-control" formControlName="albumName">
       </div>
-      <input type="submit" (click)="modal.dismiss('Close click')" name="Craete Album" class="btn btn-info" value="Create Album" />
+      <input type="submit" (click)="submitForm();modal.dismiss('Close click')" name="Craete Album" class="btn btn-info" value="Create Album" />
     </form>
   </div>
 </ng-template>

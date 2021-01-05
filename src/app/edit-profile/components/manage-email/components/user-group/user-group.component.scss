@@ -21,7 +21,7 @@
     }
   }
   .dl-list-container {
-    .assigned-user{
+    .assigned-user {
       height: 415px;
       overflow: auto;
     }
@@ -29,6 +29,7 @@
       font-size: 25px;
       display: block;
       text-align: center;
+      cursor: pointer;
     }
     .email-card {
       border: 1px solid #ccc;
@@ -54,6 +55,14 @@
       font-weight: 300;
       input {
         margin-right: 10px;
+      }
+      span {
+        width: 46%;
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        vertical-align: text-bottom;
       }
     }
   }

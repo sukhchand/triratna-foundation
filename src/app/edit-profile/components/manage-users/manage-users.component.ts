@@ -6,14 +6,14 @@ import { ManageUsersService } from './services/manage-users.service';
   selector: 'app-manage-users',
   templateUrl: './manage-users.component.html',
   styleUrls: ['./manage-users.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class ManageUsersComponent implements OnInit {
   ColumnMode = ColumnMode;
   users: any;
   timeout: any;
   columns: any[] = [];
-  searchData:any[] = []
+  searchData: any[] = [];
   isActivate: boolean = false;
 
   @ViewChild(DatatableComponent) table: DatatableComponent;
@@ -35,7 +35,7 @@ export class ManageUsersComponent implements OnInit {
         resizable: false,
         headerCheckboxable: true,
         checkboxable: true,
-        width: 30
+        width: 30,
       },
       { name: 'EmailId' },
       { name: 'Contact Number' },
@@ -44,7 +44,7 @@ export class ManageUsersComponent implements OnInit {
       { name: 'City' },
       { name: 'State' },
       { name: 'Zip Code' },
-      { name: 'Created Date' }
+      { name: 'Created Date' },
     ];
     this.getUsers();
   }
@@ -67,23 +67,38 @@ export class ManageUsersComponent implements OnInit {
     }, 100);
   }
 
-  updateFilter(event) {
+  updateFilter(event, fieldName) {
     const val = event.target.value.toLowerCase();
+    let temp;
 
-    // filter our data
-    const temp = this.searchData.filter(function (d) {
-      return d.firstName.toLowerCase().indexOf(val) !== -1 || !val;
-    });
-
-    // update the rows
+    if ((fieldName = 'firstName')) {
+      // filter our data
+      temp = this.searchData.filter(function (d) {
+        return d.firstName.toLowerCase().indexOf(val) !== -1 || !val;
+      });
+    }
+    if ((fieldName = 'userType')) {
+      // filter our data
+      temp = this.searchData.filter(function (d) {
+        return d.userType.toLowerCase().indexOf(val) !== -1 || !val;
+      });
+    }
+    if ((fieldName = 'country')) {
+      // filter our data
+      temp = this.searchData.filter(function (d) {
+        return d.country.toLowerCase().indexOf(val) !== -1 || !val;
+      });
+    }
     this.users = temp;
     // Whenever the filter changes, always go back to the first page
     this.table.offset = 0;
   }
 
   isActive(event, user) {
-    this.manageUsersService.activeUser(user, event.target.checked).subscribe(result => {
-      console.log(result);
-    })
+    this.manageUsersService
+      .activeUser(user, event.target.checked)
+      .subscribe((result) => {
+        console.log(result);
+      });
   }
 }

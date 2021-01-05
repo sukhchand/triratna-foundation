@@ -52,7 +52,7 @@ export class UserGroupComponent implements OnInit {
   searcNewMail(event) {
     if(event.target.value.length>0) {
       this.allUsers = this.allUsers.filter(user => {
-        if(user.emailId.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1) {
+        if(user.emailId.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1 || user.firstName.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1) {
           return user;
         }
       }).slice(0,10);

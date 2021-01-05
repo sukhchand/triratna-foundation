@@ -77,7 +77,8 @@
               [value]="user.emailId"
               (change)="onSelect($event)"
             />
-            {{ user.emailId }}
+            <span>{{ user.emailId }}</span>
+            <span>{{user.firstName}}</span>
           </div>
         </div>
         <button type="button" class="btn btn-info" (click)="addToDL()">
