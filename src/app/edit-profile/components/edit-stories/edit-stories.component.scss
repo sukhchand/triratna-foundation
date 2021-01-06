@@ -11,6 +11,14 @@
         font-weight: bold;
       }
     }
+    .stories-content {
+      padding: 20px 0;
+      height: 150px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 5;
+      overflow: hidden;
+    }
     .actions {
       span {
         display: inline-block;

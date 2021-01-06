@@ -1,5 +1,5 @@
 <div class="stories-container container">
-  <div class="card-list row" *ngFor="let story of allStories | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalStories }" (click)="viewStory(story)">
+  <div class="card-list row" *ngFor="let story of allStories | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalStories }" >
     <div class="col-4">
       <img *ngIf="story.thumbnail?.data" src="data:image/png;base64,{{story.thumbnail?.data}}"/>
       <span *ngIf="!story.thumbnail?.data"><i class="fa fa-book" aria-hidden="true"></i></span>
@@ -12,6 +12,8 @@
       <div class="story-date">
         <label>Updated Date: </label> {{story.lastUpdatedDate| date}}
       </div>
+      <div class="stories-content" [innerHtml]="story.content"></div>
+      <a routerLink="full-story-details/{{story.id}}">Read More +</a>
     </div>
   </div>
   <div class="pagination-container">

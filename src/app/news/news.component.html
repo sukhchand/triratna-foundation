@@ -1,5 +1,5 @@
 <div class="news-container container">
-  <div class="card-list row" *ngFor="let news of allNews | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalNews,id: 'p' }" (click)="viewNews(news)">
+  <div class="card-list row" *ngFor="let news of allNews | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalNews,id: 'p' }">
     <div class="col-4">
       <img *ngIf="news.thumbnail?.data" src="data:image/png;base64,{{news.thumbnail?.data}}"/>
       <span *ngIf="!news.thumbnail?.data"><i class="fa fa-newspaper-o" aria-hidden="true"></i></span>
@@ -9,6 +9,8 @@
       <div class="news-date">
         <label>Date:</label>  {{news.createdDate| date}}
       </div>
+      <div class="news-content" [innerHtml]="news.content"></div>
+      <a routerLink="news-details/{{news.id}}">Read More +</a>
     </div>
   </div>
   <div class="pagination-container">

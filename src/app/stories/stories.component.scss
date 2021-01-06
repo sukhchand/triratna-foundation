@@ -11,6 +11,18 @@
         font-weight: bold;
       }
     }
+    .stories-content {
+      border-top: 1px solid #eee;
+      padding: 20px 0;
+      height: 150px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 5;
+      overflow: hidden;
+    }
+    a{
+      float: right;
+    }
   }
   .pagination-container {
     text-align: center;
