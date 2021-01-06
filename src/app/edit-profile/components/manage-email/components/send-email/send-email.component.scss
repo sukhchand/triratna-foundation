@@ -1,6 +1,12 @@
 .send-mail-container {
   form {
     width: 100%;
+    .email-field {
+      margin: 10px 0;
+      label {
+        margin: 0;
+      }
+    }
     textarea {
       width: 100%;
       resize: none;
@@ -14,6 +20,17 @@
         margin: 20px 0 0;
         font-weight: bolder;
       }
+    }
+    .selected-emails {
+      margin-left: 10px;
+      display: inline;
+      span {
+        margin: 0 5px;
+      }
+    }
+
+    .selected-user{
+      margin-top: 7px;
     }
   }
 }

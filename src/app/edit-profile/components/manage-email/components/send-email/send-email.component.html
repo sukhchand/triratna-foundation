@@ -1,7 +1,7 @@
 <div class="container send-mail-container">
   <div class="row">
     <form [formGroup]="mailForm">
-      <div>
+      <div class="email-field">
         <label>From : </label>
         <input
           class="form-control"
@@ -11,26 +11,58 @@
           disabled
         />
       </div>
-      <div>
+      <div class="email-field">
         <label>To : </label>
+        <div class="selected-emails">
+          <span
+            class="btn btn-primary btn-sm selected"
+            *ngFor="let item of toList"
+          >
+            {{ item
+            }}<span class="close-selected" (click)="close(item, 'to')"
+              >&nbsp;x</span
+            >
+          </span>
+        </div>
+
         <input
+          id="typeahead-basic"
+          #input
+          (selectItem)="selected($event, 'to')"
           class="form-control"
           type="text"
           placeholder="To"
           formControlName="To"
-          (input)="searchMail($event)"
+          [ngbTypeahead]="search"
+          [ngClass]="{ 'selected-user': toList.length > 0 }"
         />
       </div>
-      <div>
+      <div class="email-field">
         <label>CC : </label>
+        <div class="selected-emails">
+          <span
+            class="btn btn-primary btn-sm selected"
+            *ngFor="let item of ccList"
+          >
+            {{ item
+            }}<span class="close-selected" (click)="close(item, 'cc')"
+              >&nbsp;x</span
+            >
+          </span>
+        </div>
         <input
+          id="typeahead-basic"
+          #input
+          (selectItem)="selected($event, 'cc')"
           class="form-control"
           type="text"
           placeholder="cc"
           formControlName="cc"
+          [ngbTypeahead]="search"
+          [ngClass]="{ 'selected-user': ccList.length > 0 }"
         />
       </div>
-      <div>
+      <div class="email-field">
         <label>Subject : </label>
         <input
           class="form-control"
@@ -39,7 +71,7 @@
           formControlName="Subject"
         />
       </div>
-      <div>
+      <div class="email-field">
         <label>Body : </label>
         <textarea formControlName="Body" placeholder="Body"></textarea>
       </div>

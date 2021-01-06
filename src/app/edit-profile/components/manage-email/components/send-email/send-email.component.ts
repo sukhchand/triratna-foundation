@@ -1,5 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
+import { Observable, Subject } from 'rxjs';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  filter,
+  map,
+} from 'rxjs/operators';
 import { LoginService } from 'src/app/login/services/login.service';
 import { ManageUsersService } from '../../../manage-users/services/manage-users.service';
 import { ManageEmailService } from '../../services/manage-email.service';
@@ -11,20 +19,38 @@ import { ManageEmailService } from '../../services/manage-email.service';
 })
 export class SendEmailComponent implements OnInit {
   mailForm: FormGroup;
-  userDetails: any;
   allUsers: any[] = [];
   dlList: any[] = [];
+  usersList: any[] = [];
+  toList = [];
+  ccList = [];
+  @ViewChild('instance', { static: true }) instance: NgbTypeahead;
+  @ViewChild('input') inputEl;
+  focus$ = new Subject<string>();
+  click$ = new Subject<string>();
+  search = (text$: Observable<string>) =>
+    text$.pipe(
+      debounceTime(200),
+      distinctUntilChanged(),
+      map((term) =>
+        term.length < 2
+          ? []
+          : this.usersList
+              .filter((v) => v.toLowerCase().indexOf(term.toLowerCase()) > -1)
+              .slice(0, 10)
+      )
+    );
 
   constructor(
     private formBuilder: FormBuilder,
     public loginService: LoginService,
     public manageUsersService: ManageUsersService,
-    public manageEmailService: ManageEmailService,
+    public manageEmailService: ManageEmailService
   ) {}
 
   ngOnInit(): void {
-    this.getUserId();
     this.getAllUsers();
+    this.getUniqueDLNames();
     this.mailForm = this.formBuilder.group({
       from: ['', Validators.required],
       To: ['', Validators.required],
@@ -43,30 +69,44 @@ export class SendEmailComponent implements OnInit {
       .getUniqueDLNames(JSON.parse(localStorage.getItem('userData')).user.id)
       .subscribe((result) => {
         this.dlList = result.response;
+        this.dlList.forEach((group) => {
+          this.usersList.push(group);
+          this.usersList.sort();
+        });
       });
   }
 
   getAllUsers() {
     this.manageUsersService.getUsers().subscribe((result) => {
       this.allUsers = result.response;
+      this.allUsers.forEach((user) => {
+        this.usersList.push(user.emailId);
+        this.usersList.sort();
+      });
     });
   }
 
-  getUserId() {
-    this.loginService
-      .getUserById(JSON.parse(localStorage.getItem('userData')).user.id)
-      .subscribe(
-        (result) => {
-          this.mailForm.controls['from'].setValue(result.response.emailId);
-          this.userDetails = result.response;
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+  close(item, fieldType) {
+    if (fieldType == 'to') {
+      this.toList.splice(this.toList.indexOf(item), 1);
+    }
+    if (fieldType == 'cc') {
+      this.ccList.splice(this.toList.indexOf(item), 1);
+    }
+    this.usersList.push(item);
+    this.usersList.sort();
+    this.inputEl.nativeElement.focus();
   }
 
-  searchMail(event) {
-    console.log(event);
+  selected($e, fieldType) {
+    $e.preventDefault();
+    if (fieldType == 'to') {
+      this.toList.push($e.item);
+    }
+    if (fieldType == 'cc') {
+      this.ccList.push($e.item);
+    }
+    this.usersList = this.usersList.filter((obj) => obj !== $e.item);
+    this.inputEl.nativeElement.value = '';
   }
 }

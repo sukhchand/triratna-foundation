@@ -13,6 +13,7 @@ import { AlbumService } from './services/album.service';
 })
 export class AlbumComponent implements OnInit {
   thumbnailphotos;
+  totalNews;
   page = 1;
   pageSize = 10;
   albumName;
@@ -87,5 +88,9 @@ export class AlbumComponent implements OnInit {
         positionClass: 'toast-top-center',
       });
     });
+  }
+
+  handlePageChange(event) {
+
   }
 }
