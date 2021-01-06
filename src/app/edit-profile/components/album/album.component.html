@@ -6,7 +6,7 @@
             </div>
         </div>
         <ul class="list-inline">
-            <li class="list-inline-item" *ngFor="let response of thumbnailphotos">
+            <li class="list-inline-item" *ngFor="let response of thumbnailphotos | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalNews,id: 'p' }">
                 <div class="text-right">
                     <img src="assets/images/close.svg" alt="Close" class="close-album"
                         (click)="clickToDelete(response.id)">
@@ -17,6 +17,9 @@
                 <h6 title="{{response.link}}">{{response.link}}</h6>
             </li>
         </ul>
+        <div class="pagination-container">
+            <pagination-controls (pageChange)="handlePageChange($event)" id="p"></pagination-controls>
+        </div>
     </div>
 </div>
 
@@ -28,7 +31,7 @@
         </button>
     </div>
     <div class="modal-body">
-        <form [formGroup]="form" (ngSubmit)="submitForm()">
+        <form [formGroup]="form">
             <div class="form-group">
                 <label for="email">Album Name</label>
                 <input type="text" class="form-control" formControlName="albumName" disabled>
@@ -40,7 +43,8 @@
             <div class="form-group">
                 <input type="file" (change)="uploadFile($event)" multiple>
             </div>
-            <input type="submit" name="Add Media" class="btn btn-info" value="Add Media" />
+            <input type="submit" (click)="submitForm();d('Cross click')" name="Add Media" class="btn btn-info"
+                value="Add Media" />
         </form>
     </div>
 </ng-template>

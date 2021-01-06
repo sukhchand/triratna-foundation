@@ -64,10 +64,13 @@ export class EditGalleryComponent implements OnInit {
     this.editGalleryService.createAlbum(formData).subscribe((result) => {
       this.thumbnailphotos = result.response;
       this.getAllMedias();
-      this.toastr.success('New Album added', '', {
+      this.toastr.success('New Album Added', '', {
         closeButton: true,
         positionClass: 'toast-top-center',
       });
+      this.form = this.fb.group({
+        albumName: ['']
+      })
     },(error) => {
       this.toastr.error(error.error.message, '', {
         closeButton: true,

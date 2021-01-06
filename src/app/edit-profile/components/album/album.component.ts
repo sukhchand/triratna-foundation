@@ -72,10 +72,15 @@ export class AlbumComponent implements OnInit {
     this.albumService.createAlbum(formData).subscribe((result) => {
       this.thumbnailphotos = result.response;
       this.getAllMedias();
-      this.toastr.success('New Media added', '', {
+      this.toastr.success('New Media/Link Added', '', {
         closeButton: true,
         positionClass: 'toast-top-center',
       });
+      this.form = this.fb.group({
+        albumName: this.defaultAlbumName,
+        link: [''],
+        files: [null]
+      })
     }, (error) => {
       this.toastr.error(error.error.message, '', {
         closeButton: true,
