@@ -1,3 +1,10 @@
+.edit-profile-container{
+  margin: 0;
+  .isPermission {
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+}
 .sidenav {
   width: 160px;
   background-color: #111;

@@ -4,26 +4,29 @@ import { LoginService } from '../login/services/login.service';
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',
-  styleUrls: ['./edit-profile.component.scss']
+  styleUrls: ['./edit-profile.component.scss'],
 })
 export class EditProfileComponent implements OnInit {
-  userDetails: any;
+  userRoles: any = false;
+  isSuperAdmin: boolean = false;
+  isAdmin: boolean = false;
 
-  constructor(public loginService: LoginService) { }
+  constructor(public loginService: LoginService) {}
 
   ngOnInit(): void {
-    this.getUserId();
+    if (
+      JSON.parse(localStorage.getItem('userData')).user.roles[0].includes(
+        'sadmin'
+      )
+    ) {
+      this.isSuperAdmin = true;
+    }
+    if (
+      JSON.parse(localStorage.getItem('userData')).user.roles[0].includes(
+        'admin'
+      )
+    ) {
+      this.isAdmin = true;
+    }
   }
-
-  getUserId() {
-    this.loginService.getUserById(JSON.parse(localStorage.getItem('userData')).user.id).subscribe(
-      (result) => {
-        this.userDetails = result.response;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
-
 }

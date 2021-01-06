@@ -92,7 +92,7 @@
                         </table>
                     </a>
                     <ul class="dropdown-menu" ngbDropdownMenu>
-                        <li>
+                        <li *ngIf="rolesPermission">
                             <a ngbDropdownItem routerLink="edit-profile/profile">Edit</a>
                         </li>
                         <li class="divider"></li>
