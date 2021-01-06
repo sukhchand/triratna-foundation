@@ -53,8 +53,7 @@ import { EditCalendarComponent } from './edit-profile/components/edit-calendar/e
 import { EventPopupComponent } from './edit-profile/components/edit-calendar/components/event-popup/event-popup.component';
 import { ProfileComponent } from './edit-profile/components/profile/profile.component';
 import { AutofocusDirective } from './autofocus/autofocus.directive';
-import { AlbumComponent } from './edit-profile/components/album/album.component';
-import { CreateAlbumComponent } from './edit-profile/components/create-album/create-album.component';
+import { AlbumComponent } from './edit-profile/components/edit-gallery/components/album/album.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { StoryPopupComponent } from './edit-profile/components/edit-stories/components/story-popup/story-popup.component';
 import { ViewStoryComponent } from './edit-profile/components/edit-stories/components/view-story/view-story.component';
@@ -62,7 +61,6 @@ import { FullStoryDetailsComponent } from './stories/components/full-story-detai
 import { NewsPopupComponent } from './edit-profile/components/edit-news/components/news-popup/news-popup.component';
 import { ViewNewsComponent } from './edit-profile/components/edit-news/components/view-news/view-news.component';
 import { NewsDetailsComponent } from './news/components/news-details/news-details.component';
-import { AddMediaComponent } from './edit-profile/components/add-media/add-media.component';
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { ManageUsersComponent } from './edit-profile/components/manage-users/manage-users.component';
@@ -118,7 +116,6 @@ import { ConfirmationPopupComponent } from './shared/confirmation-popup/confirma
     EditGalleryComponent,
     ProfileComponent,
     AlbumComponent,
-    CreateAlbumComponent,
     EventPopupComponent,
     AutofocusDirective,
     StoryPopupComponent,
@@ -127,7 +124,6 @@ import { ConfirmationPopupComponent } from './shared/confirmation-popup/confirma
     NewsPopupComponent,
     ViewNewsComponent,
     NewsDetailsComponent,
-    AddMediaComponent,
     ManageUsersComponent,
     ManageEmailComponent,
     UserGroupComponent,
