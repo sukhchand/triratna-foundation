@@ -17,6 +17,7 @@ import { isSameDay, isSameMonth, setHours, setMinutes } from 'date-fns';
 import { Observable, Subject } from 'rxjs';
 import { map, subscribeOn } from 'rxjs/operators';
 import { BASE_URL } from 'src/app/constant';
+import { ConfirmationPopupComponent } from 'src/app/shared/confirmation-popup/confirmation-popup.component';
 import { EventPopupComponent } from './components/event-popup/event-popup.component';
 import { CalendarFormatter } from './services/calendar-formatter.provider';
 import { EditCalendarService } from './services/edit-calendar.service';
@@ -32,7 +33,7 @@ import { EditCalendarService } from './services/edit-calendar.service';
     },
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class EditCalendarComponent implements OnInit {
   allEvents: CalendarEvent[] = [];
@@ -126,8 +127,15 @@ export class EditCalendarComponent implements OnInit {
   }
 
   deleteEvent(event) {
-    this.editCalendarService.deleteEvents(event).subscribe((response) => {
-      this.document.location.reload();
+    const confirmationModal = this.modalService.open(
+      ConfirmationPopupComponent
+    );
+    confirmationModal.result.then((data) => {
+      if (data == 'success') {
+        this.editCalendarService.deleteEvents(event).subscribe((response) => {
+          this.document.location.reload();
+        });
+      }
     });
   }
 
@@ -139,7 +147,7 @@ export class EditCalendarComponent implements OnInit {
       event,
     };
     eventModal.result.then((data) => {
-      if(data) {
+      if (data) {
         this.document.location.reload();
       }
     });

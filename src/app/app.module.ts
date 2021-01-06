@@ -72,6 +72,7 @@ import { ManageEmailComponent } from './edit-profile/components/manage-email/man
 import { UserGroupComponent } from './edit-profile/components/manage-email/components/user-group/user-group.component';
 import { UserGroupPopupComponent } from './edit-profile/components/manage-email/components/user-group-popup/user-group-popup.component';
 import { SendEmailComponent } from './edit-profile/components/manage-email/components/send-email/send-email.component';
+import { ConfirmationPopupComponent } from './shared/confirmation-popup/confirmation-popup.component';
 
 @NgModule({
   declarations: [
@@ -131,7 +132,8 @@ import { SendEmailComponent } from './edit-profile/components/manage-email/compo
     ManageEmailComponent,
     UserGroupComponent,
     UserGroupPopupComponent,
-    SendEmailComponent
+    SendEmailComponent,
+    ConfirmationPopupComponent
   ],
   imports: [
     BrowserModule,

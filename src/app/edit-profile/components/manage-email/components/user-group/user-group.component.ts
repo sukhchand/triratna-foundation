@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
+import { ConfirmationPopupComponent } from 'src/app/shared/confirmation-popup/confirmation-popup.component';
 import { ManageUsersService } from '../../../manage-users/services/manage-users.service';
 import { ManageEmailService } from '../../services/manage-email.service';
 import { UserGroupPopupComponent } from '../user-group-popup/user-group-popup.component';
@@ -38,36 +39,53 @@ export class UserGroupComponent implements OnInit {
   }
 
   searchUserGroup(event) {
-    if(event.target.value.length>0) {
-      this.dlList = this.dlList.filter(dl => {
-        if(dl.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1) {
-          return dl
-        }
-      }).slice(0,10);
+    if (event.target.value.length > 0) {
+      this.dlList = this.dlList
+        .filter((dl) => {
+          if (dl.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1) {
+            return dl;
+          }
+        })
+        .slice(0, 10);
     } else {
       this.dlList = this.dlListCopy;
     }
   }
 
   searcNewMail(event) {
-    if(event.target.value.length>0) {
-      this.allUsers = this.allUsers.filter(user => {
-        if(user.emailId.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1 || user.firstName.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1) {
-          return user;
-        }
-      }).slice(0,10);
+    if (event.target.value.length > 0) {
+      this.allUsers = this.allUsers
+        .filter((user) => {
+          if (
+            user.emailId
+              .toLowerCase()
+              .indexOf(event.target.value.toLowerCase()) > -1 ||
+            user.firstName
+              .toLowerCase()
+              .indexOf(event.target.value.toLowerCase()) > -1
+          ) {
+            return user;
+          }
+        })
+        .slice(0, 10);
     } else {
       this.allUsers = this.allUsersCopy;
     }
   }
 
   searchAssignedMail(event) {
-    if(event.target.value.length>0) {
-      this.userList = this.userList.filter(user => {
-        if(user.emailId.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1) {
-          return user;
-        }
-      }).slice(0,10);
+    if (event.target.value.length > 0) {
+      this.userList = this.userList
+        .filter((user) => {
+          if (
+            user.emailId
+              .toLowerCase()
+              .indexOf(event.target.value.toLowerCase()) > -1
+          ) {
+            return user;
+          }
+        })
+        .slice(0, 10);
     } else {
       this.userList = this.userListCopy;
     }
@@ -135,24 +153,40 @@ export class UserGroupComponent implements OnInit {
   }
 
   removeEmailFromDL(user) {
-    this.manageEmailService.removeEmailFromDL(user.id).subscribe((result) => {
-      this.userList = this.userList.filter((emails) => {
-        if (emails.id != user.id) {
-          return emails;
-        }
-        return;
-      });
+    const confirmationModal = this.modalService.open(
+      ConfirmationPopupComponent
+    );
+    confirmationModal.result.then((data) => {
+      if (data == 'success') {
+        this.manageEmailService
+          .removeEmailFromDL(user.id)
+          .subscribe((result) => {
+            this.userList = this.userList.filter((emails) => {
+              if (emails.id != user.id) {
+                return emails;
+              }
+              return;
+            });
+          });
+      }
     });
   }
   deleteDL(event, DL) {
     event.stopPropagation();
-    this.manageEmailService.deleteDL(DL).subscribe((result) => {
-      this.dlList = this.dlList.filter((dl) => {
-        if (dl != DL) {
-          return dl;
-        }
-        return;
-      });
+    const confirmationModal = this.modalService.open(
+      ConfirmationPopupComponent
+    );
+    confirmationModal.result.then((data) => {
+      if (data == 'success') {
+        this.manageEmailService.deleteDL(DL).subscribe((result) => {
+          this.dlList = this.dlList.filter((dl) => {
+            if (dl != DL) {
+              return dl;
+            }
+            return;
+          });
+        });
+      }
     });
   }
 }

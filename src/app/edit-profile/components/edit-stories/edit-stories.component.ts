@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ConfirmationPopupComponent } from 'src/app/shared/confirmation-popup/confirmation-popup.component';
 import { StoryPopupComponent } from './components/story-popup/story-popup.component';
 import { ViewStoryComponent } from './components/view-story/view-story.component';
 import { EditStoriesService } from './services/edit-stories.service';
@@ -9,17 +10,21 @@ import { EditStoriesService } from './services/edit-stories.service';
 @Component({
   selector: 'app-edit-stories',
   templateUrl: './edit-stories.component.html',
-  styleUrls: ['./edit-stories.component.scss']
+  styleUrls: ['./edit-stories.component.scss'],
 })
 export class EditStoriesComponent implements OnInit {
   getdata: any;
-  htmlContent:any ='';
+  htmlContent: any = '';
   page = 1;
   pageSize = 10;
   allStories: any = [];
   totalStories = 0;
 
-  constructor(public editStoriesService: EditStoriesService, private modalService: NgbModal, private router: Router) { }
+  constructor(
+    public editStoriesService: EditStoriesService,
+    private modalService: NgbModal,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getPagination();
@@ -27,34 +32,42 @@ export class EditStoriesComponent implements OnInit {
   }
 
   getPagination() {
-    this.editStoriesService.getPagination().subscribe(result => {
+    this.editStoriesService.getPagination().subscribe((result) => {
       this.totalStories = result.response;
-    })
+    });
   }
 
   getAllStories() {
-    this.editStoriesService.getStories(this.page, this.pageSize).subscribe(result => {
-      this.allStories = result.response;
-    })
+    this.editStoriesService
+      .getStories(this.page, this.pageSize)
+      .subscribe((result) => {
+        this.allStories = result.response;
+      });
   }
 
   deleteStories(storyId) {
-    this.editStoriesService.deleteStoryById(storyId).subscribe(result=>{
-      debugger;
-      this.ngOnInit();
+    const confirmationModal = this.modalService.open(
+      ConfirmationPopupComponent
+    );
+    confirmationModal.result.then((data) => {
+      if (data == 'success') {
+        this.editStoriesService.deleteStoryById(storyId).subscribe((result) => {
+          this.ngOnInit();
+        });
+      }
     });
   }
   editStories(story) {
-    this.storyPopup(story)
+    this.storyPopup(story);
   }
 
-  storyPopup(story?:any) {
+  storyPopup(story?: any) {
     const storyPopupModal = this.modalService.open(StoryPopupComponent, {
       centered: true,
     });
-    if(!!story){
+    if (!!story) {
       storyPopupModal.componentInstance.data = {
-        story
+        story,
       };
     }
     storyPopupModal.result.then((data) => {
@@ -67,8 +80,7 @@ export class EditStoriesComponent implements OnInit {
     this.getAllStories();
   }
 
-  public viewStory(story){
-    this.router.navigateByUrl('/edit-profile/stories/view-story/'+story.id);
+  public viewStory(story) {
+    this.router.navigateByUrl('/edit-profile/stories/view-story/' + story.id);
   }
-
 }
