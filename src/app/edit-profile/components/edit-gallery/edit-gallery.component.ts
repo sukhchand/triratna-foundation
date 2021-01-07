@@ -21,6 +21,7 @@ export class EditGalleryComponent implements OnInit {
   getAlbum;
   thumbnailphotos;
   form: FormGroup;
+  deleteAlbumName;
   constructor(
     public editGalleryService: EditGalleryService,
     private modalService: NgbModal,
@@ -46,14 +47,7 @@ export class EditGalleryComponent implements OnInit {
   clickToAlbum(albumName) {
     this.router.navigateByUrl('/edit-profile/album/' + albumName);
   }
-
-  
-  clickToDeleteAlbum(albumName) {
-    this.editGalleryService.deleteAlbum(albumName).subscribe((result) => {
-      this.getAllMedias();
-    });
-  }
-  
+ 
   createAlbum(content) {
     this.modalService.open(content);
   }
@@ -78,4 +72,24 @@ export class EditGalleryComponent implements OnInit {
       });
     });
   }
+  // Delete Functionality Start
+  clickToDeleteAlbum(albumName, deleteAlbum) {
+    this.modalService.open(deleteAlbum);
+    this.deleteAlbumName=albumName;
+  }
+  deleteForm() {
+    this.editGalleryService.deleteAlbum(this.deleteAlbumName).subscribe((result) => {
+      this.getAllMedias();
+      this.toastr.success(result.response + ' ' + 'Album Deleted', '', {
+        closeButton: true,
+        positionClass: 'toast-top-center',
+      });
+    },(error) => {
+      this.toastr.error(error.error.message, '', {
+        closeButton: true,
+        positionClass: 'toast-top-center',
+      });
+    });
+  }
+  // Delete Functionality End
 }

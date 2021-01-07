@@ -20,6 +20,8 @@ export class AlbumComponent implements OnInit {
   form: FormGroup;
   defaultAlbumName;
   fileList;
+  deleteMediaID;
+
   constructor(public albumService: AlbumService, private formBuilder: FormBuilder, public fb: FormBuilder,
     private http: HttpClient, private route: ActivatedRoute, private router: Router, private toastr: ToastrService, private modalService: NgbModal,
     config: NgbModalConfig) {
@@ -50,12 +52,7 @@ export class AlbumComponent implements OnInit {
       this.thumbnailphotos = result.response;
     });
   }
-  clickToDelete(id) {
-    this.albumService.deleteImages(id).subscribe((result) => {
-      this.thumbnailphotos = result.response;
-      this.getAllMedias();
-    });
-  }
+  
   addMedia(content) {
     this.modalService.open(content);
   }
@@ -89,8 +86,25 @@ export class AlbumComponent implements OnInit {
       });
     });
   }
-
-  handlePageChange(event) {
-
+  // Delete Functionality Start
+  clickToDelete(id, deleteMedia) {
+    this.modalService.open(deleteMedia);
+    this.deleteMediaID=id;
   }
+
+  deleteForm() {
+    this.albumService.deleteImages(this.deleteMediaID).subscribe((result) => {
+      this.getAllMedias();
+      this.toastr.success('Media Deleted', '', {
+        closeButton: true,
+        positionClass: 'toast-top-center',
+      });
+    },(error) => {
+      this.toastr.error(error.error.message, '', {
+        closeButton: true,
+        positionClass: 'toast-top-center',
+      });
+    });
+  }
+  // Delete Functionality End
 }

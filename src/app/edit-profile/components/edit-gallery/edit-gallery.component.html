@@ -11,7 +11,7 @@
       <li class="list-inline-item" *ngFor="let response of getAlbum">
         <div class="text-right">
           <img src="assets/images/close.svg" alt="Close" class="close-album"
-            (click)="clickToDeleteAlbum(response.result[0].albumName)">
+            (click)="clickToDeleteAlbum(response.result[0].albumName, deleteAlbum)">
         </div>
         <div (click)="clickToAlbum(response.result[0].albumName)" style="cursor:pointer">
           <img src="data:image/png;base64,{{response.result[0].thumbnail?.data}}" alt="Album"
@@ -39,5 +39,15 @@
       </div>
       <input type="submit" (click)="submitForm();d('Cross click')" name="Craete Album" class="btn btn-info" value="Create Album" />
     </form>
+  </div>
+</ng-template>
+
+<ng-template #deleteAlbum let-c="close" let-d="dismiss">
+  <div class="modal-body">
+      Do You want to delete the album ?
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="d('Cross click')">No</button>
+    <button type="button" class="btn btn-outline-primary" (click)="deleteForm();d('Cross click')">Yes</button>
   </div>
 </ng-template>
