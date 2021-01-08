@@ -28,4 +28,26 @@ export class ManageUsersService {
         return throwError(errorRes.error.message);
       }));
   }
+
+  public roleProvider(providerId:string, userId:string, role:string) {
+    const path = `${BASE_URL}/user/addrole/${providerId}/${userId}/${role}`;
+    return this.http
+      .put(path,{})
+      .pipe(map((response: any) => response),
+      catchError((errorRes) => {
+        console.log(errorRes);
+        return throwError(errorRes.error.message);
+      }));
+  }
+
+  public removeRole(providerId:string, userId:string, role:string) {
+    const path = `${BASE_URL}/user/removeRole/${providerId}/${userId}/${role}`;
+    return this.http
+      .put(path,{})
+      .pipe(map((response: any) => response),
+      catchError((errorRes) => {
+        console.log(errorRes);
+        return throwError(errorRes.error.message);
+      }));
+  }
 }

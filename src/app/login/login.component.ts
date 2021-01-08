@@ -68,14 +68,12 @@ export class LoginComponent implements OnInit {
   public login() {
     this.loginService.login(this.loginForm.value).subscribe(response => {
       this.loginService.getUserById(response.user.id).subscribe(result => {
-        console.log(result);
-        this.router.navigate([this.router.url]);
+        window.location.reload();
         this.activeModal.close("Login");
       },(error) => {
         if(error) {
           this.activeModal.close("Login");
-          this.router.navigateByUrl("/edit-profile");
-          // this.router.navigate(['edit-profile']);
+          this.router.navigateByUrl("/edit-profile/profile");
         }
       });
     },(error) => {
@@ -90,7 +88,7 @@ export class LoginComponent implements OnInit {
       this.signupForm = this.formBuilder.group({
         userName: ['', Validators.required],
         password: ['', Validators.required],
-        newPassword: ['', Validators.required],
+        confirmPassword: ['', Validators.required],
         usertype: ['', Validators.required],
         name: ['', Validators.required],
         email: ['', Validators.required],

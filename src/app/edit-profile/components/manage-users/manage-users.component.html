@@ -9,19 +9,22 @@
   </div>
   <div class="userList-container">
     <input
-      type="text" class="searchField"
+      type="text"
+      class="searchField"
       placeholder="Type to filter the name column..."
-      (keyup)="updateFilter($event,'firstName')"
+      (keyup)="updateFilter($event, 'firstName')"
     />
     <input
-      type="text" class="searchField"
+      type="text"
+      class="searchField"
       placeholder="Type to filter the userType column..."
-      (keyup)="updateFilter($event,'userType')"
+      (keyup)="updateFilter($event, 'userType')"
     />
     <input
-      type="text" class="searchField"
+      type="text"
+      class="searchField"
       placeholder="Type to filter the country column..."
-      (keyup)="updateFilter($event,'country')"
+      (keyup)="updateFilter($event, 'country')"
     />
     <ngx-datatable
       #table
@@ -63,8 +66,8 @@
           let-value="value"
           let-row="row"
         >
-        <span *ngIf="value">{{ value }}</span>
-        <span *ngIf="!value">--</span>
+          <span *ngIf="value">{{ value }}</span>
+          <span *ngIf="!value">--</span>
         </ng-template>
       </ngx-datatable-column>
       <ngx-datatable-column name="User Type" [resizeable]="false">
@@ -74,8 +77,34 @@
           let-value="value"
           let-row="row"
         >
-        <span *ngIf="value">{{ value }}</span>
-        <span *ngIf="!value">--</span>
+          <span *ngIf="value">{{ value }}</span>
+          <span *ngIf="!value">--</span>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Roles" [resizeable]="false">
+        <ng-template
+          ngx-datatable-cell-template
+          let-rowIndex="rowIndex"
+          let-value="value"
+          let-row="row"
+        >
+        <div class="assign-roles">
+          <label>Super Admin</label>
+          <input
+            [(ngModel)]="row.isSuperAdmin"
+            type="checkbox"
+            (change)="assignRoles($event, row, 'SADMIN')"
+          />
+        </div>
+        <div class="assign-roles">
+          <label>Admin</label>
+          <input
+            [(ngModel)]="row.isAdmin"
+            type="checkbox"
+            (change)="assignRoles($event, row, 'ADMIN')"
+          />
+        </div>
+
         </ng-template>
       </ngx-datatable-column>
       <ngx-datatable-column name="Activate" [resizeable]="false">
@@ -85,7 +114,11 @@
           let-value="value"
           let-row="row"
         >
-        <input [(ngModel)]="row.active" type="checkbox" (change)="isActive($event, row)"/>
+          <input
+            [(ngModel)]="row.active"
+            type="checkbox"
+            (change)="isActive($event, row)"
+          />
         </ng-template>
       </ngx-datatable-column>
       <ngx-datatable-column name="EmailId" [resizeable]="false">
@@ -95,8 +128,8 @@
           let-value="value"
           let-row="row"
         >
-        <span *ngIf="value">{{ value }}</span>
-        <span *ngIf="!value">--</span>
+          <span *ngIf="value">{{ value }}</span>
+          <span *ngIf="!value">--</span>
         </ng-template>
       </ngx-datatable-column>
       <ngx-datatable-column name="Contact Number" [resizeable]="false">
@@ -106,8 +139,11 @@
           let-value="value"
           let-row="row"
         >
-        <span *ngIf="row.primaryContactNo">{{ row.primaryContactCountryCode }} {{row.primaryContactNo}}</span>
-        <span *ngIf="!row.primaryContactNo">--</span>
+          <span *ngIf="row.primaryContactNo"
+            >{{ row.primaryContactCountryCode }}
+            {{ row.primaryContactNo }}</span
+          >
+          <span *ngIf="!row.primaryContactNo">--</span>
         </ng-template>
       </ngx-datatable-column>
       <ngx-datatable-column name="Country" [resizeable]="false">
@@ -117,8 +153,8 @@
           let-value="value"
           let-row="row"
         >
-        <span *ngIf="value">{{ value }}</span>
-        <span *ngIf="!value">--</span>
+          <span *ngIf="value">{{ value }}</span>
+          <span *ngIf="!value">--</span>
         </ng-template>
       </ngx-datatable-column>
       <ngx-datatable-column name="Street" [resizeable]="false">
@@ -128,8 +164,8 @@
           let-value="value"
           let-row="row"
         >
-        <span *ngIf="value">{{ value }}</span>
-        <span *ngIf="!value">--</span>
+          <span *ngIf="value">{{ value }}</span>
+          <span *ngIf="!value">--</span>
         </ng-template>
       </ngx-datatable-column>
       <ngx-datatable-column name="City" [resizeable]="false">
@@ -139,8 +175,8 @@
           let-value="value"
           let-row="row"
         >
-        <span *ngIf="value">{{ value }}</span>
-        <span *ngIf="!value">--</span>
+          <span *ngIf="value">{{ value }}</span>
+          <span *ngIf="!value">--</span>
         </ng-template>
       </ngx-datatable-column>
       <ngx-datatable-column name="State" [resizeable]="false">
@@ -150,8 +186,8 @@
           let-value="value"
           let-row="row"
         >
-        <span *ngIf="value">{{ value }}</span>
-        <span *ngIf="!value">--</span>
+          <span *ngIf="value">{{ value }}</span>
+          <span *ngIf="!value">--</span>
         </ng-template>
       </ngx-datatable-column>
       <ngx-datatable-column name="Zip Code" [resizeable]="false">
@@ -161,8 +197,8 @@
           let-value="value"
           let-row="row"
         >
-        <span *ngIf="value">{{ value }}</span>
-        <span *ngIf="!value">--</span>
+          <span *ngIf="value">{{ value }}</span>
+          <span *ngIf="!value">--</span>
         </ng-template>
       </ngx-datatable-column>
       <ngx-datatable-column name="Created Date" [resizeable]="false">

@@ -61,7 +61,6 @@ export class ProfileComponent implements OnInit {
   }
 
   sortBy(field: string) {
-
     this.countryData.sort((a: any, b: any) => {
         if (a[field] < b[field]) {
             return -1;
@@ -71,14 +70,19 @@ export class ProfileComponent implements OnInit {
             return 0;
         }
     });
-    this.countryPhoneCode = this.countryData;
+    if(field == 'dial_code') {
+      this.countryPhoneCode = [...this.countryData];
+    }
 }
 
   primaryCountryCode(code) {
-    console.log(code);
-  }
-  secondaryCountryCode(code) {
-    console.log(code);
+    this.countryData.filter(country => {
+      let selctedCode = code.target.value.split(': ')[1];
+      if(country.dial_code == selctedCode) {
+        this.profileForm.controls['country'].setValue(country.name);
+        this.profileForm.controls['countryCode'].setValue(country.code);
+      }
+    })
   }
   selectedCountry(code) {
 
@@ -86,6 +90,7 @@ export class ProfileComponent implements OnInit {
       let selctedCountry = code.target.value.split(': ')[1];
       if(country.name == selctedCountry) {
         this.profileForm.controls['countryCode'].setValue(country.code);
+        this.profileForm.controls['primaryContactCountryCode'].setValue(country.dial_code);
       }
     })
   }
@@ -119,8 +124,25 @@ export class ProfileComponent implements OnInit {
   getUserId() {
     this.loginService.getUserById(this.userId).subscribe(
       (result) => {
-        this.userDetails = result;
-        console.log(result);
+        this.userDetails = result.response;
+        let userRoles = this.userDetails.userType.filter(usertype => usertype !== 'SADMIN' || usertype !== 'ADMIN');
+        this.profileForm.setValue({
+          id: this.userDetails.id,
+          firstName: this.userDetails.firstName,
+          middleName: this.userDetails.middleName,
+          lastName: this.userDetails.lastName,
+          userType: userRoles[0],
+          emailId: this.userDetails.emailId,
+          primaryContactCountryCode: this.userDetails.primaryContactCountryCode,
+          primaryContactNo: this.userDetails.primaryContactNo,
+          country: this.userDetails.country,
+          countryCode: this.userDetails.countryCode,
+          street: this.userDetails.street,
+          city: this.userDetails.city,
+          state: this.userDetails.state,
+          zipCode: this.userDetails.zipCode,
+        });
+        this.userCredentailsForm.controls['roles'].setValue(userRoles[0]);
       },
       (error) => {
         console.log(error);

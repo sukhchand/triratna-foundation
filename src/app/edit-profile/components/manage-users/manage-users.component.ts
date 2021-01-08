@@ -37,6 +37,16 @@ export class ManageUsersComponent implements OnInit {
         checkboxable: true,
         width: 30,
       },
+      {
+        name: 'Roles',
+        sortable: false,
+        canAutoResize: false,
+        draggable: false,
+        resizable: false,
+        headerCheckboxable: true,
+        checkboxable: true,
+        width: 30,
+      },
       { name: 'EmailId' },
       { name: 'Contact Number' },
       { name: 'Country' },
@@ -51,6 +61,14 @@ export class ManageUsersComponent implements OnInit {
 
   getUsers() {
     this.manageUsersService.getUsers().subscribe((result) => {
+      result.response.forEach(users => {
+        if(users.userType.indexOf("SADMIN") > -1){
+          users["isSuperAdmin"] = true;
+        }
+        if(users.userType.indexOf("ADMIN") > -1){
+          users["isAdmin"] = true;
+        }
+      });
       this.users = result.response;
       this.searchData = [...this.users];
     });
@@ -72,25 +90,21 @@ export class ManageUsersComponent implements OnInit {
     let temp;
 
     if ((fieldName = 'firstName')) {
-      // filter our data
       temp = this.searchData.filter(function (d) {
         return d.firstName.toLowerCase().indexOf(val) !== -1 || !val;
       });
     }
     if ((fieldName = 'userType')) {
-      // filter our data
       temp = this.searchData.filter(function (d) {
         return d.userType.toLowerCase().indexOf(val) !== -1 || !val;
       });
     }
     if ((fieldName = 'country')) {
-      // filter our data
       temp = this.searchData.filter(function (d) {
         return d.country.toLowerCase().indexOf(val) !== -1 || !val;
       });
     }
     this.users = temp;
-    // Whenever the filter changes, always go back to the first page
     this.table.offset = 0;
   }
 
@@ -100,5 +114,18 @@ export class ManageUsersComponent implements OnInit {
       .subscribe((result) => {
         console.log(result);
       });
+  }
+
+  assignRoles(event, user, roleType) {
+    if (event.target.checked){
+      this.manageUsersService.roleProvider(JSON.parse(localStorage.getItem('userData')).user.id, user.id, roleType).subscribe(result => {
+        console.log(result);
+      });
+    } else {
+      this.manageUsersService.removeRole(JSON.parse(localStorage.getItem('userData')).user.id, user.id, roleType).subscribe(result => {
+        console.log(result);
+      });
+    }
+
   }
 }

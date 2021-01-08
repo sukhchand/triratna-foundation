@@ -16,14 +16,14 @@ export class EditProfileComponent implements OnInit {
   ngOnInit(): void {
     if (
       JSON.parse(localStorage.getItem('userData')).user.roles[0].includes(
-        'sadmin'
+        'SADMIN'
       )
     ) {
       this.isSuperAdmin = true;
     }
     if (
       JSON.parse(localStorage.getItem('userData')).user.roles[0].includes(
-        'admin'
+        'ADMIN'
       )
     ) {
       this.isAdmin = true;

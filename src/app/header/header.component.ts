@@ -24,10 +24,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     if (
       JSON.parse(localStorage.getItem('userData')).user.roles[0].includes(
-        'sadmin'
+        'SADMIN'
       ) ||
       JSON.parse(localStorage.getItem('userData')).user.roles[0].includes(
-        'admin'
+        'ADMIN'
       )
     ) {
       this.rolesPermission = true;

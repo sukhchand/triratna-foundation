@@ -52,7 +52,7 @@ export class AlbumComponent implements OnInit {
       this.thumbnailphotos = result.response;
     });
   }
-  
+
   addMedia(content) {
     this.modalService.open(content);
   }
@@ -105,6 +105,10 @@ export class AlbumComponent implements OnInit {
         positionClass: 'toast-top-center',
       });
     });
+  }
+
+  handlePageChange(event) {
+
   }
   // Delete Functionality End
 }
