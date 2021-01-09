@@ -17,8 +17,9 @@
                 </div>
                 <img src="data:image/png;base64,{{response.thumbnail.data}}" alt="Album"
                     *ngIf="response.link==undefined" />
-                <img src="assets/images/photo-library.svg" alt="Album" *ngIf="response.link!=undefined" />
-                <h6 title="{{response.link}}">{{response.link}}</h6>
+                <iframe width="180" [src]="response.imp[0]" frameborder="0" allowfullscreen *ngIf="response.imp !=undefined"></iframe>
+                <img src="assets/images/photo-library.svg" height="157" alt="Album" *ngIf="response.imp == undefined && response.link!=undefined" />
+                <h6 title="{{response.link}}"><a target="_blank" rel="noopener noreferrer" href="{{response.link}}">{{response.link}}</a></h6>
             </li>
         </ul>
         <div class="pagination-container">

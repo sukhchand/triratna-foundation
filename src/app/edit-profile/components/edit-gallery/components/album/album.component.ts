@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { AlbumService } from './services/album.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-album',
@@ -21,19 +22,23 @@ export class AlbumComponent implements OnInit {
   defaultAlbumName;
   fileList;
   deleteMediaID;
+  safeURL;
+  youtubeLink;
 
   constructor(public albumService: AlbumService, private formBuilder: FormBuilder, public fb: FormBuilder,
     private http: HttpClient, private route: ActivatedRoute, private router: Router, private toastr: ToastrService, private modalService: NgbModal,
-    config: NgbModalConfig) {
+    config: NgbModalConfig, private _sanitizer: DomSanitizer) {
     this.route.params.subscribe(params => {
       this.defaultAlbumName = params['id'];
     });
+    
     this.form = this.fb.group({
       albumName: this.defaultAlbumName,
       link: [''],
       files: [null]
     })
   }
+  
   uploadFile(event) {
     this.fileList = (event.target as HTMLInputElement).files;
     this.form.patchValue({
@@ -50,6 +55,20 @@ export class AlbumComponent implements OnInit {
     });
     this.albumService.getImages(this.albumName, this.page, this.pageSize).subscribe((result) => {
       this.thumbnailphotos = result.response;
+      for (let i = 0; i < this.thumbnailphotos.length; i++) {
+        var str = new String(this.thumbnailphotos[i].link);
+        var n = str.includes("youtube")
+        if(n && this.thumbnailphotos[i].link!= null) {
+          this.youtubeLink=true;
+        } else {
+          this.youtubeLink=false;
+        }
+        if (this.youtubeLink) {
+          this.safeURL = this._sanitizer.bypassSecurityTrustResourceUrl(this.thumbnailphotos[i].link);
+          this.thumbnailphotos[i].imp=[];
+          this.thumbnailphotos[i].imp.push(this.safeURL);
+        }
+      }
     });
   }
 
@@ -60,7 +79,7 @@ export class AlbumComponent implements OnInit {
   submitForm() {
     var formData: any = new FormData();
     formData.append("albumName", this.form.get('albumName').value);
-    formData.append("link", this.form.get('link').value);
+    formData.append("link", this.form.get('link').value.replace('watch?v=', "embed/").split('&')[0].trim());
     if (this.fileList != undefined) {
       for (var i = 0; i < this.fileList.length; i++) {
         formData.append("files", this.fileList[i]);
@@ -68,7 +87,7 @@ export class AlbumComponent implements OnInit {
     }
 
     this.albumService.createAlbum(formData).subscribe((result) => {
-      this.thumbnailphotos = result.response;
+      // this.thumbnailphotos = result.response;
       this.getAllMedias();
       this.toastr.success('New Media/Link Added', '', {
         closeButton: true,
@@ -79,6 +98,7 @@ export class AlbumComponent implements OnInit {
         link: [''],
         files: [null]
       })
+      this.fileList=[];
     }, (error) => {
       this.toastr.error(error.error.message, '', {
         closeButton: true,
