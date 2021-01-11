@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditStoriesService } from '../../services/edit-stories.service';
+import { Location } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-view-story',
@@ -8,18 +10,31 @@ import { EditStoriesService } from '../../services/edit-stories.service';
   styleUrls: ['./view-story.component.scss']
 })
 export class ViewStoryComponent implements OnInit {
-  htmlContent = '';
+  storyDetails:any;
   storyId: string = '';
 
-  constructor(public editStoriesService: EditStoriesService, private route: ActivatedRoute) { }
+  constructor(public editStoriesService: EditStoriesService, private route: ActivatedRoute, private location: Location, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.storyId = params['id'];
     });
-    this.editStoriesService.getStoryById(this.storyId).subscribe(result=> {
-      this.htmlContent = result.response.content;
-    })
+    this.getStoryById();
+  }
+
+  getStoryById() {
+    this.editStoriesService.getStoryById(this.storyId).subscribe(result => {
+      this.storyDetails = result.response;
+    }, error => {
+      this.toastr.error(error, '', {
+        closeButton: true,
+        positionClass: 'toast-top-center',
+      });
+    });
+  }
+
+  navigateBack() {
+    this.location.back();
   }
 
 }

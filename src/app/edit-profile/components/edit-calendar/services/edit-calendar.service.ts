@@ -19,7 +19,10 @@ export class EditCalendarService extends CalendarEventTitleFormatter {
     const path = `${BASE_URL}/event/get`;
     return this.http
       .post(path, { endTime: '2021-11-30' })
-      .pipe(map((response: any) => response));
+      .pipe(map((response: any) => response),
+      catchError((errorRes) => {
+        return throwError(errorRes.error.message);
+      }));
   }
 
   public createEvent(eventData) {
@@ -28,7 +31,6 @@ export class EditCalendarService extends CalendarEventTitleFormatter {
       .post(path, eventData)
       .pipe(map((response: any) => response),
       catchError((errorRes) => {
-        console.log(errorRes);
         return throwError(errorRes.error.message);
       }));
   }
@@ -39,18 +41,16 @@ export class EditCalendarService extends CalendarEventTitleFormatter {
       .put(path, eventData)
       .pipe(map((response: any) => response),
       catchError((errorRes) => {
-        console.log(errorRes);
         return throwError(errorRes.error.message);
       }));
   }
   public deleteEvents(id:string) {
-    const path = `${BASE_URL}/event/delete/${id}`;
+    const path = `${BASE_URL}/event/${id}`;
     const params = {id};
     return this.http
       .delete(path)
       .pipe(map((response: any) => response),
       catchError((errorRes) => {
-        console.log(errorRes);
         return throwError(errorRes.error.message);
       }));
   }

@@ -1,7 +1,7 @@
 <div class="row edit-profile-container">
-  <div class="col-2 sidenav" *ngIf="isAdmin || isSuperAdmin">
+  <div class="col-2 sidenav" *ngIf="isSuperAdmin || isAdmin">
     <ul class="edit-nav-menu">
-      <li routerLinkActive="active" *ngIf="isAdmin || isSuperAdmin">
+      <li routerLinkActive="active" *ngIf="isSuperAdmin || isAdmin">
         <a routerLink="calendar">Calendar</a>
       </li>
       <li routerLinkActive="active" *ngIf="isSuperAdmin">
@@ -10,7 +10,7 @@
       <li routerLinkActive="active" *ngIf="isSuperAdmin" >
         <a routerLink="news">News</a>
       </li>
-      <li routerLinkActive="active" *ngIf="isAdmin || isSuperAdmin">
+      <li routerLinkActive="active" *ngIf="isSuperAdmin || isAdmin">
         <a routerLink="gallery">Gallery</a>
       </li>
       <li routerLinkActive="active" *ngIf="isSuperAdmin">
@@ -21,7 +21,7 @@
       </li>
     </ul>
   </div>
-  <div class="col-10 paddingtop-20 paddingbottom-20" [ngClass]="{'isPermission': (!isAdmin || !isSuperAdmin)}">
+  <div class="col-10 paddingtop-20 paddingbottom-20" [ngClass]="{'isPermission': (!isSuperAdmin || !isAdmin)}">
     <router-outlet></router-outlet>
   </div>
 </div>

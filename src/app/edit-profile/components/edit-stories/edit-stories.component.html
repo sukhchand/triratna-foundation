@@ -1,32 +1,56 @@
-<div class="stories-container">
+<div class="stories-container container">
+  <h1>Manage Stories</h1>
   <div class="mediaSelector">
     <div class="row">
       <div class="col-sm-12 text-right">
-        <button type="button" class="btn btn-info" (click)="storyPopup()">Create Story</button>
+        <button type="button" class="btn btn-info" (click)="storyPopup()">
+          Create Story
+        </button>
       </div>
     </div>
   </div>
   <div class="story-card-list">
-    <div class="story-card row" *ngFor="let story of allStories | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalStories }" (click)="viewStory(story)">
-      <div class="col-4">
-        <img *ngIf="story.thumbnail?.data" src="data:image/png;base64,{{story.thumbnail?.data}}"/>
-        <span *ngIf="!story.thumbnail?.data"><i class="fa fa-book" aria-hidden="true"></i></span>
+    <div
+      class="story-card row"
+      *ngFor="
+        let story of allStories
+          | paginate
+            : { itemsPerPage: 10, currentPage: page, totalItems: totalStories }
+      "
+      (click)="viewStory(story)"
+    >
+      <div class="col-4 story-thumbnail">
+        <img
+          *ngIf="story.thumbnail?.data"
+          src="data:image/png;base64,{{ story.thumbnail?.data }}"
+        />
+        <span *ngIf="!story.thumbnail?.data" class="default-image"
+          ><i class="fa fa-book" aria-hidden="true"></i
+        ></span>
       </div>
       <div class="col-6">
-        <h3>{{story.title}}</h3>
+        <h3>{{ story.title }}</h3>
+        <div class="stories-date">
+          <label>Created Date:</label> {{ story.createdDate | date }}
+        </div>
         <div class="stories-content" [innerHtml]="story.content"></div>
       </div>
       <div class="col-2 actions">
-        <span (click)="editStories(story)"><i class="fa fa-edit"></i></span>
-        <span (click)="deleteStories(story.id)"><i class="fa fa-trash"></i></span>
-        <div class="stories-date">
-          <label>Created Date:</label>  {{story.createdDate| date}}
+        <div class="row">
+          <span (click)="editStories($event,story)" class="col"
+            ><i class="fa fa-edit"></i
+          ></span>
+          <span (click)="deleteStories($event, story.id)" class="col"
+            ><i class="fa fa-trash"></i
+          ></span>
         </div>
       </div>
     </div>
   </div>
   <div class="pagination-container">
-    <pagination-controls (pageChange)="handlePageChange($event)"></pagination-controls>
+    <pagination-controls
+      (pageChange)="handlePageChange($event)"
+    ></pagination-controls>
   </div>
 </div>
 

@@ -15,7 +15,10 @@ export class ManageEmailService {
     const path = `${BASE_URL}/email/unique_dl_names/${userID}`;
     return this.http
       .get(path)
-      .pipe(map((response: any) => response));
+      .pipe(map((response: any) => response),
+      catchError((errorRes) => {
+        return throwError(errorRes.error.message);
+      }));
   }
 
   public createDL(groupName) {
@@ -24,7 +27,6 @@ export class ManageEmailService {
       .post(path, groupName)
       .pipe(map((response: any) => response),
       catchError((errorRes) => {
-        console.log(errorRes);
         return throwError(errorRes.error.message);
       }));
   }
@@ -33,7 +35,10 @@ export class ManageEmailService {
     const path = `${BASE_URL}/email/get_mails/${dlName}/${JSON.parse(localStorage.getItem('userData')).user.id}`;
     return this.http
       .get(path)
-      .pipe(map((response: any) => response));
+      .pipe(map((response: any) => response),
+      catchError((errorRes) => {
+        return throwError(errorRes.error.message);
+      }));
   }
 
   public addEmailToDL(emailList) {
@@ -42,7 +47,6 @@ export class ManageEmailService {
       .put(path, emailList)
       .pipe(map((response: any) => response),
       catchError((errorRes) => {
-        console.log(errorRes);
         return throwError(errorRes.error.message);
       }));
   }
@@ -51,13 +55,19 @@ export class ManageEmailService {
     const path = `${BASE_URL}/email/remove_email/${id}`;
     return this.http
       .delete(path)
-      .pipe(map((response: any) => response));
+      .pipe(map((response: any) => response),
+      catchError((errorRes) => {
+        return throwError(errorRes.error.message);
+      }));
   }
 
   public deleteDL(name) {
     const path = `${BASE_URL}/email/delete_dl/${name}/${JSON.parse(localStorage.getItem('userData')).user.id}`;
     return this.http
       .delete(path)
-      .pipe(map((response: any) => response));
+      .pipe(map((response: any) => response),
+      catchError((errorRes) => {
+        return throwError(errorRes.error.message);
+      }));
   }
 }

@@ -1,1 +1,4 @@
-view-story
+<div class="view-story-container container" *ngIf="storyDetails">
+  <button type="button" class="btn btn-primary" (click)="navigateBack()">Back</button>
+  <div [innerHTML]="storyDetails.content" class="story-content"></div>
+</div>

@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
     this.loginService.signup(registeredData).subscribe(result => {
       this.activeModal.close("signup");
     }, (error) => {
-      console.log(error);
+      this.error = error;
     })
   }
 
@@ -91,13 +91,13 @@ export class LoginComponent implements OnInit {
         confirmPassword: ['', Validators.required],
         usertype: ['', Validators.required],
         name: ['', Validators.required],
-        email: ['', Validators.required],
+        email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
         contactNumber: ['', Validators.required]
       });
     } else if(this.formType == 'Forgot Password') {
       this.forgotPasswordForm = this.formBuilder.group({
-        email: ['', Validators.required],
-        confirmemail: ['', Validators.required]
+        email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+        confirmemail: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]]
       });
     }
 
@@ -110,6 +110,21 @@ export class LoginComponent implements OnInit {
       return false;
     }
     return true;
+  }
 
+  validateConfirmEmail() {
+    if (this.forgotPasswordForm.controls['email'].value===this.forgotPasswordForm.controls['confirmemail'].value) {
+      this.forgotPasswordForm.controls['confirmemail'].setErrors(null);
+    } else {
+      this.forgotPasswordForm.controls['confirmemail'].setErrors({'invalid': true, touched: true});
+    }
+  }
+
+  validateConfirmPassword() {
+    if (this.signupForm.controls['password'].value===this.signupForm.controls['confirmPassword'].value) {
+      this.signupForm.controls['confirmPassword'].setErrors(null);
+    } else {
+      this.signupForm.controls['confirmPassword'].setErrors({'invalid': true, touched: true});
+    }
   }
 }

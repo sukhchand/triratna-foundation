@@ -14,8 +14,9 @@ import {
   CalendarView,
 } from 'angular-calendar';
 import { isSameDay, isSameMonth, setHours, setMinutes } from 'date-fns';
-import { Observable, Subject } from 'rxjs';
-import { map, subscribeOn } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
+import { Observable, Subject, throwError } from 'rxjs';
+import { catchError, map, subscribeOn } from 'rxjs/operators';
 import { BASE_URL } from 'src/app/constant';
 import { ConfirmationPopupComponent } from 'src/app/shared/confirmation-popup/confirmation-popup.component';
 import { EventPopupComponent } from './components/event-popup/event-popup.component';
@@ -50,9 +51,9 @@ export class EditCalendarComponent implements OnInit {
     public editCalendarService: EditCalendarService,
     private modalService: NgbModal,
     private http: HttpClient,
-    @Inject(DOCUMENT) private document: Document
+    @Inject(DOCUMENT) private document: Document,
+    private toastr: ToastrService
   ) {
-    this.getEvents();
   }
 
   ngOnInit(): void {
@@ -122,6 +123,13 @@ export class EditCalendarComponent implements OnInit {
               ],
             };
           });
+        }),
+        catchError((errorRes) => {
+          this.toastr.error(errorRes.error.message, '', {
+            closeButton: true,
+            positionClass: 'toast-top-center',
+          });
+          return throwError(errorRes.error.message);
         })
       );
   }
@@ -133,7 +141,16 @@ export class EditCalendarComponent implements OnInit {
     confirmationModal.result.then((data) => {
       if (data == 'success') {
         this.editCalendarService.deleteEvents(event).subscribe((response) => {
+          this.toastr.success(response.message, '', {
+            closeButton: true,
+            positionClass: 'toast-top-center',
+          });
           this.document.location.reload();
+        },(error) => {
+          this.toastr.error(error, '', {
+            closeButton: true,
+            positionClass: 'toast-top-center',
+          });
         });
       }
     });

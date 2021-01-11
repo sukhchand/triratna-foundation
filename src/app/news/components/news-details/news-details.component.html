@@ -1,1 +1,4 @@
-<p>news-details works!</p>
+<div class="news-details-container container" *ngIf="newsDetails">
+  <button type="button" class="btn btn-primary" (click)="navigateBack()">Back</button>
+  <div [innerHTML]="newsDetails.content" class="news-content"></div>
+</div>

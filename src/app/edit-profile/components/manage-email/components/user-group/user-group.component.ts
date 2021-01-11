@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { ConfirmationPopupComponent } from 'src/app/shared/confirmation-popup/confirmation-popup.component';
@@ -30,7 +31,8 @@ export class UserGroupComponent implements OnInit {
   constructor(
     public manageEmailService: ManageEmailService,
     private modalService: NgbModal,
-    public manageUsersService: ManageUsersService
+    public manageUsersService: ManageUsersService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -105,6 +107,11 @@ export class UserGroupComponent implements OnInit {
       .subscribe((result) => {
         this.dlList = result.response;
         this.dlListCopy = [...this.dlList];
+      }, error => {
+        this.toastr.error(error, '', {
+          closeButton: true,
+          positionClass: 'toast-top-center',
+        });
       });
   }
 
@@ -112,6 +119,11 @@ export class UserGroupComponent implements OnInit {
     this.manageUsersService.getUsers().subscribe((result) => {
       this.allUsers = result.response;
       this.allUsersCopy = [...this.allUsers];
+    }, error=>{
+      this.toastr.error(error, '', {
+        closeButton: true,
+        positionClass: 'toast-top-center',
+      });
     });
   }
 
@@ -138,8 +150,17 @@ export class UserGroupComponent implements OnInit {
   selectedDL(DL) {
     this.selectedGroup = DL;
     this.manageEmailService.getEmailListFromDL(DL).subscribe((result) => {
+      this.toastr.success(result.message, '', {
+        closeButton: true,
+        positionClass: 'toast-top-center',
+      });
       this.userList = result.response;
       this.userListCopy = [...this.userList];
+    }, error => {
+      this.toastr.error(error, '', {
+        closeButton: true,
+        positionClass: 'toast-top-center',
+      });
     });
   }
 
@@ -147,8 +168,17 @@ export class UserGroupComponent implements OnInit {
     this.manageEmailService
       .addEmailToDL(this.selectedEmails)
       .subscribe((result) => {
+        this.toastr.success(result.message, '', {
+          closeButton: true,
+          positionClass: 'toast-top-center',
+        });
         this.selectedDL(this.selectedGroup);
         this.showEmailUsers;
+      }, error => {
+        this.toastr.error(error, '', {
+          closeButton: true,
+          positionClass: 'toast-top-center',
+        });
       });
   }
 
@@ -161,11 +191,20 @@ export class UserGroupComponent implements OnInit {
         this.manageEmailService
           .removeEmailFromDL(user.id)
           .subscribe((result) => {
+            this.toastr.success(result.message, '', {
+              closeButton: true,
+              positionClass: 'toast-top-center',
+            });
             this.userList = this.userList.filter((emails) => {
               if (emails.id != user.id) {
                 return emails;
               }
               return;
+            });
+          }, error => {
+            this.toastr.error(error, '', {
+              closeButton: true,
+              positionClass: 'toast-top-center',
             });
           });
       }
@@ -179,11 +218,20 @@ export class UserGroupComponent implements OnInit {
     confirmationModal.result.then((data) => {
       if (data == 'success') {
         this.manageEmailService.deleteDL(DL).subscribe((result) => {
+          this.toastr.success(result.message, '', {
+            closeButton: true,
+            positionClass: 'toast-top-center',
+          });
           this.dlList = this.dlList.filter((dl) => {
             if (dl != DL) {
               return dl;
             }
             return;
+          });
+        }, error=>{
+          this.toastr.error(error, '', {
+            closeButton: true,
+            positionClass: 'toast-top-center',
           });
         });
       }

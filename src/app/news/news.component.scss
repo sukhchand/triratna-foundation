@@ -5,6 +5,12 @@
     border-radius: 8px;
     padding: 10px;
     margin: 10px 0;
+    .news-thumbnail {
+      text-align: center;
+      .default-image {
+        font-size: 150px;
+      }
+    }
     .news-date {
       font-size: 12px;
       label {
@@ -13,12 +19,15 @@
     }
     .news-content {
       border-top: 1px solid #eee;
-      padding: 20px 0;
-      height: 150px;
+      padding-top: 20px;
+      height: 152px;
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 5;
       overflow: hidden;
+      img {
+        display: none;
+      }
     }
     a{
       float: right;

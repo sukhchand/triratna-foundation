@@ -15,7 +15,10 @@ export class ManageUsersService {
     const path = `${BASE_URL}/user`;
     return this.http
       .get(path)
-      .pipe(map((response: any) => response));
+      .pipe(map((response: any) => response),
+      catchError((errorRes) => {
+        return throwError(errorRes.error.message);
+      }));
   }
 
   public activeUser(userData:any, isActive:boolean) {
@@ -24,7 +27,6 @@ export class ManageUsersService {
       .put(path,{})
       .pipe(map((response: any) => response),
       catchError((errorRes) => {
-        console.log(errorRes);
         return throwError(errorRes.error.message);
       }));
   }
@@ -35,7 +37,6 @@ export class ManageUsersService {
       .put(path,{})
       .pipe(map((response: any) => response),
       catchError((errorRes) => {
-        console.log(errorRes);
         return throwError(errorRes.error.message);
       }));
   }
@@ -46,7 +47,6 @@ export class ManageUsersService {
       .put(path,{})
       .pipe(map((response: any) => response),
       catchError((errorRes) => {
-        console.log(errorRes);
         return throwError(errorRes.error.message);
       }));
   }

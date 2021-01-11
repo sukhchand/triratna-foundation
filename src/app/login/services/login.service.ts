@@ -65,7 +65,10 @@ export class LoginService {
     const path =`${BASE_URL}/user/register`;
     return this.http
       .post(path, credentials)
-      .pipe(map((response: any) => response));
+      .pipe(map((response: any) => response),
+      catchError((errorRes) => {
+        return throwError(errorRes.error.message);
+      }));
   }
 
   public updateUser(userDetails:any) {
@@ -74,7 +77,6 @@ export class LoginService {
       .put(path, userDetails)
       .pipe(map((response: any) => response),
       catchError((errorRes) => {
-        console.log(errorRes);
         return throwError(errorRes.error.message);
       }));
   }
@@ -86,7 +88,6 @@ export class LoginService {
       .put(path, credentialDetails)
       .pipe(map((response: any) => response),
       catchError((errorRes) => {
-        console.log(errorRes);
         return throwError(errorRes.error.message);
       }));
   }

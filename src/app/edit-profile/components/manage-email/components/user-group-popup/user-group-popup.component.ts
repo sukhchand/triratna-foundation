@@ -2,6 +2,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ManageEmailService } from '../../services/manage-email.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'user-group-popup',
@@ -15,6 +16,7 @@ export class UserGroupPopupComponent implements OnInit {
   constructor(
     public activeModal: NgbActiveModal,
     private formBuilder: FormBuilder,
+    private toastr: ToastrService,
     public manageEmailService: ManageEmailService
   ) {}
 
@@ -32,7 +34,16 @@ export class UserGroupPopupComponent implements OnInit {
     this.manageEmailService
       .createDL(this.userGroupForm.value)
       .subscribe((result) => {
+        this.toastr.success(result.message, '', {
+          closeButton: true,
+          positionClass: 'toast-top-center',
+        });
         this.activeModal.close();
+      }, error => {
+        this.toastr.error(error, '', {
+          closeButton: true,
+          positionClass: 'toast-top-center',
+        });
       });
   }
 }

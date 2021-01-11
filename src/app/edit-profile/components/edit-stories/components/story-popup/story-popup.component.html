@@ -1,32 +1,53 @@
-<div class="modal-body event-modal-body">
-  <div>
-    <button
-      type="button"
-      class="close"
-      aria-label="Close"
-      (click)="activeModal.close()"
-    >
-      <span aria-hidden="true">&times;</span>
-    </button>
-    <h1>Create Story</h1>
-    <br />
-    <div class="title-field">
-      <label>Title</label>
-      <input type="text" [(ngModel)]="storyTitle">
-    </div>
-    <div class="thumbnail-field">
-      <label>Thumbnail</label>
-      <input type="file"
-           id="file"
-           (change)="handleFileInput($event.target.files)">
-    </div>
-    <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="htmlContent" [config]="config"></angular-editor>
-    <!-- Default switch -->
-    <div class="custom-control custom-switch">
-      <input type="checkbox" class="custom-control-input" id="customSwitches" [(ngModel)]="isPublished">
-      <label class="custom-control-label" for="customSwitches">Do you want to publish?</label>
-    </div>
-    <button (click)="onSubmit()">Submit</button>
-    <!-- <button (click)="getStories()">Get Data</button> -->
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{title}}</h4>
+  <button
+    type="button"
+    class="close"
+    aria-label="Close"
+    (click)="activeModal.close()"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body container">
+  <div class="title-field">
+    <label>Title :</label>
+    <input type="text" [(ngModel)]="storyTitle" placeholder="Story Title" autofocus />
   </div>
+  <div class="thumbnail-field">
+    <label>Thumbnail :</label>
+    <input
+      type="file"
+      id="file"
+      (change)="handleFileInput($event.target.files)"
+    />
+  </div>
+  <angular-editor
+    [placeholder]="'Enter text here...'"
+    [(ngModel)]="htmlContent"
+    [config]="config"
+  ></angular-editor>
+  <div class="custom-control custom-switch publishbutton">
+    <input
+      type="checkbox"
+      class="custom-control-input"
+      id="customSwitches"
+      [(ngModel)]="isPublished"
+    />
+    <label class="custom-control-label" for="customSwitches"
+      >Do you want to publish?</label
+    >
+  </div>
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn btn-secondary"
+    (click)="activeModal.close()"
+  >
+    Cancel
+  </button>
+  <button type="button" class="btn btn-success" (click)="onSubmit()">
+    Submit
+  </button>
 </div>

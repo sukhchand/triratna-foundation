@@ -1,0 +1,31 @@
+.modal-header {
+  h4 {
+    margin: auto;
+  }
+  .close {
+    margin-left: 0;
+  }
+}
+.modal-body {
+  .title-field,
+  .thumbnail-field {
+    margin: 10px 0;
+    label {
+      width: 100px;
+      font-weight: 500;
+    }
+  }
+  angular-editor {
+    margin: 15px 0;
+    display: block;
+  }
+  .publishbutton {
+    margin-top: 15px;
+  }
+}
+.modal-footer {
+  display: block;
+  button:last-child {
+    float: right;
+  }
+}

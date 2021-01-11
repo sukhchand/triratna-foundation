@@ -1,5 +1,52 @@
 .calendar-page {
-  padding: 50px 20px;
+  padding: 20px 20px;
+  h1 {
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom: 40px;
+  }
+  .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    .lds-ring {
+      display: inline-block;
+      position: relative;
+      width: 80px;
+      height: 80px;
+    }
+    .lds-ring div {
+      box-sizing: border-box;
+      display: block;
+      position: absolute;
+      width: 64px;
+      height: 64px;
+      margin: 8px;
+      border: 8px solid #fff;
+      border-radius: 50%;
+      animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+      border-color: #fff transparent transparent transparent;
+    }
+    .lds-ring div:nth-child(1) {
+      animation-delay: -0.45s;
+    }
+    .lds-ring div:nth-child(2) {
+      animation-delay: -0.3s;
+    }
+    .lds-ring div:nth-child(3) {
+      animation-delay: -0.15s;
+    }
+    @keyframes lds-ring {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
   .btn-group {
     width: 100%;
     .btn {
@@ -7,19 +54,55 @@
     }
   }
   .cal-event-title {
-    b{
+    b {
       margin-right: 10px;
     }
   }
   .cal-open-day-events {
     .createEventBtn {
-      text-align:end;
+      text-align: end;
     }
   }
-  .cal-event-actions{
+  .cal-event-actions {
     a {
       margin: 0 10px;
+      margin: 0 10px;
+      border: 1px solid #007bff;
+      padding: 5px 30px;
+      border-radius: 6px;
+      transition: 0.5s;
+      &:hover {
+        color: #fff;
+        background-color: #007bff;
+      }
     }
   }
+  .cal-month-view .cal-cell-top {
+    min-height: 50px;
+  }
+  .addEvents {
+    font-size: 40px;
+    text-align: center;
+  }
+  .cal-month-view .cal-open-day-events {
+    color: #000;
+    border: 1px solid #007bff;
+    box-shadow: none;
+    background-color: #fff;
+  }
+  .cal-month-view .cal-event-title {
+    display: inline-block;
+    width: 50%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: initial;
+    vertical-align: bottom;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  div[dragactiveclass="cal-drag-active"] {
+    height: 45px;
+  }
 }
-

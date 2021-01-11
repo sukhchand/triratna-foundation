@@ -1,13 +1,9 @@
-<div class="modal-header">
-  <h4 class="modal-title" id="modal-basic-title">Confirmation Popup</h4>
-  <button type="button" class="close" aria-label="Close" (click)="activeModal.close()">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-<div class="modal-body">
-  <span>Are you sure you want to delete this item?</span>
-</div>
-<div class="modal-footer">
-  <button type="button" class="btn btn-danger" (click)="onSuceess()">Submit</button>
-  <button type="button" class="btn btn-secondary" autofocus (click)="activeModal.close()">Cancel</button>
+<div class='confiramtion-modal-body'>
+  <div class="modal-body">
+    <span>Are you sure you want to delete this item?</span>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" autofocus (click)="activeModal.close()">No</button>
+    <button type="button" class="btn btn-danger" (click)="onSuccess()">Yes</button>
+  </div>
 </div>

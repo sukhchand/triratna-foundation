@@ -10,7 +10,7 @@
     </button>
     <h1>{{ formType }}</h1>
     <br />
-    <span class="error" *ngIf="error.length > 0">{{ error }}</span>
+    <span class="error" *ngIf="error?.length > 0">{{ error }}</span>
     <form [formGroup]="loginForm" *ngIf="formType == 'Login'">
       <input
         type="text"
@@ -40,30 +40,36 @@
         name="user"
         placeholder="Username"
         formControlName="userName"
+        [class.is-invalid]="signupForm.get('userName').invalid && signupForm.get('userName').touched"
       />
       <input
         type="password"
         name="pass"
         placeholder="Password"
         formControlName="password"
+        [class.is-invalid]="signupForm.get('password').invalid && signupForm.get('password').touched"
       />
       <input
         type="password"
         name="pass"
         placeholder="Confirm Password"
         formControlName="confirmPassword"
+        (input)="validateConfirmPassword()"
+        [class.is-invalid]="signupForm.get('confirmPassword').invalid && signupForm.get('confirmPassword').touched"
       />
       <input
         type="text"
         name="name"
         placeholder="Name"
         formControlName="name"
+        [class.is-invalid]="signupForm.get('name').invalid && signupForm.get('name').touched"
       />
       <input
         type="email"
         name="email"
         placeholder="Email"
         formControlName="email"
+        [class.is-invalid]="signupForm.get('email').invalid && signupForm.get('email').touched"
       />
       <input
         type="text"
@@ -71,6 +77,7 @@
         (keypress)="numberOnly($event)"
         placeholder="Contact Number"
         formControlName="contactNumber"
+        [class.is-invalid]="signupForm.get('contactNumber').invalid && signupForm.get('email').touched"
       />
       <select
         (change)="changeRole($event)"
@@ -96,16 +103,19 @@
       *ngIf="formType == 'Forgot Password'"
     >
       <input
-        type="text"
+        type="email"
         name="user"
         placeholder="Email"
         formControlName="email"
+        [class.is-invalid]="forgotPasswordForm.get('email').invalid && forgotPasswordForm.get('email').touched"
       />
       <input
         type="text"
         name="pass"
         placeholder="Confirm Email"
         formControlName="confirmemail"
+        (input)="validateConfirmEmail()"
+        [class.is-invalid]="forgotPasswordForm.get('confirmemail').invalid && forgotPasswordForm.get('confirmemail').touched"
       />
       <input
         type="submit"

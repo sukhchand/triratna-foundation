@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 import { ConfirmationPopupComponent } from 'src/app/shared/confirmation-popup/confirmation-popup.component';
 import { NewsPopupComponent } from './components/news-popup/news-popup.component';
 import { EditNewsService } from './services/edit-news.service';
@@ -9,6 +10,7 @@ import { EditNewsService } from './services/edit-news.service';
   selector: 'edit-news',
   templateUrl: './edit-news.component.html',
   styleUrls: ['./edit-news.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class EditNewsComponent implements OnInit {
   getdata: any;
@@ -21,7 +23,8 @@ export class EditNewsComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     private router: Router,
-    public editNewsService: EditNewsService
+    public editNewsService: EditNewsService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -32,6 +35,11 @@ export class EditNewsComponent implements OnInit {
   getPagination() {
     this.editNewsService.getPagination().subscribe((result) => {
       this.totalNews = result.response;
+    }, error => {
+      this.toastr.error(error, '', {
+        closeButton: true,
+        positionClass: 'toast-top-center',
+      });
     });
   }
 
@@ -40,12 +48,20 @@ export class EditNewsComponent implements OnInit {
       .getNews(this.page, this.pageSize)
       .subscribe((result) => {
         this.allNews = result.response;
+      }, error => {
+        this.toastr.error(error, '', {
+          closeButton: true,
+          positionClass: 'toast-top-center',
+        });
       });
   }
 
   newsPopup(news?: any) {
     const newsPopupModal = this.modalService.open(NewsPopupComponent, {
       centered: true,
+      windowClass: 'news-popup-modal',
+      size: 'lg'
+
     });
     if (!!news) {
       newsPopupModal.componentInstance.data = {
@@ -57,21 +73,31 @@ export class EditNewsComponent implements OnInit {
     });
   }
 
-  deleteNews(newsId) {
+  deleteNews($e, newsId) {
+    $e.stopPropagation();
     const confirmationModal = this.modalService.open(
       ConfirmationPopupComponent
     );
     confirmationModal.result.then((data) => {
       if (data == 'success') {
         this.editNewsService.deleteNewsById(newsId).subscribe((result) => {
-          debugger;
+          this.toastr.success(result.message, '', {
+            closeButton: true,
+            positionClass: 'toast-top-center',
+          });
           this.ngOnInit();
+        }, error => {
+          this.toastr.error(error, '', {
+            closeButton: true,
+            positionClass: 'toast-top-center',
+          });
         });
       }
     });
   }
 
-  editNews(story) {
+  editNews($e, story) {
+    $e.stopPropagation();
     this.newsPopup(story);
   }
 

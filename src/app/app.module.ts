@@ -1,3 +1,4 @@
+import { LoaderInterceptor } from './shared/spinner/services/interceptors/loader-interceptor.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { EditGalleryComponent } from './edit-profile/components/edit-gallery/edit-gallery.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -48,7 +49,6 @@ import { AuthInterceptorService } from './login/services/auth-interceptor.servic
 import { SharedComponent } from './shared/shared.component';
 import { EditNewsComponent } from './edit-profile/components/edit-news/edit-news.component';
 import { EditStoriesComponent } from './edit-profile/components/edit-stories/edit-stories.component';
-import { EditEventsComponent } from './edit-profile/components/edit-events/edit-events.component';
 import { EditCalendarComponent } from './edit-profile/components/edit-calendar/edit-calendar.component';
 import { EventPopupComponent } from './edit-profile/components/edit-calendar/components/event-popup/event-popup.component';
 import { ProfileComponent } from './edit-profile/components/profile/profile.component';
@@ -71,6 +71,8 @@ import { UserGroupComponent } from './edit-profile/components/manage-email/compo
 import { UserGroupPopupComponent } from './edit-profile/components/manage-email/components/user-group-popup/user-group-popup.component';
 import { SendEmailComponent } from './edit-profile/components/manage-email/components/send-email/send-email.component';
 import { ConfirmationPopupComponent } from './shared/confirmation-popup/confirmation-popup.component';
+import { AssignConfirmationComponent } from './edit-profile/components/manage-users/components/assign-confirmation/assign-confirmation.component';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -111,7 +113,6 @@ import { ConfirmationPopupComponent } from './shared/confirmation-popup/confirma
     EditNewsComponent,
     EditProfileComponent,
     EditStoriesComponent,
-    EditEventsComponent,
     EditCalendarComponent,
     EditGalleryComponent,
     ProfileComponent,
@@ -129,7 +130,9 @@ import { ConfirmationPopupComponent } from './shared/confirmation-popup/confirma
     UserGroupComponent,
     UserGroupPopupComponent,
     SendEmailComponent,
-    ConfirmationPopupComponent
+    ConfirmationPopupComponent,
+    AssignConfirmationComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -151,13 +154,18 @@ import { ConfirmationPopupComponent } from './shared/confirmation-popup/confirma
     NgxDatatableModule,
     CsvModule
   ],
-  // providers: [
-  //   {
-  //     provide: HTTP_INTERCEPTORS,
-  //     useClass: AuthInterceptorService,
-  //     multi: true
-  //   }
-  // ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
   exports: [CalendarComponent],
   schemas: [

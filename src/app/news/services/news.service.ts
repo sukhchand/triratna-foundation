@@ -15,7 +15,20 @@ export class NewsService {
     const path = `${BASE_URL}/news/${page}/${pageSize}`;
     return this.http
       .get(path)
-      .pipe(map((response: any) => response));
+      .pipe(map((response: any) => response),
+      catchError((errorRes) => {
+        return throwError(errorRes.error.message);
+      }));
+  }
+
+  public getNewsById(newsId: string) {
+    const path = `${BASE_URL}/news/${newsId}`;
+    return this.http
+      .get(path)
+      .pipe(map((response: any) => response),
+      catchError((errorRes) => {
+        return throwError(errorRes.error.message);
+      }));
   }
 
   public getPagination() {
@@ -24,7 +37,6 @@ export class NewsService {
       .post(path, {collectionName: 'news', considerActive: false})
       .pipe(map((response: any) => response),
       catchError((errorRes) => {
-        console.log(errorRes);
         return throwError(errorRes.error.message);
       }));
   }

@@ -1,3 +1,4 @@
+import { DonateComponent } from './donate/donate.component';
 import { NewsDetailsComponent } from './news/components/news-details/news-details.component';
 import { ViewNewsComponent } from './edit-profile/components/edit-news/components/view-news/view-news.component';
 import { ManageUsersComponent } from './edit-profile/components/manage-users/manage-users.component';
@@ -36,7 +37,6 @@ import { SavechildrenvulnerableandoldComponent } from './savechildrenvulnerablea
 import { SupportersComponent } from './supporters/supporters.component';
 import { TeachingofbuddhaandspiritualityComponent } from './teachingofbuddhaandspirituality/teachingofbuddhaandspirituality.component';
 import { EditCalendarComponent } from './edit-profile/components/edit-calendar/edit-calendar.component';
-import { EditEventsComponent } from './edit-profile/components/edit-events/edit-events.component';
 import { EditStoriesComponent } from './edit-profile/components/edit-stories/edit-stories.component';
 import { AuthGuardService } from './login/services/auth-guard.service';
 import { AlbumComponent } from './edit-profile/components/edit-gallery/components/album/album.component';
@@ -111,7 +111,7 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'profile',
+        redirectTo: 'calendar',
         canActivate: [AuthGuardService],
       },
       {
@@ -125,33 +125,24 @@ const routes: Routes = [
         canActivate: [AuthGuardService],
       },
       {
-        path: 'events',
-        canActivate: [AuthGuardService],
-        component: EditEventsComponent,
-      },
-      {
         path: 'stories',
         canActivate: [AuthGuardService],
         component: EditStoriesComponent,
-        children: [
-          {
-            path: 'view-story/:id',
-            component: ViewStoryComponent,
-            canActivate: [AuthGuardService],
-          },
-        ],
+      },
+      {
+        path: 'stories/view-story/:id',
+        component: ViewStoryComponent,
+        canActivate: [AuthGuardService],
       },
       {
         path: 'news',
         canActivate: [AuthGuardService],
-        component: EditNewsComponent,
-        children: [
-          {
-            path: 'view-news/:id',
-            component: ViewNewsComponent,
-            canActivate: [AuthGuardService],
-          },
-        ],
+        component: EditNewsComponent
+      },
+      {
+        path: 'news/view-news/:id',
+        component: ViewNewsComponent,
+        canActivate: [AuthGuardService],
       },
       {
         path: 'gallery',
@@ -182,25 +173,22 @@ const routes: Routes = [
   {
     path: 'informations/stories',
     component: StoriesComponent,
-    children: [
-      {
-        path: 'full-story-details/:id',
-        component: FullStoryDetailsComponent,
-      },
-    ],
+  },
+  {
+    path: 'informations/stories/story-details/:id',
+    component: FullStoryDetailsComponent,
   },
   {
     path: 'informations/news',
     component: NewsComponent,
-    children: [
-      {
-        path: 'news-details/:id',
-        component: NewsDetailsComponent,
-      },
-    ],
+  },
+  {
+    path: 'informations/news/news-details/:id',
+    component: NewsDetailsComponent,
   },
   { path: 'informations/videos', component: VideosComponent },
   { path: 'informations/photos', component: PhotosComponent },
+  { path: 'donations', component: DonateComponent }
 ];
 
 @NgModule({

@@ -1,6 +1,9 @@
+import { AssignConfirmationComponent } from './components/assign-confirmation/assign-confirmation.component';
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ColumnMode, DatatableComponent } from '@swimlane/ngx-datatable';
 import { ManageUsersService } from './services/manage-users.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-manage-users',
@@ -18,7 +21,7 @@ export class ManageUsersComponent implements OnInit {
 
   @ViewChild(DatatableComponent) table: DatatableComponent;
 
-  constructor(public manageUsersService: ManageUsersService) {}
+  constructor(public manageUsersService: ManageUsersService, private modalService: NgbModal,private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.columns = [
@@ -71,6 +74,11 @@ export class ManageUsersComponent implements OnInit {
       });
       this.users = result.response;
       this.searchData = [...this.users];
+    }, error => {
+      this.toastr.error(error, '', {
+        closeButton: true,
+        positionClass: 'toast-top-center',
+      });
     });
   }
 
@@ -112,20 +120,31 @@ export class ManageUsersComponent implements OnInit {
     this.manageUsersService
       .activeUser(user, event.target.checked)
       .subscribe((result) => {
-        console.log(result);
+        this.toastr.success(result.message, '', {
+          closeButton: true,
+          positionClass: 'toast-top-center',
+        });
+      }, error=>{
+        this.toastr.error(error, '', {
+          closeButton: true,
+          positionClass: 'toast-top-center',
+        });
       });
   }
 
   assignRoles(event, user, roleType) {
-    if (event.target.checked){
-      this.manageUsersService.roleProvider(JSON.parse(localStorage.getItem('userData')).user.id, user.id, roleType).subscribe(result => {
-        console.log(result);
-      });
-    } else {
-      this.manageUsersService.removeRole(JSON.parse(localStorage.getItem('userData')).user.id, user.id, roleType).subscribe(result => {
-        console.log(result);
-      });
-    }
-
+    const confirmationModal = this.modalService.open(
+      AssignConfirmationComponent
+    );
+    confirmationModal.componentInstance.data = {
+      event,
+      roleType,
+      user
+    };
+    confirmationModal.result.then((data) => {
+      if (data == 'success') {
+        console.log(data);
+      }
+    });
   }
 }

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 import { EditNewsService } from '../../services/edit-news.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { EditNewsService } from '../../services/edit-news.service';
 })
 export class NewsPopupComponent implements OnInit {
   @Input() data: any = null;
+  title: string = 'Create News';
   newsId: string = '';
   htmlContent = '';
   isPublished: boolean = false;
@@ -45,10 +47,11 @@ export class NewsPopupComponent implements OnInit {
     ]
   };
 
-  constructor(public activeModal: NgbActiveModal, public editNewsService: EditNewsService) { }
+  constructor(public activeModal: NgbActiveModal, public editNewsService: EditNewsService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     if(this.data) {
+      this.title = 'Edit News';
       this.getNewsById();
     }
   }
@@ -60,6 +63,11 @@ export class NewsPopupComponent implements OnInit {
       this.fileToUpload = result.response.thumbnail;
       this.isPublished = result.response.active;
       this.newsId = result.response.id;
+    }, error => {
+      this.toastr.error(error, '', {
+        closeButton: true,
+        positionClass: 'toast-top-center',
+      });
     })
   }
 
@@ -76,13 +84,29 @@ export class NewsPopupComponent implements OnInit {
     newsData.append('active', JSON.stringify(this.isPublished));
     if(this.data){
       this.editNewsService.updateNews(newsData).subscribe(result=>{
-        console.log(result);
+        this.toastr.success(result.message, '', {
+          closeButton: true,
+          positionClass: 'toast-top-center',
+        });
         this.activeModal.close();
+      }, error => {
+        this.toastr.error(error, '', {
+          closeButton: true,
+          positionClass: 'toast-top-center',
+        });
       })
     } else {
       this.editNewsService.createNews(newsData).subscribe(result=>{
-        console.log(result);
+        this.toastr.success(result.message, '', {
+          closeButton: true,
+          positionClass: 'toast-top-center',
+        });
         this.activeModal.close();
+      }, error => {
+        this.toastr.error(error, '', {
+          closeButton: true,
+          positionClass: 'toast-top-center',
+        });
       })
     }
   }

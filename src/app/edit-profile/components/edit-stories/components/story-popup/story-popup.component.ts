@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 import { EditStoriesService } from '../../services/edit-stories.service';
 
 
@@ -11,6 +12,7 @@ import { EditStoriesService } from '../../services/edit-stories.service';
 })
 export class StoryPopupComponent implements OnInit {
   @Input() data: any = null;
+  title: string = 'Create Story';
   storyId: string = '';
   htmlContent = '';
   isPublished: boolean = false;
@@ -46,10 +48,11 @@ export class StoryPopupComponent implements OnInit {
     ]
   };
 
-  constructor(public activeModal: NgbActiveModal, public editStoriesService: EditStoriesService) { }
+  constructor(public activeModal: NgbActiveModal, public editStoriesService: EditStoriesService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     if(this.data) {
+      this.title = 'Edit Story';
       this.getStoryById();
     }
   }
@@ -61,6 +64,11 @@ export class StoryPopupComponent implements OnInit {
       this.fileToUpload = result.response.thumbnail;
       this.isPublished = result.response.active;
       this.storyId = result.response.id;
+    }, error => {
+      this.toastr.error(error, '', {
+        closeButton: true,
+        positionClass: 'toast-top-center',
+      });
     })
   }
 
@@ -77,22 +85,31 @@ export class StoryPopupComponent implements OnInit {
     storyData.append('active', JSON.stringify(this.isPublished));
     if(this.data){
       this.editStoriesService.updateStory(storyData).subscribe(result=>{
-        console.log(result);
+        this.toastr.success(result.message, '', {
+          closeButton: true,
+          positionClass: 'toast-top-center',
+        });
         this.activeModal.close();
+      }, error => {
+        this.toastr.error(error, '', {
+          closeButton: true,
+          positionClass: 'toast-top-center',
+        });
       })
     }
     else {
       this.editStoriesService.createStory(storyData).subscribe(result=>{
-        console.log(result);
+        this.toastr.success(result.message[0], '', {
+          closeButton: true,
+          positionClass: 'toast-top-center',
+        });
         this.activeModal.close();
+      }, error => {
+        this.toastr.error(error, '', {
+          closeButton: true,
+          positionClass: 'toast-top-center',
+        });
       })
     }
   }
-
-  // getStories() {
-  //   this.editStoriesService.getStories().subscribe(result=>{
-  //     this.getdata = result;
-  //   })
-  // }
-
 }

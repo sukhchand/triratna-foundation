@@ -6,6 +6,7 @@ import {
   ReactiveFormsModule,
   FormControl,
 } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { COUNTRY_DATA } from 'src/app/constant';
 import { LoginService } from 'src/app/login/services/login.service';
 
@@ -21,13 +22,12 @@ export class ProfileComponent implements OnInit {
   userroles: any = ['MONKS', 'DEVOTEE', 'WELLWISHER', 'SPONSOR', 'DONOR', 'ORG'];
   countryData: any = COUNTRY_DATA;
   countryPhoneCode: any;
-  profileError: string ='';
-  userCredentailsError: string ='';
   userDetails: any;
 
   constructor(
     private formBuilder: FormBuilder,
-    public loginService: LoginService
+    public loginService: LoginService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit() {
@@ -35,7 +35,7 @@ export class ProfileComponent implements OnInit {
     this.profileForm = this.formBuilder.group({
       id: [this.userId, Validators.required],
       firstName: ['', Validators.required],
-      middleName: ['', Validators.required],
+      middleName: [''],
       lastName: ['', Validators.required],
       userType: ['', Validators.required],
       emailId: ['', Validators.required],
@@ -43,16 +43,16 @@ export class ProfileComponent implements OnInit {
       primaryContactNo: ['', Validators.required],
       country: ['', Validators.required],
       countryCode: ['', Validators.required],
-      street: ['', Validators.required],
-      city: ['', Validators.required],
-      state: ['', Validators.required],
-      zipCode: ['', Validators.required],
+      street: [''],
+      city: [''],
+      state: [''],
+      zipCode: [''],
     });
     this.userCredentailsForm = this.formBuilder.group({
       id: [this.userId, Validators.required],
       username: ['', Validators.required],
       password: ['', Validators.required],
-      newPassword: [''],
+      newPassword: ['', Validators.required],
       roles: ['', Validators.required],
 
     });
@@ -85,7 +85,6 @@ export class ProfileComponent implements OnInit {
     })
   }
   selectedCountry(code) {
-
     this.countryData.filter(country => {
       let selctedCountry = code.target.value.split(': ')[1];
       if(country.name == selctedCountry) {
@@ -99,18 +98,30 @@ export class ProfileComponent implements OnInit {
   updateUserDetails() {
     let user = this.profileForm.value;
     user['id'] = this.userId;
-    this.loginService.updateUser(this.profileForm.value).subscribe((res) => {
-      console.log(res);
+    this.loginService.updateUser(this.profileForm.value).subscribe((result) => {
+      this.toastr.success(result.message, '', {
+        closeButton: true,
+        positionClass: 'toast-top-center',
+      });
     },(error) => {
-      this.profileError = error;
+      this.toastr.error(error, '', {
+        closeButton: true,
+        positionClass: 'toast-top-center',
+      });
     });
   }
 
   updateCredentialForUser() {
-    this.loginService.updateCredentialForUser(this.userCredentailsForm.value).subscribe((res) => {
-      console.log(res);
+    this.loginService.updateCredentialForUser(this.userCredentailsForm.value).subscribe((result) => {
+      this.toastr.success(result.message, '', {
+        closeButton: true,
+        positionClass: 'toast-top-center',
+      });
     },(error) => {
-      this.userCredentailsError = error;
+      this.toastr.error(error, '', {
+        closeButton: true,
+        positionClass: 'toast-top-center',
+      });
     });
 
   }
@@ -125,27 +136,31 @@ export class ProfileComponent implements OnInit {
     this.loginService.getUserById(this.userId).subscribe(
       (result) => {
         this.userDetails = result.response;
-        let userRoles = this.userDetails.userType.filter(usertype => usertype !== 'SADMIN' || usertype !== 'ADMIN');
+        let userRoles = this.userDetails.user.userType.filter(usertype => usertype !== 'SADMIN' || usertype !== 'ADMIN');
         this.profileForm.setValue({
-          id: this.userDetails.id,
-          firstName: this.userDetails.firstName,
-          middleName: this.userDetails.middleName,
-          lastName: this.userDetails.lastName,
+          id: this.userDetails.user.id,
+          firstName: this.userDetails.user.firstName,
+          middleName: this.userDetails.user.middleName,
+          lastName: this.userDetails.user.lastName,
           userType: userRoles[0],
-          emailId: this.userDetails.emailId,
-          primaryContactCountryCode: this.userDetails.primaryContactCountryCode,
-          primaryContactNo: this.userDetails.primaryContactNo,
-          country: this.userDetails.country,
-          countryCode: this.userDetails.countryCode,
-          street: this.userDetails.street,
-          city: this.userDetails.city,
-          state: this.userDetails.state,
-          zipCode: this.userDetails.zipCode,
+          emailId: this.userDetails.user.emailId,
+          primaryContactCountryCode: this.userDetails.user.primaryContactCountryCode,
+          primaryContactNo: this.userDetails.user.primaryContactNo,
+          country: this.userDetails.user.country,
+          countryCode: this.userDetails.user.countryCode,
+          street: this.userDetails.user.street,
+          city: this.userDetails.user.city,
+          state: this.userDetails.user.state,
+          zipCode: this.userDetails.user.zipCode,
         });
         this.userCredentailsForm.controls['roles'].setValue(userRoles[0]);
+        this.userCredentailsForm.controls['username'].setValue(this.userDetails.userCred.username);
       },
       (error) => {
-        console.log(error);
+        this.toastr.error(error, '', {
+          closeButton: true,
+          positionClass: 'toast-top-center',
+        });
       }
     );
   }

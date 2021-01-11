@@ -1,4 +1,4 @@
-import { formatDate } from '@angular/common';
+import { DOCUMENT, formatDate } from '@angular/common';
 import { ElementRef, Inject, Injectable, LOCALE_ID } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -13,7 +13,8 @@ export class CalendarFormatter {
     @Inject(LOCALE_ID) private locale: string,
     private elementRef: ElementRef,
     private modalService: NgbModal,
-    private router: Router
+    private router: Router,
+    @Inject(DOCUMENT) private document: Document
   ) {}
 
   month(event: CalendarEvent): string {
@@ -52,7 +53,9 @@ export class CalendarFormatter {
       event,
     };
     eventModal.result.then((data) => {
-      this.router.navigate([this.router.url]);
+      if(data) {
+        this.document.location.reload();
+      }
     });
   }
 }

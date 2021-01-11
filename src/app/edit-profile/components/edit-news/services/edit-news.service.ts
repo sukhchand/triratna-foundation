@@ -18,7 +18,6 @@ export class EditNewsService {
       .delete(path)
       .pipe(map((response: any) => response),
       catchError((errorRes) => {
-        console.log(errorRes);
         return throwError(errorRes.error.message);
       }));
   }
@@ -27,7 +26,10 @@ export class EditNewsService {
     const path = `${BASE_URL}/news/${pageNumber}/${pageSize}`;
     return this.http
       .get(path)
-      .pipe(map((response: any) => response));
+      .pipe(map((response: any) => response),
+      catchError((errorRes) => {
+        return throwError(errorRes.error.message);
+      }));
   }
 
   public createNews(data) {
@@ -36,7 +38,6 @@ export class EditNewsService {
       .post(path, data)
       .pipe(map((response: any) => response),
       catchError((errorRes) => {
-        console.log(errorRes);
         return throwError(errorRes.error.message);
       }));
   }
@@ -47,7 +48,6 @@ export class EditNewsService {
       .put(path, data)
       .pipe(map((response: any) => response),
       catchError((errorRes) => {
-        console.log(errorRes);
         return throwError(errorRes.error.message);
       }));
   }
@@ -56,7 +56,10 @@ export class EditNewsService {
     const path = `${BASE_URL}/news/${storyId}`;
     return this.http
       .get(path)
-      .pipe(map((response: any) => response));
+      .pipe(map((response: any) => response),
+      catchError((errorRes) => {
+        return throwError(errorRes.error.message);
+      }));
   }
 
   public getPagination() {
@@ -65,8 +68,7 @@ export class EditNewsService {
       .post(path, {collectionName: 'news', considerActive: false})
       .pipe(map((response: any) => response),
       catchError((errorRes) => {
-        console.log(errorRes);
-        return throwError(errorRes.error.message);
+        return throwError(errorRes.message);
       }));
   }
 }

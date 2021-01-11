@@ -11,14 +11,23 @@
         font-weight: bold;
       }
     }
+    .story-thumbnail {
+      text-align: center;
+      .default-image {
+        font-size: 150px;
+      }
+    }
     .stories-content {
       border-top: 1px solid #eee;
-      padding: 20px 0;
-      height: 150px;
+      padding-top: 20px;
+      height: 140px;
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 5;
       overflow: hidden;
+      img {
+        display: none;
+      }
     }
     a{
       float: right;

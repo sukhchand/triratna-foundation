@@ -1,4 +1,5 @@
-<div class="news-container">
+<div class="news-container container">
+  <h1>Manage News</h1>
   <div class="mediaSelector">
     <div class="row">
       <div class="col-sm-12 text-right">
@@ -8,20 +9,23 @@
   </div>
   <div class="news-card-list">
     <div class="news-card row" *ngFor="let news of allNews | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalNews }" (click)="viewNews(news)">
-      <div class="col-4">
+      <div class="col-4 news-thumbnail">
         <img *ngIf="news.thumbnail?.data" src="data:image/png;base64,{{news.thumbnail?.data}}"/>
-        <span *ngIf="!news.thumbnail?.data"><i class="fa fa-newspaper-o" aria-hidden="true"></i></span>
+        <span *ngIf="!news.thumbnail?.data" class="default-image"><i class="fa fa-newspaper-o" aria-hidden="true"></i></span>
       </div>
       <div class="col-6">
         <h3>{{news.heading}}</h3>
-        <div class="news-content" [innerHtml]="news.content"></div>
-      </div>
-      <div class="col-2 actions">
-        <span (click)="editNews(news)"><i class="fa fa-edit"></i></span>
-        <span (click)="deleteNews(news.id)"><i class="fa fa-trash"></i></span>
         <div class="news-date">
           <label>Created Date:</label>  {{news.createdDate| date}}
         </div>
+        <div class="news-content" [innerHtml]="news.content"></div>
+      </div>
+      <div class="col-2 actions">
+        <div class="row">
+          <span (click)="editNews($event, news)" class="col"><i class="fa fa-edit"></i></span>
+          <span (click)="deleteNews($event, news.id)" class="col"><i class="fa fa-trash"></i></span>
+        </div>
+
       </div>
     </div>
   </div>
@@ -29,7 +33,3 @@
     <pagination-controls (pageChange)="handlePageChange($event)"></pagination-controls>
   </div>
 </div>
-
-<!-- <div *ngIf="getdata">
-  <div [innerHTML]="getdata.response.story.content"></div>
-</div> -->

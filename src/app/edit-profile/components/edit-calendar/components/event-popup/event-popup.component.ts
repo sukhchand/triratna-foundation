@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 import { EditCalendarService } from '../../services/edit-calendar.service';
 
 @Component({
@@ -12,12 +13,12 @@ export class EventPopupComponent implements OnInit {
   @Input() data: any = '';
   eventForm: FormGroup;
   eventData: any;
-  error: string = '';
 
   constructor(
     public activeModal: NgbActiveModal,
     private formBuilder: FormBuilder,
-    public editCalendarService: EditCalendarService
+    public editCalendarService: EditCalendarService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -59,23 +60,36 @@ export class EventPopupComponent implements OnInit {
 
       eventData['id'] = this.data.event.meta.event.id;
       this.editCalendarService.updateEvent(eventData).subscribe((results) => {
-        this.close();
+        this.toastr.success(results.message, '', {
+          closeButton: true,
+          positionClass: 'toast-top-center',
+        });
+        this.close('success');
       }, error => {
-        this.error = error;
+        this.toastr.error(error, '', {
+          closeButton: true,
+          positionClass: 'toast-top-center',
+        });
       });
     } else {
       this.editCalendarService
         .createEvent(this.eventForm.value)
         .subscribe((results) => {
-          this.close();
+          this.toastr.success(results.message[0], '', {
+            closeButton: true,
+            positionClass: 'toast-top-center',
+          });
         }, error => {
-          this.error = error;
+          this.toastr.error(error, '', {
+            closeButton: true,
+            positionClass: 'toast-top-center',
+          });
         });
     }
   }
 
-  close() {
-    this.activeModal.close();
+  close(message:string) {
+    this.activeModal.close(message);
   }
 
   onlyNumberKey(event) {

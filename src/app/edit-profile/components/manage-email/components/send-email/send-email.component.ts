@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 import { Observable, Subject } from 'rxjs';
 import {
   debounceTime,
@@ -45,7 +46,8 @@ export class SendEmailComponent implements OnInit {
     private formBuilder: FormBuilder,
     public loginService: LoginService,
     public manageUsersService: ManageUsersService,
-    public manageEmailService: ManageEmailService
+    public manageEmailService: ManageEmailService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -73,6 +75,11 @@ export class SendEmailComponent implements OnInit {
           this.usersList.push(group);
           this.usersList.sort();
         });
+      }, error => {
+        this.toastr.error(error, '', {
+          closeButton: true,
+          positionClass: 'toast-top-center',
+        });
       });
   }
 
@@ -82,6 +89,11 @@ export class SendEmailComponent implements OnInit {
       this.allUsers.forEach((user) => {
         this.usersList.push(user.emailId);
         this.usersList.sort();
+      });
+    }, error => {
+      this.toastr.error(error, '', {
+        closeButton: true,
+        positionClass: 'toast-top-center',
       });
     });
   }

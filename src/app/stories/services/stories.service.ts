@@ -15,7 +15,10 @@ export class StoriesService {
     const path = `${BASE_URL}/story/${page}/${pageSize}`;
     return this.http
       .get(path)
-      .pipe(map((response: any) => response));
+      .pipe(map((response: any) => response),
+      catchError((errorRes) => {
+        return throwError(errorRes.error.message);
+      }));
   }
 
   public getPagination() {
@@ -24,7 +27,16 @@ export class StoriesService {
       .post(path, {collectionName: 'story', considerActive: false})
       .pipe(map((response: any) => response),
       catchError((errorRes) => {
-        console.log(errorRes);
+        return throwError(errorRes.error.message);
+      }));
+  }
+
+  public getStoryById(storyId: string) {
+    const path = `${BASE_URL}/story/${storyId}`;
+    return this.http
+      .get(path)
+      .pipe(map((response: any) => response),
+      catchError((errorRes) => {
         return throwError(errorRes.error.message);
       }));
   }

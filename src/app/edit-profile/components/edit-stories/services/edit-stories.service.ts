@@ -18,7 +18,6 @@ export class EditStoriesService {
       .post(path, data)
       .pipe(map((response: any) => response),
       catchError((errorRes) => {
-        console.log(errorRes);
         return throwError(errorRes.error.message);
       }));
   }
@@ -27,7 +26,10 @@ export class EditStoriesService {
     const path = `${BASE_URL}/story/${storyId}`;
     return this.http
       .get(path)
-      .pipe(map((response: any) => response));
+      .pipe(map((response: any) => response),
+      catchError((errorRes) => {
+        return throwError(errorRes.error.message);
+      }));
   }
 
   public updateStory(data) {
@@ -36,7 +38,6 @@ export class EditStoriesService {
       .put(path, data)
       .pipe(map((response: any) => response),
       catchError((errorRes) => {
-        console.log(errorRes);
         return throwError(errorRes.error.message);
       }));
   }
@@ -47,7 +48,6 @@ export class EditStoriesService {
       .post(path, {collectionName: 'story', considerActive: false})
       .pipe(map((response: any) => response),
       catchError((errorRes) => {
-        console.log(errorRes);
         return throwError(errorRes.error.message);
       }));
   }
@@ -56,7 +56,10 @@ export class EditStoriesService {
     const path = `${BASE_URL}/story/${pageNumber}/${pageSize}`;
     return this.http
       .get(path)
-      .pipe(map((response: any) => response));
+      .pipe(map((response: any) => response),
+      catchError((errorRes) => {
+        return throwError(errorRes.error.message);
+      }));
   }
 
   public deleteStoryById(id:string) {
@@ -66,7 +69,6 @@ export class EditStoriesService {
       .delete(path)
       .pipe(map((response: any) => response),
       catchError((errorRes) => {
-        console.log(errorRes);
         return throwError(errorRes.error.message);
       }));
   }
