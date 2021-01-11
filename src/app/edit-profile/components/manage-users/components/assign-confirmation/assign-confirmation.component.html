@@ -1,0 +1,9 @@
+<div class='assign-role-modal-body'>
+  <div class="modal-body">
+    <span>Are you sure you want to {{assigningText}} {{roleType}} to {{userName}}?</span>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" autofocus (click)="activeModal.close()">No</button>
+    <button type="button" class="btn btn-danger" (click)="onSuccess()">Yes</button>
+  </div>
+</div>
