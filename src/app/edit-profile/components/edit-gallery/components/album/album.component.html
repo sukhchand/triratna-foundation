@@ -8,18 +8,22 @@
                 <button type="button" class="btn btn-info" (click)="addMedia(content)">Add Media</button>
             </div>
         </div>
-        <ul class="list-inline">
+        <ul class="list-inline imglist">
             <li class="list-inline-item"
                 *ngFor="let response of thumbnailphotos | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalNews,id: 'p' }">
                 <div class="text-right">
                     <img src="assets/images/close.svg" alt="Close" class="close-album"
                         (click)="clickToDelete(response.id, deleteMedia)">
                 </div>
-                <img src="data:image/png;base64,{{response.thumbnail.data}}" alt="Album"
-                    *ngIf="response.link==undefined" />
-                <iframe width="180" [src]="response.imp[0]" frameborder="0" allowfullscreen *ngIf="response.imp !=undefined"></iframe>
-                <img src="assets/images/photo-library.svg" height="157" alt="Album" *ngIf="response.imp == undefined && response.link!=undefined" />
-                <h6 title="{{response.link}}"><a target="_blank" rel="noopener noreferrer" href="{{response.link}}">{{response.link}}</a></h6>
+                <a [href]="response.fileImp[0]" data-fancybox="images" *ngIf="response.link==undefined">
+                    <img src="data:image/png;base64,{{response.thumbnail.data}}" alt="Album" />
+                </a>
+                <iframe width="180" [src]="response.imp[0]" frameborder="0" allowfullscreen
+                    *ngIf="response.imp !=undefined"></iframe>
+                <img src="assets/images/photo-library.svg" height="157" alt="Album"
+                    *ngIf="response.imp == undefined && response.link!=undefined" />
+                <h6 title="{{response.link}}"><a target="_blank" rel="noopener noreferrer"
+                        href="{{response.link}}">{{response.link}}</a></h6>
             </li>
         </ul>
         <div class="pagination-container">

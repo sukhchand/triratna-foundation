@@ -24,21 +24,22 @@ export class AlbumComponent implements OnInit {
   deleteMediaID;
   safeURL;
   youtubeLink;
+  imageSource;
 
   constructor(public albumService: AlbumService, private formBuilder: FormBuilder, public fb: FormBuilder,
     private http: HttpClient, private route: ActivatedRoute, private router: Router, private toastr: ToastrService, private modalService: NgbModal,
-    config: NgbModalConfig, private _sanitizer: DomSanitizer) {
+    config: NgbModalConfig, private _sanitizer: DomSanitizer, private sanitizer: DomSanitizer) {
     this.route.params.subscribe(params => {
       this.defaultAlbumName = params['id'];
     });
-    
+
     this.form = this.fb.group({
       albumName: this.defaultAlbumName,
       link: [''],
       files: [null]
     })
   }
-  
+
   uploadFile(event) {
     this.fileList = (event.target as HTMLInputElement).files;
     this.form.patchValue({
@@ -58,15 +59,22 @@ export class AlbumComponent implements OnInit {
       for (let i = 0; i < this.thumbnailphotos.length; i++) {
         var str = new String(this.thumbnailphotos[i].link);
         var n = str.includes("youtube")
-        if(n && this.thumbnailphotos[i].link!= null) {
-          this.youtubeLink=true;
+        if (n && this.thumbnailphotos[i].link != null) {
+          this.youtubeLink = true;
         } else {
-          this.youtubeLink=false;
+          this.youtubeLink = false;
         }
         if (this.youtubeLink) {
           this.safeURL = this._sanitizer.bypassSecurityTrustResourceUrl(this.thumbnailphotos[i].link);
-          this.thumbnailphotos[i].imp=[];
+          this.thumbnailphotos[i].imp = [];
           this.thumbnailphotos[i].imp.push(this.safeURL);
+        }
+      }
+      for (let i = 0; i < this.thumbnailphotos.length; i++) {
+        if (this.thumbnailphotos[i].file != null) {
+          this.imageSource = this.sanitizer.bypassSecurityTrustResourceUrl(`data:image/png;base64, ${this.thumbnailphotos[i].file.data}`);
+          this.thumbnailphotos[i].fileImp = [];
+          this.thumbnailphotos[i].fileImp.push(this.imageSource);
         }
       }
     });
@@ -98,7 +106,7 @@ export class AlbumComponent implements OnInit {
         link: [''],
         files: [null]
       })
-      this.fileList=[];
+      this.fileList = [];
     }, (error) => {
       this.toastr.error(error.error.message, '', {
         closeButton: true,
@@ -109,7 +117,7 @@ export class AlbumComponent implements OnInit {
   // Delete Functionality Start
   clickToDelete(id, deleteMedia) {
     this.modalService.open(deleteMedia);
-    this.deleteMediaID=id;
+    this.deleteMediaID = id;
   }
 
   deleteForm() {
@@ -119,14 +127,13 @@ export class AlbumComponent implements OnInit {
         closeButton: true,
         positionClass: 'toast-top-center',
       });
-    },(error) => {
+    }, (error) => {
       this.toastr.error(error.error.message, '', {
         closeButton: true,
         positionClass: 'toast-top-center',
       });
     });
   }
-
   handlePageChange(event) {
 
   }

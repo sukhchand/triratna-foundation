@@ -45,7 +45,7 @@ export class EditGalleryComponent implements OnInit {
   }
 
   clickToAlbum(albumName) {
-    this.router.navigateByUrl('/edit-profile/album/' + albumName);
+    this.router.navigateByUrl('/edit-profile/gallery/album/' + albumName);
   }
  
   createAlbum(content) {

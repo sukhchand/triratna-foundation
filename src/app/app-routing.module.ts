@@ -150,7 +150,7 @@ const routes: Routes = [
         component: EditGalleryComponent,
       },
       {
-        path: 'album/:id',
+        path: 'gallery/album/:id',
         canActivate: [AuthGuardService],
         component: AlbumComponent,
       },
