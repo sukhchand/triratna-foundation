@@ -136,5 +136,8 @@
       }
     }
   },
-  "defaultProject": "triratna-foundation"
+  "defaultProject": "triratna-foundation",
+  "cli": {
+    "analytics": "9c58b752-e0da-4d40-b5e7-85eb8527ff33"
+  }
 }
