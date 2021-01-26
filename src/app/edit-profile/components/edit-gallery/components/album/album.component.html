@@ -10,7 +10,7 @@
         </div>
         <ul class="list-inline imglist">
             <li class="list-inline-item"
-                *ngFor="let response of thumbnailphotos | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalNews,id: 'p' }">
+                *ngFor="let response of thumbnailphotos | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalAlbumItem}">
                 <div class="text-right">
                     <img src="assets/images/close.svg" alt="Close" class="close-album"
                         (click)="clickToDelete(response.id, deleteMedia)">
@@ -27,7 +27,7 @@
             </li>
         </ul>
         <div class="pagination-container">
-            <pagination-controls (pageChange)="handlePageChange($event)" id="p"></pagination-controls>
+            <pagination-controls (pageChange)="handlePageChange($event)"></pagination-controls>
         </div>
     </div>
 </div>

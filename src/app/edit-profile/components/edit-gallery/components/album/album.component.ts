@@ -14,7 +14,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class AlbumComponent implements OnInit {
   thumbnailphotos;
-  totalNews;
+  totalAlbumItem;
   page = 1;
   pageSize = 10;
   albumName;
@@ -25,6 +25,7 @@ export class AlbumComponent implements OnInit {
   safeURL;
   youtubeLink;
   imageSource;
+  paginationObj;
 
   constructor(public albumService: AlbumService, private formBuilder: FormBuilder, public fb: FormBuilder,
     private http: HttpClient, private route: ActivatedRoute, private router: Router, private toastr: ToastrService, private modalService: NgbModal,
@@ -48,7 +49,25 @@ export class AlbumComponent implements OnInit {
     this.form.get('files').updateValueAndValidity()
   }
   ngOnInit(): void {
+    this.getPagination();
     this.getAllMedias();
+  }
+  getPagination() {
+    this.route.params.subscribe(params => {
+      this.albumName = params['id'];
+    });
+    this.paginationObj= {
+      collectionName:"gallery",
+      albumName: this.albumName
+    }
+    this.albumService.getPagination(this.paginationObj).subscribe((result) => {
+      this.totalAlbumItem = result.response;
+    }, error => {
+      this.toastr.error(error, '', {
+        closeButton: true,
+        positionClass: 'toast-top-center',
+      });
+    });
   }
   getAllMedias() {
     this.route.params.subscribe(params => {
@@ -134,8 +153,10 @@ export class AlbumComponent implements OnInit {
       });
     });
   }
-  handlePageChange(event) {
 
-  }
   // Delete Functionality End
+  handlePageChange(event) {
+    this.page = event;
+    this.getAllMedias();
+  }
 }

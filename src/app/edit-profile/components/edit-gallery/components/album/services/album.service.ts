@@ -31,4 +31,13 @@ export class AlbumService {
       .post(path, createAlbumData)
       .pipe(map((response: any) => response));
   }
+  public getPagination(data) {
+    const path = `${BASE_URL}/util/count`;
+    return this.http
+      .post(path, data)
+      .pipe(map((response: any) => response),
+      catchError((errorRes) => {
+        return throwError(errorRes.message);
+      }));
+  }
 }
