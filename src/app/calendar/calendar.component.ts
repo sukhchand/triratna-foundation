@@ -25,6 +25,7 @@ export class CalendarComponent implements OnInit {
     this.calendarService.getEvents(this.obj).subscribe(result => {
       this.calendarResult=result;
     }, (error) => {
+      console.log(error);
     })
   }
 
