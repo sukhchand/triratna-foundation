@@ -1,20 +1,21 @@
 <div class="section-title">
     <h2 class="text-center">Supporters & Partners</h2>
 </div>
-<div class="container-fluid bg-grey products">
+<div class="container-fluid bg-white products">
     <div class="container paddingtop-20 paddingbottom-10">
         <div class="row">
             <div class="col-md-12">
                 <p>The potential sources of any support such as donations, gifts, bequests, grants, permissions,
                     licenses, and permits to run the activities of TRIRATNA FOUNDATION Inc are our supporters. They are
                     foundations, Organizations, Associations, Corporations, Firms, NGOs, INGOs, Governments and their
-                    Departments, UNO Specialized Agencies, etc... TRIRATNA FOUNDATION, Inc. is a 501(c)(3) corporation.
+                    Departments, UNO Specialized Agencies, etc... TRIRATNA INTERNATIONAL FOUNDATION, Inc. is a 501(c)(3) corporation.
                     All donations and gifts are deductible to the amount permissible under IRS regulations in the US.
                 </p>
             </div>
         </div>
     </div>
 </div>
+<animated-digit [digit]="83" [duration]="1000"></animated-digit>
 <section class="counts section-bg paddingtop-50">
     <div class="container">
 
@@ -23,7 +24,7 @@
             <div class="col-lg-4 col-md-6 text-center aos-init aos-animate" data-aos="fade-up">
                 <div class="count-box">
                     <i class="icofont-simple-smile" style="color: #20b38e;"></i>
-                    <span data-toggle="counter-up" class="counter-count">232</span>
+                    <span data-toggle="counter-up" class="counter-count">{{MONKS_COUNT}}</span>
                     <p>Monks</p>
                 </div>
             </div>
@@ -31,7 +32,7 @@
             <div class="col-lg-4 col-md-6 text-center aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
                 <div class="count-box">
                     <i class="icofont-document-folder" style="color: #c042ff;"></i>
-                    <span data-toggle="counter-up" class="counter-count">521</span>
+                    <span data-toggle="counter-up" class="counter-count">{{DEVOTEE_COUNT}}</span>
                     <p>Devotee</p>
                 </div>
             </div>
@@ -39,7 +40,7 @@
             <div class="col-lg-4 col-md-6 text-center aos-init aos-animate" data-aos="fade-up" data-aos-delay="400">
                 <div class="count-box">
                     <i class="icofont-live-support" style="color: #46d1ff;"></i>
-                    <span data-toggle="counter-up" class="counter-count">1463</span>
+                    <span data-toggle="counter-up" class="counter-count">{{WELLWISHER_COUNT}}</span>
                     <p>Well-wisher</p>
                 </div>
             </div>
@@ -47,7 +48,7 @@
             <div class="col-lg-4 col-md-6 text-center aos-init aos-animate" data-aos="fade-up" data-aos-delay="600">
                 <div class="count-box">
                     <i class="icofont-users-alt-5" style="color: #ffb459;"></i>
-                    <span data-toggle="counter-up" class="counter-count">15</span>
+                    <span data-toggle="counter-up" class="counter-count">{{SPONSOR_COUNT}}</span>
                     <p>Sponsor</p>
                 </div>
             </div>
@@ -55,7 +56,7 @@
             <div class="col-lg-4 col-md-6 text-center aos-init aos-animate" data-aos="fade-up" data-aos-delay="400">
                 <div class="count-box">
                     <i class="icofont-live-support" style="color: #46d1ff;"></i>
-                    <span data-toggle="counter-up" class="counter-count">1463</span>
+                    <span data-toggle="counter-up" class="counter-count">{{DONOR_COUNT}}</span>
                     <p>Donor Inc.</p>
                 </div>
             </div>
@@ -63,11 +64,12 @@
             <div class="col-lg-4 col-md-6 text-center aos-init aos-animate" data-aos="fade-up" data-aos-delay="600">
                 <div class="count-box">
                     <i class="icofont-users-alt-5" style="color: #ffb459;"></i>
-                    <span data-toggle="counter-up" class="counter-count">15</span>
+                    <span data-toggle="counter-up" class="counter-count">{{ORG_COUNT}}</span>
                     <p>Org. Affiliates</p>
                 </div>
             </div>
-        </div>
-
+        </div>       
     </div>
+   
+
 </section>
