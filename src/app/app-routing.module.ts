@@ -12,7 +12,6 @@ import { NewsComponent } from './news/news.component';
 import { StoriesComponent } from './stories/stories.component';
 import { EventsComponent } from './events/events.component';
 import { CalendarComponent } from './calendar/calendar.component';
-import { InformationsComponent } from './informations/informations.component';
 import { VolunteersComponent } from './volunteers/volunteers.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { NgModule } from '@angular/core';
@@ -167,7 +166,6 @@ const routes: Routes = [
     ],
   },
   { path: 'volunteers', component: VolunteersComponent },
-  { path: 'informations', component: InformationsComponent },
   { path: 'informations/calendar', component: CalendarComponent },
   { path: 'informations/events', component: EventsComponent },
   {

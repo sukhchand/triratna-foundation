@@ -34,7 +34,6 @@ import { LoginComponent } from './login/login.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { VolunteersComponent } from './volunteers/volunteers.component';
 import { DonateComponent } from './donate/donate.component';
-import { InformationsComponent } from './informations/informations.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { EventsComponent } from './events/events.component';
 import { StoriesComponent } from './stories/stories.component';
@@ -102,7 +101,6 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
     EditProfileComponent,
     VolunteersComponent,
     DonateComponent,
-    InformationsComponent,
     CalendarComponent,
     EventsComponent,
     StoriesComponent,
