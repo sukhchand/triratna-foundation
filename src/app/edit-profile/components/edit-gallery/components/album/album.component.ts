@@ -127,7 +127,8 @@ export class AlbumComponent implements OnInit {
       })
       this.fileList = [];
     }, (error) => {
-      this.toastr.error(error.error.message, '', {
+      console.log(error)
+      this.toastr.error(error.error.message?error.error.message:"Something went Wrong. Individual size should not be more than 5MB and total request size must be less than 15MB ", '', {
         closeButton: true,
         positionClass: 'toast-top-center',
       });

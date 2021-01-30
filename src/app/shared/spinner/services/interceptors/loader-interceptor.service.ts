@@ -36,7 +36,6 @@ export class LoaderInterceptor {
             }
           },
           err => {
-            alert('error' + err);
             this.removeRequest(req);
             observer.error(err);
           },
