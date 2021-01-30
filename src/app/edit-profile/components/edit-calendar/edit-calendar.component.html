@@ -4,7 +4,9 @@
       <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
     </div>
   </ng-template>
-  <h1>Manage Calendar</h1>
+  <div class="section-title">
+    <h2 class="text-center">Manage Calendar</h2>
+  </div>
   <div class="row">
     <div class="col" *ngIf="events$ | async; else loading; let events">
       <div class="row text-center">
