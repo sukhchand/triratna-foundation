@@ -10,17 +10,22 @@
   </button>
 </div>
 <div class="modal-body container">
-  <div class="title-field">
-    <label>Title :</label>
-    <input type="text" [(ngModel)]="storyTitle" placeholder="Story Title" autofocus />
+  <div class="form-group row">   
+      <label class="control-label col-sm-2">Title :</label>
+    <div class="col-sm-10">
+      <input type="text" [(ngModel)]="storyTitle" placeholder="Story Title" class="form-control" autofocus />
+    </div>
   </div>
-  <div class="thumbnail-field">
-    <label>Thumbnail :</label>
+ 
+  <div class="form-group row">   
+    <label class="control-label col-sm-2">Thumbnail :</label>
+    <div class="col-sm-10">
     <input
       type="file"
       id="file"
       (change)="handleFileInput($event.target.files)"
     />
+    </div>
   </div>
   <angular-editor
     [placeholder]="'Enter text here...'"
