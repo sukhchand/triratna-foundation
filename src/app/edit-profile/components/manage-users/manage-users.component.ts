@@ -117,33 +117,43 @@ export class ManageUsersComponent implements OnInit {
   }
 
   isActive(event, user) {
-    this.manageUsersService
-      .activeUser(user, event.target.checked)
-      .subscribe((result) => {
-        this.toastr.success(result.message, '', {
-          closeButton: true,
-          positionClass: 'toast-top-center',
-        });
-      }, error=>{
-        this.toastr.error(error, '', {
-          closeButton: true,
-          positionClass: 'toast-top-center',
-        });
-      });
+    let assigningText = event.target.checked ? 'activate' : 'deactivate';
+    let message = `Are you sure you want to ${assigningText} this ${user.firstName}?`;
+    const confirmationModal = this.modalService.open(
+      AssignConfirmationComponent
+    );
+    confirmationModal.componentInstance.data = {
+      event,
+      roleType: null,
+      user,
+      message
+    };
+    confirmationModal.result.then((data) => {
+      if (data == 'success') {
+        console.log(data);
+      } else {
+        event.target.checked = !event.target.checked;
+      }
+    });
   }
 
   assignRoles(event, user, roleType) {
+    let assigningText = event.target.checked ? 'assigning' : 'unassigning';
+    let message = `Are you sure you want to ${assigningText} ${roleType} to ${user.firstName}?`;
     const confirmationModal = this.modalService.open(
       AssignConfirmationComponent
     );
     confirmationModal.componentInstance.data = {
       event,
       roleType,
-      user
+      user,
+      message
     };
     confirmationModal.result.then((data) => {
       if (data == 'success') {
         console.log(data);
+      } else {
+        event.target.checked = !event.target.checked;
       }
     });
   }

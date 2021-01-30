@@ -7,14 +7,14 @@
 }
 .sidenav {
   width: 160px;
-  background-color: #111;
+  background-color: #7A0203;
   overflow-x: hidden;
   padding: 0;
   a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
-    font-size: 20px;
-    color: #818181;
+    font-size: 22px;
+    color: #fff;
     display: block;
     &:hover {
       color: #f1f1f1;
@@ -25,10 +25,11 @@
 .edit-nav-menu {
   padding: 0;
   list-style: none;
+  margin-top: 100px;
 }
 
 .edit-nav-menu li.active {
-  background-color:#adb5bd;
+  background-color:#000;
 }
 
 .edit-nav-menu li.active a {
