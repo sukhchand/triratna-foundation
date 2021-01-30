@@ -7,7 +7,6 @@ import {
   NgbActiveModal,
   NgbModal,
 } from '@ng-bootstrap/ng-bootstrap';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -30,8 +29,7 @@ export class LoginComponent implements OnInit {
     public activeModal: NgbActiveModal,
     private router: Router,
     private formBuilder: FormBuilder,
-    public loginService: LoginService,
-    private toastr: ToastrService
+    public loginService: LoginService
   ) {}
 
   ngOnInit(): void {
@@ -58,10 +56,6 @@ export class LoginComponent implements OnInit {
     });
     this.loginService.signup(registeredData).subscribe(result => {
       this.activeModal.close("signup");
-      this.toastr.success('Successfully Registered', '', {
-        closeButton: true,
-        positionClass: 'toast-top-center',
-      });
     }, (error) => {
       this.error = error;
     })
