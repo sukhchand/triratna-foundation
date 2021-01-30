@@ -72,6 +72,8 @@ import { SendEmailComponent } from './edit-profile/components/manage-email/compo
 import { ConfirmationPopupComponent } from './shared/confirmation-popup/confirmation-popup.component';
 import { AssignConfirmationComponent } from './edit-profile/components/manage-users/components/assign-confirmation/assign-confirmation.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
+import { GalleryComponent } from './gallery/gallery.component';
+import { GalleryAlbumComponent } from './gallery/components/gallery-album/gallery-album.component';
 
 @NgModule({
   declarations: [
@@ -130,7 +132,9 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
     SendEmailComponent,
     ConfirmationPopupComponent,
     AssignConfirmationComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    GalleryComponent,
+    GalleryAlbumComponent
   ],
   imports: [
     BrowserModule,

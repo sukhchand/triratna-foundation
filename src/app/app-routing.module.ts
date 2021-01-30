@@ -41,6 +41,8 @@ import { AuthGuardService } from './login/services/auth-guard.service';
 import { AlbumComponent } from './edit-profile/components/edit-gallery/components/album/album.component';
 import { ViewStoryComponent } from './edit-profile/components/edit-stories/components/view-story/view-story.component';
 import { FullStoryDetailsComponent } from './stories/components/full-story-details/full-story-details.component';
+import { GalleryComponent } from './gallery/gallery.component';
+import { GalleryAlbumComponent } from './gallery/components/gallery-album/gallery-album.component';
 
 const routes: Routes = [
   {
@@ -179,6 +181,14 @@ const routes: Routes = [
   {
     path: 'informations/news',
     component: NewsComponent,
+  },
+  {
+    path: 'informations/gallery',
+    component: GalleryComponent,
+  },
+  {
+    path: 'informations/gallery/album/:id',
+    component: GalleryAlbumComponent,
   },
   {
     path: 'informations/news/news-details/:id',
