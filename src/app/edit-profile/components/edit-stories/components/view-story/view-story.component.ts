@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditStoriesService } from '../../services/edit-stories.service';
 import { Location } from '@angular/common';
@@ -7,7 +7,8 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-view-story',
   templateUrl: './view-story.component.html',
-  styleUrls: ['./view-story.component.scss']
+  styleUrls: ['./view-story.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ViewStoryComponent implements OnInit {
   storyDetails:any;

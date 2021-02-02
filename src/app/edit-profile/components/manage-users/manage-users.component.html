@@ -1,5 +1,7 @@
 <div class="user-container container">
-  <h1>Manage User</h1>
+  <div class="section-title">
+    <h2 class="text-center">Manage User</h2>
+  </div>
   <div class="mediaSelector">
     <div class="row">
       <div class="col-sm-12 text-right">
@@ -88,23 +90,22 @@
           let-value="value"
           let-row="row"
         >
-        <div class="assign-roles">
-          <label>Super Admin</label>
-          <input
-            [(ngModel)]="row.isSuperAdmin"
-            type="checkbox"
-            (change)="assignRoles($event, row, 'SADMIN')"
-          />
-        </div>
-        <div class="assign-roles">
-          <label>Admin</label>
-          <input
-            [(ngModel)]="row.isAdmin"
-            type="checkbox"
-            (change)="assignRoles($event, row, 'ADMIN')"
-          />
-        </div>
-
+          <div class="assign-roles">
+            <label>Super Admin</label>
+            <input
+              [(ngModel)]="row.isSuperAdmin"
+              type="checkbox"
+              (change)="assignRoles($event, row, 'SADMIN')"
+            />
+          </div>
+          <div class="assign-roles">
+            <label>Admin</label>
+            <input
+              [(ngModel)]="row.isAdmin"
+              type="checkbox"
+              (change)="assignRoles($event, row, 'ADMIN')"
+            />
+          </div>
         </ng-template>
       </ngx-datatable-column>
       <ngx-datatable-column name="Activate" [resizeable]="false">

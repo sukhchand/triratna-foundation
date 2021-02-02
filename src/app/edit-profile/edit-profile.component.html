@@ -4,16 +4,16 @@
       <li routerLinkActive="active" *ngIf="isSuperAdmin || isAdmin">
         <a routerLink="calendar">Calendar</a>
       </li>
-      <li routerLinkActive="active" *ngIf="isSuperAdmin">
+      <li routerLinkActive="active" *ngIf="isSuperAdmin || isAdmin">
         <a routerLink="stories">Stories</a>
       </li>
-      <li routerLinkActive="active" *ngIf="isSuperAdmin" >
+      <li routerLinkActive="active" *ngIf="isSuperAdmin || isAdmin" >
         <a routerLink="news">News</a>
       </li>
       <li routerLinkActive="active" *ngIf="isSuperAdmin || isAdmin">
         <a routerLink="gallery">Gallery</a>
       </li>
-      <li routerLinkActive="active" *ngIf="isSuperAdmin">
+      <li routerLinkActive="active" *ngIf="isSuperAdmin || isAdmin">
         <a routerLink="manage-email">Manage Email</a>
       </li>
       <li routerLinkActive="active" *ngIf="isSuperAdmin">

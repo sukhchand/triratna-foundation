@@ -13,7 +13,7 @@
   a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 22px;
     color: #818181;
     display: block;
     &:hover {
@@ -25,6 +25,7 @@
 .edit-nav-menu {
   padding: 0;
   list-style: none;
+  margin-top: 50px;
 }
 
 .edit-nav-menu li.active {
