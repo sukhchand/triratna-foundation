@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { StoriesService } from '../../services/stories.service';
@@ -8,7 +8,8 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'full-story-details',
   templateUrl: './full-story-details.component.html',
-  styleUrls: ['./full-story-details.component.scss']
+  styleUrls: ['./full-story-details.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class FullStoryDetailsComponent implements OnInit {
   storyId: string;

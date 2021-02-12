@@ -22,15 +22,17 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    if (
-      JSON.parse(localStorage.getItem('userData'))?.user.roles[0].includes(
-        'SADMIN'
-      ) ||
-      JSON.parse(localStorage.getItem('userData'))?.user.roles[0].includes(
-        'ADMIN'
-      )
-    ) {
-      this.rolesPermission = true;
+    if(JSON.parse(localStorage.getItem('userData'))?.user.roles) {
+      if (
+        JSON.parse(localStorage.getItem('userData'))?.user.roles[0].includes(
+          'SADMIN'
+        ) ||
+        JSON.parse(localStorage.getItem('userData'))?.user.roles[0].includes(
+          'ADMIN'
+        )
+      ) {
+        this.rolesPermission = true;
+      }
     }
     this.countryList = ['India', 'Nepal', 'USA'];
   }

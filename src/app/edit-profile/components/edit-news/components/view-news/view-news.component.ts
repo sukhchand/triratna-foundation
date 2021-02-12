@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EditNewsService } from '../../services/edit-news.service';
 import { Location } from '@angular/common';
@@ -7,7 +7,8 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-view-news',
   templateUrl: './view-news.component.html',
-  styleUrls: ['./view-news.component.scss']
+  styleUrls: ['./view-news.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ViewNewsComponent implements OnInit {
   newsId: string;
