@@ -3,10 +3,8 @@
     <div class="spinner text-center">
       <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
     </div>
-  </ng-template>
-  <div class="section-title">
+  </ng-template>  
     <h2 class="text-center">Manage Calendar</h2>
-  </div>
   <div class="row">
     <div class="col" *ngIf="events$ | async; else loading; let events">
       <div class="row text-center">
