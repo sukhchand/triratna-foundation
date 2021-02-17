@@ -10,233 +10,349 @@
 @import '~bootstrap/scss/bootstrap';
 
 // Services CSS Start
-.page-banner.tram-banner .banner-text h2{
-    color: #00BCD4;
+.page-banner.tram-banner .banner-text h2 {
+  color: #00BCD4;
 }
+
 .join-us-banner {
-    background: #007bc6 url('assets/images/join-us.svg');
-    background-size: 25%;
+  background: #007bc6 url('assets/images/join-us.svg');
+  background-size: 25%;
 }
+
 .financials-banner {
-    background: #434D7A  url('assets/images/financial.svg');
+  background: #434D7A url('assets/images/financial.svg');
 }
+
 .page-banner {
-    height: 250px;
-    background-position-x: 90%;
-    background-position-y: 5px;
-    background-repeat: no-repeat;
+  height: 250px;
+  background-position-x: 90%;
+  background-position-y: 5px;
+  background-repeat: no-repeat;
 }
+
 .service-banner-1 {
-    background: #c6087a;
+  background: #c6087a;
 }
+
 .service-banner-2 {
-    background: #0899c6;
+  background: #0899c6;
 }
 
 .service-banner-3 {
-    background: #9708c6;
+  background: #9708c6;
 }
 
 .service-banner-4 {
-    background: #0889c6;
+  background: #0889c6;
 }
 
 .service-banner-5 {
-    background: #08c689;
+  background: #08c689;
 }
 
 .service-banner-6 {
-    background: #c64508;
+  background: #c64508;
 }
 
 .service-banner-7 {
-    background: #08c6c6;
+  background: #08c6c6;
 }
 
 .service-banner-8 {
-    background: #434D7A;
+  background: #434D7A;
 }
 
 .service-banner-9 {
-    background: #6308c6;
+  background: #6308c6;
 }
 
 .service-banner-10 {
-    background: #4CAF50;
+  background: #4CAF50;
 }
 
 .service-banner-11 {
-    background: #26A69A;
+  background: #26A69A;
 }
 
 .service-banner-12 {
-    background: #08c6a2;
+  background: #08c6a2;
 }
 
 .service-banner-13 {
-    background: #08c6c6;
+  background: #08c6c6;
 }
 
 .page-banner .banner-text {
-    text-align: center;
-    height: 250px;
-    vertical-align: middle;
-    display: table-cell;
+  text-align: center;
+  height: 250px;
+  vertical-align: middle;
+  display: table-cell;
 }
 
 .page-banner .banner-text>h3 {
-    color: azure;
-    font-size: 25px;
-    font-weight: 200;
+  color: azure;
+  font-size: 25px;
+  font-weight: 200;
 }
 
-.page-banner.NIH-banner .banner-text>h3, .page-banner.NPPES-banner .banner-text>h3, .page-banner.CIO-SP3-banner .banner-text>h3 {
-    line-height: 1.41;
-    font-size: 28px;
+.page-banner.NIH-banner .banner-text>h3,
+.page-banner.NPPES-banner .banner-text>h3,
+.page-banner.CIO-SP3-banner .banner-text>h3 {
+  line-height: 1.41;
+  font-size: 28px;
 }
 
 .page-banner .banner-text h4 {
-    color: azure;
-    font-size: 18px;
-    font-weight: 200;
-    display: inline;
+  color: azure;
+  font-size: 18px;
+  font-weight: 200;
+  display: inline;
 }
 
 .page-banner .banner-text p {
-    color: azure;
-    font-size: 18px;
-    font-weight: 200;
-    display: inline;
+  color: azure;
+  font-size: 18px;
+  font-weight: 200;
+  display: inline;
 }
 
 .bg-white {
-    background: #fff;
+  background: #fff;
 }
 
 .bg-grey {
-    background: #F1F1F1;
+  background: #F1F1F1;
 }
 
 .page-banner .banner-text h2 {
-    color: azure;
-    font-size: 30px;
+  color: azure;
+  font-size: 30px;
 }
+
 @media only screen and (max-width: 992px) {
-    .page-banner {
-        height: auto;
-    }
-    .page-banner .banner-text h2 {
-        font-size: 26px;
-        line-height: 1.2;
-    }
-    .page-banner .banner-text p {
-        font-size: 16px;
-    }
-    .page-banner .banner-text>h3 {
-        color: azure;
-        font-size: 20px;
-        font-weight: 200;
-    }
-    .page-banner .banner-text h4 {
-        color: azure;
-        font-size: 14px;
-        font-weight: 200;
-        display: inline;
-    }
-    .page-banner .banner-text {
-        padding: 20px 0;
-        text-align: left;
-        width: auto;
-        height: auto;
-    }
+  .page-banner {
+    height: auto;
+  }
+
+  .page-banner .banner-text h2 {
+    font-size: 26px;
+    line-height: 1.2;
+  }
+
+  .page-banner .banner-text p {
+    font-size: 16px;
+  }
+
+  .page-banner .banner-text>h3 {
+    color: azure;
+    font-size: 20px;
+    font-weight: 200;
+  }
+
+  .page-banner .banner-text h4 {
+    color: azure;
+    font-size: 14px;
+    font-weight: 200;
+    display: inline;
+  }
+
+  .page-banner .banner-text {
+    padding: 20px 0;
+    text-align: left;
+    width: auto;
+    height: auto;
+  }
 }
+
 // Services CSS End
 
 // Common CSS Start
 .main-list {
-    list-style: none;
-    padding: 0;
-    margin-left: 25px;
+  list-style: none;
+  padding: 0;
+  margin-left: 25px;
 }
+
 .listblue a {
-    color:#3D80BB
+  color: #3D80BB
 }
 
 .main-list li {
-    margin-left: 20px;
-    position: relative;
-    margin-bottom: 10px;
-    font-size: 1em;
-    text-align: left;
+  margin-left: 20px;
+  position: relative;
+  margin-bottom: 10px;
+  font-size: 1em;
+  text-align: left;
 }
 
 .main-list li:before {
-    content: "";
-    display: inline-block;
-    height: 14px;
-    width: 14px;
-    background: #F09200;
-    border-radius: 50%;
-    margin-right: 0.5em;
-    position: absolute;
-    left: -20px;
-    top: 3px;
+  content: "";
+  display: inline-block;
+  height: 14px;
+  width: 14px;
+  background: #F09200;
+  border-radius: 50%;
+  margin-right: 0.5em;
+  position: absolute;
+  left: -20px;
+  top: 3px;
 }
 
 .main-list li:after {
-    content: "";
-    display: inline-block;
-    height: 6px;
-    width: 6px;
-    background: #fff;
-    border-radius: 50%;
-    margin-right: 0.5em;
-    position: absolute;
-    left: -16px;
-    top: 7px;
-    z-index: 1;
+  content: "";
+  display: inline-block;
+  height: 6px;
+  width: 6px;
+  background: #fff;
+  border-radius: 50%;
+  margin-right: 0.5em;
+  position: absolute;
+  left: -16px;
+  top: 7px;
+  z-index: 1;
 }
+
 .paddingtop-20 {
-    padding-top: 20px;
+  padding-top: 20px;
 }
+
 .paddingbottom-20 {
-    padding-bottom: 20px;
+  padding-bottom: 20px;
 }
+
 .paddingtop-50 {
-    padding-top: 50px;
+  padding-top: 50px;
 }
+
 .paddingbottom-10 {
-    padding-bottom: 10px;
+  padding-bottom: 10px;
 }
+
 .paddingbottom-50 {
-    padding-bottom: 50px;
+  padding-bottom: 50px;
 }
+
 .margin-top-20 {
-    margin-top: 20px;
+  margin-top: 20px;
 }
+
 .margin-bottom-20 {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
+
 .margin-top-50 {
-    margin-top: 50px;
+  margin-top: 50px;
 }
-h1, h2, h3, h4, h5, h6 {
-    color: #687074;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #687074;
 }
+
 h2 {
-    color: #1A93C1;
-    text-transform: none;
-    font-size: 28px;
+  color: #1A93C1;
+  text-transform: none;
+  font-size: 28px;
 }
+
 h5 {
-    color: #d39e00;
-    text-transform: none;
-    font-size: 28px;
+  color: #d39e00;
+  text-transform: none;
+  font-size: 28px;
 }
+
 .color-red {
-    color: red;
+  color: red;
 }
-.section-title{
-    margin-top: 120px;
+
+.section-title {
+  margin-top: 120px;
 }
+
 // Common CSS End
+
+// Map CSS Start
+.popin {
+  background: #fff;
+  border-top: 0;
+}
+
+.mapControl {
+  background: #fff;
+  /*width: 100%;*/
+  width: 390px;
+  float: left;
+  display: inline-block;
+}
+
+ul.Controls {
+  width: 100%;
+}
+
+.mapControl li b {
+  margin: 2px 0 6px 0;
+  font-size: 16px;
+  line-height: 22px;
+  text-shadow: none;
+  font-weight: normal;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.mapControl li:hover {
+  background: rgba(39, 58, 78, 0.02);
+  cursor: pointer;
+}
+
+.mapControl li {
+  margin-bottom: 6px;
+  color: #555;
+  border-bottom: 1px solid #CFD8DC;
+  margin: 0 -1px 0px 0;
+  width: 100%;
+  height: 79px;
+  text-align: center;
+}
+
+.mapControl li:last-child {
+  border-bottom: none;
+}
+
+.mapControl li a {
+  padding: 0 !important;
+}
+
+.mapControl li p {
+  float: left;
+  margin-bottom: 0;
+}
+
+.mapControl li p:first-child {
+  width: 130px;
+  background: #78909C;
+  color: white;
+  padding: 12px 5px;
+  text-align: center;
+  height: 78px;
+}
+
+.mapControl li p:last-child {
+  //   padding: 9px 7px;
+  width: calc(100% - 130px);
+}
+
+@media only screen and (max-width: 768px) {
+  .mapControl {
+    width: 100%;
+    float: none;
+  }
+  .mapControl li p:last-child {
+    font-size: 12px;
+  }
+
+}
+
+// Map CSS End
