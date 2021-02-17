@@ -17,7 +17,9 @@ export class ViewNewsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private editNewsService: EditNewsService, private location: Location, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe( params => this.newsId = params.id );
+    this.route.params.subscribe( params => {
+      this.newsId = params.id
+    } );
     this.getNewsById();
   }
 

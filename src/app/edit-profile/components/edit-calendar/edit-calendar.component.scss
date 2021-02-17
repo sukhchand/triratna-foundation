@@ -106,3 +106,12 @@
     height: 45px;
   }
 }
+
+@media (max-width: 480px) {
+  .calendar-page {
+    padding-top: 0;
+  }
+  .calendar-page .addEvents {
+    font-size: 20px;
+  }
+}

@@ -41,3 +41,8 @@ label {
     text-transform: uppercase;
   }
 }
+@media (max-width: 480px) {
+  .profile-container {
+    margin-top: 40px;
+  }
+}

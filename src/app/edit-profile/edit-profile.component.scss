@@ -35,3 +35,52 @@
 .edit-nav-menu li.active a {
   color: #fff;
 }
+
+.sub-menu-icon {
+  margin-top: 50px;
+  margin-left: 20px;
+  font-size: 20px;
+  display: none;
+}
+.noPermission {
+  max-width: 100%;
+  flex: 0 0 100%;
+}
+
+
+@media (max-width: 480px) {
+  .sidenav {
+    display: none;
+  }
+  .profile-content {
+    max-width: 100%;
+    padding-top: 0;
+  }
+  .sub-menu-icon {
+    display: block;
+    height: 30px;
+  }
+  .showSubMenu {
+    display: block;
+    position: fixed;
+    padding: 0;
+    margin: 0;
+    top: 90px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    max-width: initial;
+    z-index: 99;
+  }
+  .edit-nav-menu {
+    margin: 0;
+  }
+  .close-sub-menu {
+    margin-top: 20px;
+    color: #fff;
+    text-align: right;
+    padding: 0 20px;
+    font-size: 30px;
+  }
+}

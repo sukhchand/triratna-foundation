@@ -56,3 +56,17 @@
   }
 }
 
+@media (max-width: 480px) {
+  .stories-container {
+    padding-top: 45px;
+  }
+  .stories-container .story-card .story-thumbnail .default-image {
+    font-size: 70px;
+  }
+  .stories-container .story-card .actions span {
+    margin: 0;
+  }
+  .stories-container .story-card .story-thumbnail img {
+    width: 70px;
+  }
+}

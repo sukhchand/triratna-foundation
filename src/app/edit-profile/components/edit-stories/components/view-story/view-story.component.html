@@ -1,4 +1,6 @@
 <div class="view-story-container container" *ngIf="storyDetails">
   <button type="button" class="btn btn-primary" (click)="navigateBack()">Back</button>
+  <h2 class="text-center">{{storyDetails.title}}</h2>
+
   <div [innerHTML]="storyDetails.content" class="story-content"></div>
 </div>

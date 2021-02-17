@@ -1,5 +1,5 @@
 import { LoginComponent } from './../login/login.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { LoginService } from '../login/services/login.service';
@@ -15,13 +15,24 @@ export class HeaderComponent implements OnInit {
   selectedCountry: string = 'India';
   countryList: string[] = [];
   isAuthenticated: boolean = JSON.parse(localStorage.getItem('userData'));
+
+  @ViewChild("menuList") menuList: ElementRef;
+
   constructor(
     private modalService: NgbModal,
     private router: Router,
-    public loginService: LoginService
-  ) {}
+    public loginService: LoginService,
+    private renderer: Renderer2
+  ) {
+    router.events.subscribe((val) => {
+      if(this.menuList.nativeElement.classList.contains("show")) {
+        this.renderer.removeClass(this.menuList.nativeElement, "show");
+      }
+    });
+  }
 
   ngOnInit() {
+
     if(JSON.parse(localStorage.getItem('userData'))?.user.roles) {
       if (
         JSON.parse(localStorage.getItem('userData'))?.user.roles[0].includes(

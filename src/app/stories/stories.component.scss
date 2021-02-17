@@ -38,3 +38,18 @@
     margin-top: 50px;
   }
 }
+
+@media (max-width: 480px) {
+  .stories-container .card-list .story-thumbnail .default-image {
+    font-size: 70px;
+  }
+  .stories-container .card-list .story-thumbnail img {
+    width: 70px;
+  }
+  .stories-container {
+    padding: 30px 25px;
+  }
+  .ngx-pagination {
+    padding: 0;
+  }
+}

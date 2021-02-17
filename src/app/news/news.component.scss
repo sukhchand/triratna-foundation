@@ -38,3 +38,18 @@
     margin-top: 50px;
   }
 }
+
+@media (max-width: 480px) {
+  .news-container {
+    padding: 30px 25px;
+  }
+  .news-container .card-list .news-thumbnail .default-image {
+    font-size: 70px;
+  }
+  .news-container .card-list .news-thumbnail img {
+    width: 70px;
+  }
+  .ngx-pagination {
+    padding: 0;
+  }
+}

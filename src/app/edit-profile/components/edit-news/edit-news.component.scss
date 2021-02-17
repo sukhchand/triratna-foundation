@@ -62,3 +62,18 @@
     max-width: 900px;
   }
 }
+
+@media (max-width: 480px) {
+  .news-container {
+    padding-top: 45px;
+  }
+  .news-container .news-card .news-thumbnail .default-image {
+    font-size: 70px;
+  }
+  .news-container .news-card .actions span {
+    margin: 0;
+  }
+  .news-container .news-card .news-thumbnail img {
+    width: 70px;
+  }
+}
