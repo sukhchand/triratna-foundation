@@ -2,6 +2,8 @@ import { LoginService } from './services/login.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+
 import {
   ModalDismissReasons,
   NgbActiveModal,
@@ -29,7 +31,8 @@ export class LoginComponent implements OnInit {
     public activeModal: NgbActiveModal,
     private router: Router,
     private formBuilder: FormBuilder,
-    public loginService: LoginService
+    public loginService: LoginService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -55,6 +58,10 @@ export class LoginComponent implements OnInit {
       registeredData.append(signupFormKey,this.signupForm.value[signupFormKey]);
     });
     this.loginService.signup(registeredData).subscribe(result => {
+      this.toastr.success(result.message, '', {
+        closeButton: true,
+        positionClass: 'toast-top-center',
+      });
       this.activeModal.close("signup");
     }, (error) => {
       this.error = error;
@@ -69,6 +76,10 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.loginForm.value).subscribe(response => {
       this.loginService.getUserById(response.user.id).subscribe(result => {
         window.location.reload();
+        this.toastr.success(result.message, '', {
+          closeButton: true,
+          positionClass: 'toast-top-center',
+        });
         this.activeModal.close("Login");
       },(error) => {
         if(error) {

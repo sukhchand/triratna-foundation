@@ -1,7 +1,5 @@
 <div class="user-container container">
-  <div class="section-title">
-    <h2 class="text-center">Manage User</h2>
-  </div>
+    <h2 class="text-center" style="margin-top: 26px;">Manage User</h2>
   <div class="mediaSelector">
     <div class="row">
       <div class="col-sm-12 text-right">
@@ -13,19 +11,19 @@
     <input
       type="text"
       class="searchField"
-      placeholder="Type to filter the name column..."
+      placeholder="Filter By Name..."
       (keyup)="updateFilter($event, 'firstName')"
     />
     <input
       type="text"
       class="searchField"
-      placeholder="Type to filter the userType column..."
+      placeholder="Filter By User Type..."
       (keyup)="updateFilter($event, 'userType')"
     />
     <input
       type="text"
       class="searchField"
-      placeholder="Type to filter the country column..."
+      placeholder="Filter By Country..."
       (keyup)="updateFilter($event, 'country')"
     />
     <ngx-datatable

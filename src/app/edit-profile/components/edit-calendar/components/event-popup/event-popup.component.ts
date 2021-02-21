@@ -79,6 +79,7 @@ export class EventPopupComponent implements OnInit {
             closeButton: true,
             positionClass: 'toast-top-center',
           });
+          this.close('success');
         }, error => {
           this.toastr.error(error, '', {
             closeButton: true,
