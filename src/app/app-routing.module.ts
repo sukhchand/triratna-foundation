@@ -12,7 +12,6 @@ import { NewsComponent } from './news/news.component';
 import { StoriesComponent } from './stories/stories.component';
 import { EventsComponent } from './events/events.component';
 import { CalendarComponent } from './calendar/calendar.component';
-import { VolunteersComponent } from './volunteers/volunteers.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -43,6 +42,13 @@ import { ViewStoryComponent } from './edit-profile/components/edit-stories/compo
 import { FullStoryDetailsComponent } from './stories/components/full-story-details/full-story-details.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { GalleryAlbumComponent } from './gallery/components/gallery-album/gallery-album.component';
+import { DevoteeComponent } from './volunteers/components/devotee/devotee.component';
+import { DonoragencyComponent } from './volunteers/components/donoragency/donoragency.component';
+import { MonksandnunsComponent } from './volunteers/components/monksandnuns/monksandnuns.component';
+import { PartnersComponent } from './volunteers/components/partners/partners.component';
+import { SponsorsComponent } from './volunteers/components/sponsors/sponsors.component';
+import { WellwishersComponent } from './volunteers/components/wellwishers/wellwishers.component';
+import { DonorsComponent } from './volunteers/components/donors/donors.component';
 
 const routes: Routes = [
   {
@@ -167,7 +173,6 @@ const routes: Routes = [
       },
     ],
   },
-  { path: 'volunteers', component: VolunteersComponent },
   { path: 'informations/calendar', component: CalendarComponent },
   { path: 'informations/events', component: EventsComponent },
   {
@@ -196,7 +201,14 @@ const routes: Routes = [
   },
   { path: 'informations/videos', component: VideosComponent },
   { path: 'informations/photos', component: PhotosComponent },
-  { path: 'donations', component: DonateComponent }
+  { path: 'donations', component: DonateComponent },
+  { path: 'volunteers/devotee', component: DevoteeComponent },
+  { path: 'volunteers/donoragency', component: DonoragencyComponent },
+  { path: 'volunteers/monksandnuns', component: MonksandnunsComponent },
+  { path: 'volunteers/partners', component: PartnersComponent },
+  { path: 'volunteers/sponsers', component: SponsorsComponent },
+  { path: 'volunteers/wellwishers', component: WellwishersComponent },
+  { path: 'volunteers/donors', component: DonorsComponent },
 ];
 
 @NgModule({

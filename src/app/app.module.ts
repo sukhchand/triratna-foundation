@@ -32,7 +32,6 @@ import { ResearchandinnovationComponent } from './researchandinnovation/research
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoginComponent } from './login/login.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
-import { VolunteersComponent } from './volunteers/volunteers.component';
 import { DonateComponent } from './donate/donate.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { EventsComponent } from './events/events.component';
@@ -74,6 +73,13 @@ import { AssignConfirmationComponent } from './edit-profile/components/manage-us
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { GalleryAlbumComponent } from './gallery/components/gallery-album/gallery-album.component';
+import { MonksandnunsComponent } from './volunteers/components/monksandnuns/monksandnuns.component';
+import { DevoteeComponent } from './volunteers/components/devotee/devotee.component';
+import { WellwishersComponent } from './volunteers/components/wellwishers/wellwishers.component';
+import { SponsorsComponent } from './volunteers/components/sponsors/sponsors.component';
+import { DonoragencyComponent } from './volunteers/components/donoragency/donoragency.component';
+import { PartnersComponent } from './volunteers/components/partners/partners.component';
+import { DonorsComponent } from './volunteers/components/donors/donors.component';
 
 @NgModule({
   declarations: [
@@ -101,7 +107,6 @@ import { GalleryAlbumComponent } from './gallery/components/gallery-album/galler
     ResearchandinnovationComponent,
     LoginComponent,
     EditProfileComponent,
-    VolunteersComponent,
     DonateComponent,
     CalendarComponent,
     EventsComponent,
@@ -134,7 +139,14 @@ import { GalleryAlbumComponent } from './gallery/components/gallery-album/galler
     AssignConfirmationComponent,
     SpinnerComponent,
     GalleryComponent,
-    GalleryAlbumComponent
+    GalleryAlbumComponent,
+    MonksandnunsComponent,
+    DevoteeComponent,
+    WellwishersComponent,
+    SponsorsComponent,
+    DonoragencyComponent,
+    PartnersComponent,
+    DonorsComponent
   ],
   imports: [
     BrowserModule,

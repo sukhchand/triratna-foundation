@@ -10,11 +10,11 @@
   <div class="userList-container">
     <input
       type="text"
-      class="searchField"
+      class="searchField form-control"
       placeholder="Filter By Name..."
       (keyup)="updateFilter($event, 'firstName')"
     />
-    <input
+    <!-- <input
       type="text"
       class="searchField"
       placeholder="Filter By User Type..."
@@ -25,7 +25,7 @@
       class="searchField"
       placeholder="Filter By Country..."
       (keyup)="updateFilter($event, 'country')"
-    />
+    /> -->
     <ngx-datatable
       #table
       class="material"
