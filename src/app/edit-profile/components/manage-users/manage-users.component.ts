@@ -96,18 +96,17 @@ export class ManageUsersComponent implements OnInit {
   updateFilter(event, fieldName) {
     const val = event.target.value.toLowerCase();
     let temp;
-
-    if ((fieldName = 'firstName')) {
+    if ((fieldName === 'firstName')) {
       temp = this.searchData.filter(function (d) {
         return d.firstName.toLowerCase().indexOf(val) !== -1 || !val;
       });
     }
-    if ((fieldName = 'userType')) {
+    if ((fieldName === 'userType')) {
       temp = this.searchData.filter(function (d) {
         return d.userType.toLowerCase().indexOf(val) !== -1 || !val;
       });
     }
-    if ((fieldName = 'country')) {
+    if ((fieldName === 'country')) {
       temp = this.searchData.filter(function (d) {
         return d.country.toLowerCase().indexOf(val) !== -1 || !val;
       });

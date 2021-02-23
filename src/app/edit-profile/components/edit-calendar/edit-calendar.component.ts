@@ -52,7 +52,7 @@ export class EditCalendarComponent implements OnInit {
     private modalService: NgbModal,
     private http: HttpClient,
     @Inject(DOCUMENT) private document: Document,
-    private toastr: ToastrService
+    private toastr: ToastrService,
   ) {
   }
 

@@ -27,7 +27,7 @@
       </li>
     </ul>
   </div>
-  <div class="col-10 paddingtop-20 paddingbottom-20 profile-content" [ngClass]="{'noPermission': (!isSuperAdmin || !isAdmin)}">
+  <div class="col-12 profile-content" [ngClass]="{'noPermission': (!isSuperAdmin || !isAdmin)}">
     <router-outlet></router-outlet>
   </div>
 </div>

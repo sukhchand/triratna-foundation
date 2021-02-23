@@ -55,10 +55,19 @@
                         <li class=""><a class="dropdown-item" routerLink="services/research_and_innovation">Research &
                                 Innovation</a></li>
                     </ul>
-                </li>
-                <li class="nav-item" routerLinkActive="active">
-                    <a class="" routerLink="volunteers">Volunteers</a>
-                </li>
+                </li>                
+                <li class="nav-item dropdown" routerLinkActive="active" ngbDropdown>
+                    <a ngbDropdownToggle>Volunteers</a>
+                    <ul class="dropdown-menu" ngbDropdownMenu>
+                        <li class=""><a class="dropdown-item" routerLink="volunteers/monksandnuns">Monks & Nuns</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="volunteers/devotee">Devotee</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="volunteers/wellwishers">Well-Wishers</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="volunteers/donoragency">Donor Agency</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="volunteers/partners">Affiliates or Partners</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="volunteers/sponsers">Sponsor</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="volunteers/donors">Donors</a></li>
+                    </ul>
+                </li>              
                 <li class="nav-item dropdown" routerLinkActive="active" ngbDropdown>
                     <a ngbDropdownToggle>Informations</a>
                     <ul class="dropdown-menu" ngbDropdownMenu>
