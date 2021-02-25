@@ -49,6 +49,7 @@ import { PartnersComponent } from './volunteers/components/partners/partners.com
 import { SponsorsComponent } from './volunteers/components/sponsors/sponsors.component';
 import { WellwishersComponent } from './volunteers/components/wellwishers/wellwishers.component';
 import { DonorsComponent } from './volunteers/components/donors/donors.component';
+import { PoliciesandstandardComponent } from './policiesandstandard/policiesandstandard.component';
 
 const routes: Routes = [
   {
@@ -199,6 +200,8 @@ const routes: Routes = [
     path: 'informations/news/news-details/:id',
     component: NewsDetailsComponent,
   },
+  { path: 'informations/policiesandstandard', component: PoliciesandstandardComponent },
+
   { path: 'informations/videos', component: VideosComponent },
   { path: 'informations/photos', component: PhotosComponent },
   { path: 'donations', component: DonateComponent },

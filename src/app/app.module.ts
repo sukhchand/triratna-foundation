@@ -80,6 +80,7 @@ import { SponsorsComponent } from './volunteers/components/sponsors/sponsors.com
 import { DonoragencyComponent } from './volunteers/components/donoragency/donoragency.component';
 import { PartnersComponent } from './volunteers/components/partners/partners.component';
 import { DonorsComponent } from './volunteers/components/donors/donors.component';
+import { PoliciesandstandardComponent } from './policiesandstandard/policiesandstandard.component';
 
 @NgModule({
   declarations: [
@@ -146,7 +147,8 @@ import { DonorsComponent } from './volunteers/components/donors/donors.component
     SponsorsComponent,
     DonoragencyComponent,
     PartnersComponent,
-    DonorsComponent
+    DonorsComponent,
+    PoliciesandstandardComponent
   ],
   imports: [
     BrowserModule,
