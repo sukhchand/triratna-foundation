@@ -81,6 +81,7 @@ import { DonoragencyComponent } from './volunteers/components/donoragency/donora
 import { PartnersComponent } from './volunteers/components/partners/partners.component';
 import { DonorsComponent } from './volunteers/components/donors/donors.component';
 import { PoliciesandstandardComponent } from './policiesandstandard/policiesandstandard.component';
+import { TermandconditionComponent } from './termandcondition/termandcondition.component';
 
 @NgModule({
   declarations: [
@@ -148,7 +149,8 @@ import { PoliciesandstandardComponent } from './policiesandstandard/policiesands
     DonoragencyComponent,
     PartnersComponent,
     DonorsComponent,
-    PoliciesandstandardComponent
+    PoliciesandstandardComponent,
+    TermandconditionComponent
   ],
   imports: [
     BrowserModule,

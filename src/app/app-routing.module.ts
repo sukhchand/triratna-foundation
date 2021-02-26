@@ -50,6 +50,7 @@ import { SponsorsComponent } from './volunteers/components/sponsors/sponsors.com
 import { WellwishersComponent } from './volunteers/components/wellwishers/wellwishers.component';
 import { DonorsComponent } from './volunteers/components/donors/donors.component';
 import { PoliciesandstandardComponent } from './policiesandstandard/policiesandstandard.component';
+import { TermandconditionComponent } from './termandcondition/termandcondition.component';
 
 const routes: Routes = [
   {
@@ -201,6 +202,7 @@ const routes: Routes = [
     component: NewsDetailsComponent,
   },
   { path: 'informations/policiesandstandard', component: PoliciesandstandardComponent },
+  { path: 'informations/termandcondition', component: TermandconditionComponent },
 
   { path: 'informations/videos', component: VideosComponent },
   { path: 'informations/photos', component: PhotosComponent },
