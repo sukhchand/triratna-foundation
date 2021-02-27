@@ -10,7 +10,7 @@
           <img src="data:image/png;base64,{{response.result[0].thumbnail?.data}}" alt="Album"
             *ngIf="response.result[0].thumbnail?.data">
           <img src="assets/images/photo-library.svg" alt="Album" *ngIf="response.result[0].thumbnail==null">
-          <h6>{{response.result[0].albumName}}</h6>
+          <h6 >{{response.result[0].albumName}}</h6>
         </div>
       </li>
     </ul>
