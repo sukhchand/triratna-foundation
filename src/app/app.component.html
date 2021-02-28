@@ -2,6 +2,6 @@
 <div class="" style="margin-top: 80px">
   <router-outlet></router-outlet>
 </div>
-<donation-bar></donation-bar>
-<app-footer></app-footer>
+<donation-bar *ngIf="!hideCommonFooter"></donation-bar>
+<app-footer *ngIf="!hideCommonFooter"></app-footer>
 <app-my-loader></app-my-loader>

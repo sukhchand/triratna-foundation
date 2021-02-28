@@ -1,9 +1,17 @@
 <div class="row edit-profile-container">
-  <a  class="sub-menu-icon" *ngIf="isSuperAdmin || isAdmin" (click)="showSubMenu=!showSubMenu">
+  <a
+    class="sub-menu-icon"
+    *ngIf="isSuperAdmin || isAdmin"
+    (click)="showSubMenu = !showSubMenu"
+  >
     <i class="fa fa-bars"></i>
   </a>
-  <div class="col-2 sidenav" *ngIf="isSuperAdmin || isAdmin" [ngClass]="{'showSubMenu': showSubMenu}">
-    <div class="close-sub-menu" (click)="showSubMenu=false">
+  <div
+    class="col-2 sidenav"
+    *ngIf="isSuperAdmin || isAdmin"
+    [ngClass]="{ showSubMenu: showSubMenu }"
+  >
+    <div class="close-sub-menu" (click)="showSubMenu = false">
       <i class="fa fa-times" aria-hidden="true"></i>
     </div>
     <ul class="edit-nav-menu">
@@ -13,7 +21,7 @@
       <li routerLinkActive="active" *ngIf="isSuperAdmin || isAdmin">
         <a routerLink="stories">Stories</a>
       </li>
-      <li routerLinkActive="active" *ngIf="isSuperAdmin || isAdmin" >
+      <li routerLinkActive="active" *ngIf="isSuperAdmin || isAdmin">
         <a routerLink="news">News</a>
       </li>
       <li routerLinkActive="active" *ngIf="isSuperAdmin || isAdmin">
@@ -27,7 +35,13 @@
       </li>
     </ul>
   </div>
-  <div class="col-12 profile-content" [ngClass]="{'noPermission': (!isSuperAdmin || !isAdmin)}">
+  <div
+    class="col profile-content"
+    [ngClass]="{ noPermission: !isSuperAdmin || !isAdmin }"
+  >
     <router-outlet></router-outlet>
+    <donation-bar></donation-bar>
+
+    <app-footer></app-footer>
   </div>
 </div>

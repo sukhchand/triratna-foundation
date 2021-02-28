@@ -1,4 +1,4 @@
-export const BASE_URL = "https://ec2-3-15-49-201.us-east-2.compute.amazonaws.com:8080";
+export const BASE_URL = "http://localhost:8088";
 export const COUNTRY_DATA = [
   {
     "name": "Israel",
