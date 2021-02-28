@@ -1,0 +1,40 @@
+.donation-bar-container {
+  padding: 20px 30px;
+  background: #f00;
+  margin: 10px auto;
+  background: linear-gradient(0deg, #1b6bb2 0%, #5bacdd 100%, #00d4ff 100%);
+  .donate-container,
+  .sign-in-container {
+    color: #fff;
+    p {
+      margin: 0;
+      font-weight: bold;
+    }
+    button {
+      border: none;
+      border-radius: 3px;
+      padding: 5px 15px;
+      background: #ce2f2b;
+      color: #fff;
+      margin: auto 10px;
+      font-weight: bold;
+      -webkit-transition: background 0.5s;
+        transition: background 0.5s;
+      &:hover {
+        background: #000;
+
+      }
+    }
+  }
+  .sign-in-container {
+    text-align: right;
+  }
+  .row.isAuthenticated {
+    .col-4 {
+      display: none;
+    }
+    .donate-container p{
+      text-align: center;
+    }
+  }
+}

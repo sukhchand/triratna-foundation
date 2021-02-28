@@ -1,0 +1,11 @@
+<div class="donation-bar-container container-fluid container">
+  <div class="row" [ngClass]="{'isAuthenticated': isAuthenticated}">
+    <div class="donate-container col" >
+      <p>PLEASE CLICK HERE TO <button routerLink="/donations">DONATE US</button></p>
+    </div>
+    <div class="col-4"></div>
+    <div class="sign-in-container col-4">
+      <p>PLEASE SIGN UP AS A <button (click)="openLoginPopup()">VOLUNTEER</button></p>
+    </div>
+  </div>
+</div>
