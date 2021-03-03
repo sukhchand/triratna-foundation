@@ -1,6 +1,6 @@
 <div class="stories-container container">
-
-    <h2 class="text-center">Manage Stories</h2>
+  <app-spinner [showSpinner]="allStories.length > 0"></app-spinner>
+  <h2 class="text-center">Manage Stories</h2>
   <div class="mediaSelector">
     <div class="row">
       <div class="col-sm-12 text-right">
@@ -38,7 +38,7 @@
       </div>
       <div class="col-2 actions">
         <div class="row">
-          <span (click)="editStories($event,story)" class="col"
+          <span (click)="editStories($event, story)" class="col"
             ><i class="fa fa-edit"></i
           ></span>
           <span (click)="deleteStories($event, story.id)" class="col"

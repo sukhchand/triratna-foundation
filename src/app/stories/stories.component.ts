@@ -17,6 +17,7 @@ export class StoriesComponent implements OnInit {
   page = 1;
   pageSize = 10;
   totalStories = 0;
+  showSpinner: boolean = false;
   constructor(
     private modalService: NgbModal,
     private router: Router,
@@ -26,6 +27,7 @@ export class StoriesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.showSpinner = true;
     this.getPagination();
     this.getStories();
   }
@@ -33,7 +35,9 @@ export class StoriesComponent implements OnInit {
   public getStories() {
     this.storiesService.getStories(this.page, this.pageSize).subscribe(result => {
       this.allStories=result.response;
+      this.showSpinner = false;
     }, (error) => {
+      this.showSpinner = false;
       this.toastr.error(error, '', {
         closeButton: true,
         positionClass: 'toast-top-center',
@@ -44,7 +48,9 @@ export class StoriesComponent implements OnInit {
   getPagination() {
     this.storiesService.getPagination().subscribe(result => {
       this.totalStories = result.response;
+      this.showSpinner = false;
     }, error=>{
+      this.showSpinner = false;
       this.toastr.error(error, '', {
         closeButton: true,
         positionClass: 'toast-top-center',

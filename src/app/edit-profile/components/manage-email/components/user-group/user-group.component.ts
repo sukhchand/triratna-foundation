@@ -27,6 +27,7 @@ export class UserGroupComponent implements OnInit {
   selectedGroup: string;
   userDetails: any;
   model: any;
+  showSpinner: boolean = false
 
   constructor(
     public manageEmailService: ManageEmailService,
@@ -36,6 +37,7 @@ export class UserGroupComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.showSpinner = true;
     this.getUniqueDLNames();
     this.getAllUsers();
   }
@@ -107,7 +109,9 @@ export class UserGroupComponent implements OnInit {
       .subscribe((result) => {
         this.dlList = result.response;
         this.dlListCopy = [...this.dlList];
+        this.showSpinner = false;
       }, error => {
+        this.showSpinner = false;
         this.toastr.error(error, '', {
           closeButton: true,
           positionClass: 'toast-top-center',
@@ -119,7 +123,9 @@ export class UserGroupComponent implements OnInit {
     this.manageUsersService.getUsers().subscribe((result) => {
       this.allUsers = result.response;
       this.allUsersCopy = [...this.allUsers];
+      this.showSpinner = false;
     }, error=>{
+      this.showSpinner = false;
       this.toastr.error(error, '', {
         closeButton: true,
         positionClass: 'toast-top-center',

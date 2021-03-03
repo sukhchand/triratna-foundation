@@ -18,12 +18,14 @@ export class ManageUsersComponent implements OnInit {
   columns: any[] = [];
   searchData: any[] = [];
   isActivate: boolean = false;
+  showSpinner: boolean = false;
 
   @ViewChild(DatatableComponent) table: DatatableComponent;
 
   constructor(public manageUsersService: ManageUsersService, private modalService: NgbModal,private toastr: ToastrService) {}
 
   ngOnInit(): void {
+    this.showSpinner = true;
     this.columns = [
       { name: 'First Name' },
       { name: 'Middle Name' },
@@ -74,7 +76,9 @@ export class ManageUsersComponent implements OnInit {
       });
       this.users = result.response;
       this.searchData = [...this.users];
+      this.showSpinner = false;
     }, error => {
+      this.showSpinner = false;
       this.toastr.error(error, '', {
         closeButton: true,
         positionClass: 'toast-top-center',

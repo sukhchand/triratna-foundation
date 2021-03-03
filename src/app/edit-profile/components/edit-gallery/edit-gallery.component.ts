@@ -22,6 +22,7 @@ export class EditGalleryComponent implements OnInit {
   thumbnailphotos;
   form: FormGroup;
   deleteAlbumName;
+  showSpinner: boolean = false;
   constructor(
     public editGalleryService: EditGalleryService,
     private modalService: NgbModal,
@@ -32,6 +33,7 @@ export class EditGalleryComponent implements OnInit {
     private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this.showSpinner = true;
     this.getAllMedias();
     this.form = this.fb.group({
       albumName: ['']
@@ -41,13 +43,14 @@ export class EditGalleryComponent implements OnInit {
   getAllMedias() {
     this.editGalleryService.getAlbum().subscribe((result) => {
       this.getAlbum = result.response;
+      this.showSpinner = false;
     });
   }
 
   clickToAlbum(albumName) {
     this.router.navigateByUrl('/edit-profile/gallery/album/' + albumName);
   }
- 
+
   createAlbum(content) {
     this.modalService.open(content);
   }

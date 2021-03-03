@@ -15,10 +15,12 @@ export class NewsComponent implements OnInit {
   page = 1;
   pageSize = 10;
   totalNews = 0;
+  showSpinner: boolean = false;
 
   constructor(public newsService:NewsService,private router: Router,private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this.showSpinner = true;
     this.getPagination();
     this.getNews();
   }
@@ -26,7 +28,9 @@ export class NewsComponent implements OnInit {
   getPagination() {
     this.newsService.getPagination().subscribe(result => {
       this.totalNews = result.response;
+      this.showSpinner = false;
     },error=>{
+      this.showSpinner = false;
       this.toastr.error(error, '', {
         closeButton: true,
         positionClass: 'toast-top-center',
@@ -37,7 +41,9 @@ export class NewsComponent implements OnInit {
   public getNews() {
     this.newsService.getNews(this.page, this.pageSize).subscribe(result => {
       this.allNews=result.response;
+      this.showSpinner = false;
     }, (error) => {
+      this.showSpinner = false;
       this.toastr.error(error, '', {
         closeButton: true,
         positionClass: 'toast-top-center',

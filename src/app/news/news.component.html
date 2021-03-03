@@ -1,22 +1,43 @@
 <div class="section-title">
+  <app-spinner [showSpinner]="showSpinner"></app-spinner>
   <h2 class="text-center">News</h2>
 </div>
 <div class="news-container container">
-  <div class="card-list row" *ngFor="let news of allNews | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalNews,id: 'p' }">
+  <div
+    class="card-list row"
+    *ngFor="
+      let news of allNews
+        | paginate
+          : {
+              itemsPerPage: 10,
+              currentPage: page,
+              totalItems: totalNews,
+              id: 'p'
+            }
+    "
+  >
     <div class="col-4 news-thumbnail">
-      <img *ngIf="news.thumbnail?.data" src="data:image/png;base64,{{news.thumbnail?.data}}"/>
-      <span *ngIf="!news.thumbnail?.data" class="default-image"><i class="fa fa-newspaper-o" aria-hidden="true"></i></span>
+      <img
+        *ngIf="news.thumbnail?.data"
+        src="data:image/png;base64,{{ news.thumbnail?.data }}"
+      />
+      <span *ngIf="!news.thumbnail?.data" class="default-image"
+        ><i class="fa fa-newspaper-o" aria-hidden="true"></i
+      ></span>
     </div>
     <div class="col-8">
-      <h3>{{news.heading}}</h3>
+      <h3>{{ news.heading }}</h3>
       <div class="news-date">
-        <label>Date:</label>  {{news.createdDate| date}}
+        <label>Date:</label> {{ news.createdDate | date }}
       </div>
       <div class="news-content" [innerHtml]="news.content"></div>
-      <a routerLink="news-details/{{news.id}}">Read More +</a>
+      <a routerLink="news-details/{{ news.id }}">Read More +</a>
     </div>
   </div>
   <div class="pagination-container">
-    <pagination-controls (pageChange)="handlePageChange($event)" id="p"></pagination-controls>
+    <pagination-controls
+      (pageChange)="handlePageChange($event)"
+      id="p"
+    ></pagination-controls>
   </div>
 </div>

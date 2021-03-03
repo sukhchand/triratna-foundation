@@ -23,6 +23,7 @@ export class ProfileComponent implements OnInit {
   countryData: any = COUNTRY_DATA;
   countryPhoneCode: any;
   userDetails: any;
+  showSpinner: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,6 +32,7 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.showSpinner = true;
     this.getUserId();
     this.profileForm = this.formBuilder.group({
       id: [this.userId, Validators.required],
@@ -155,8 +157,10 @@ export class ProfileComponent implements OnInit {
         });
         this.userCredentailsForm.controls['roles'].setValue(userRoles[0]);
         this.userCredentailsForm.controls['username'].setValue(this.userDetails.userCred.username);
+        this.showSpinner = false;
       },
       (error) => {
+        this.showSpinner = false;
         this.toastr.error(error, '', {
           closeButton: true,
           positionClass: 'toast-top-center',

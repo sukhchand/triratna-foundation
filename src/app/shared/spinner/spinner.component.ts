@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { LoaderService } from './services/loader.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { LoaderService } from './services/loader.service';
 })
 export class SpinnerComponent implements OnInit {
   loading: boolean;
+  @Input() showSpinner: boolean;
 
   constructor(private loaderService: LoaderService) {
     this.loaderService.isLoading.subscribe((v) => {
