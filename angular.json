@@ -35,11 +35,16 @@
               "./node_modules/font-awesome/css/font-awesome.css",
               "./node_modules/@swimlane/ngx-datatable/themes/material.scss",
               "./node_modules/@swimlane/ngx-datatable/index.scss",
-              "./node_modules/@swimlane/ngx-datatable/assets/icons.css"
+              "./node_modules/@swimlane/ngx-datatable/assets/icons.css",
+              "src/assets/css/jquery.fancybox.min.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "src/assets/js/jquery.fancybox.min.js",
+              "src/assets/js/g-map.js",
+              "src/assets/js/maplace.min.js",
+              "src/assets/js/map-custom.js"
             ]
           },
           "configurations": {
