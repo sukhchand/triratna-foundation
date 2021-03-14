@@ -47,7 +47,9 @@ export class EditNewsComponent implements OnInit {
     this.editNewsService
       .getNews(this.page, this.pageSize)
       .subscribe((result) => {
-        this.allNews = result.response;
+        if(result.response!==null){
+          this.allNews = result.response;
+        }
       }, error => {
         this.toastr.error(error, '', {
           closeButton: true,
