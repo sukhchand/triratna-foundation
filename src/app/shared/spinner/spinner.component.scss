@@ -4,10 +4,10 @@
   border-radius: 50%;
 }
 .loader {
-  color: #000;
-  font-size: 11px;
+  color: rgb(45, 48, 212);
+  font-size: 8px;
   text-indent: -99999em;
-  margin: 55px auto;
+  margin: 50px auto;
   position: relative;
   width: 10em;
   height: 10em;
@@ -15,6 +15,7 @@
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
+  z-index: -10;
 }
 .loader:before,
 .loader:after {

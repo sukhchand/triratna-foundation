@@ -5,28 +5,56 @@
 <div class="container-fluid bg-grey products">
   <div class="container paddingtop-20 paddingbottom-10">
     <div class="row">
-        <div class="col-md-6">
-            <img src="/assets/images/donationsmile.jpg"  alt="Donation"  class="img-fluid" >
-        </div>
+      
       <div class="col-md-6">
-        <p><b>Triratna International Foundation (TIF) </b>is committed to delivering and accomplishing peace, prosperity, and
+        <p><b>Triratna International Foundation (TIF) </b>is committed to delivering and accomplishing peace,
+          prosperity, and
           happiness globally and prevent cruelty to humans and animals. We empower, protect, and build resiliency
           through innovative, conscious, and transformative methods.
           The statistics show that thousands of people die every day because of hunger, millions have no clothes, &
           millions are homeless. What if we start giving our extra food, extra pennies, excess clothes to someone dying
           of starvation on the street or in a remote village. Their blessings and wishes will bring every luck and
           fortune to you; please donate $1 every month.
-        </p>
-        <br>
+        </p> 
         <p>
-            Your generous contribution will ensure a smile on the face of suffering beings and foster peace, prosperity, &
-            happiness for humans and animals globally.
-          </p>
-    </div>
-  
+          Your generous contribution will ensure a smile on the face of suffering beings and foster peace, prosperity, &
+          happiness for humans and animals globally.
+        </p>
+        <img src="/assets/images/donationsmile.jpg" alt="Donation" class="img-fluid">
+      </div>  
+      <div class="col-md-6">
+        <iframe allowpaymentrequest="" frameborder="0" height="900px" name="donorbox" scrolling="no" seamless="seamless" src="https://donorbox.org/embed/triratna-donation" style="max-width: 500px; min-width: 250px; max-height:none!important" width="100%"></iframe>
+      </div>  
+      
     </div>
   </div>
 </div>
 
 
 
+<!-- <div class="container">
+  <h2>Create Token Example</h2>
+<ngx-stripe-card
+  [options]="cardOptions"
+  [elementsOptions]="elementsOptions"
+></ngx-stripe-card>
+<button type="submit" (click)="createToken()">
+  CREATE TOKEN
+</button>
+</div> -->
+<!-- 
+<br>
+<div
+  ngxStripeCardGroup
+  [formGroup]="stripeTest"
+  [elementsOptions]="elementsOptions"
+>
+  <input formControlName="name" />
+  <input formControlName="amount" />
+  <ngx-stripe-card-number [options]="cardOptions"></ngx-stripe-card-number>
+  <ngx-stripe-card-expiry [options]="cardOptions"></ngx-stripe-card-expiry>
+  <ngx-stripe-card-cvc [options]="cardOptions"></ngx-stripe-card-cvc>
+  <button type="submit" (click)="pay()">
+    PAY
+  </button>
+</div> -->
