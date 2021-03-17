@@ -77,3 +77,13 @@
     width: 70px;
   }
 }
+
+@media (max-width: 280px) {
+  .news-container .news-card .news-thumbnail img {
+    width: 50px;
+  }
+  .news-container .news-card .news-thumbnail .default-image {
+    font-size: 50px;
+  }
+
+}

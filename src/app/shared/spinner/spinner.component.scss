@@ -33,3 +33,15 @@
   left: 50%;
   top: 50%;
 }
+
+
+@media (max-width: 414px) {
+  .loader-container {
+    left: 45%;
+  }
+  .loader {
+    width: 70px;
+    height: 70px;
+    border-width: 10px;
+  }
+}
