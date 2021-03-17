@@ -33,17 +33,17 @@
 }
 .team .member-new .member-info {
   position: absolute;
-  bottom: -30px;
+  bottom: -48px;
   left: 20px;
   right: 20px;
-  background: linear-gradient(360deg, #f10202 0%, rgb(229 4 4) 35%, rgb(202 9 8) 100%);
+  background: linear-gradient(360deg, #5c768d 0%, rgba(92, 118, 141, 0.9) 35%, rgba(140, 167, 191, 0.8) 100%);
   padding: 15px 0;
   border-radius: 4px;
   color: #fff;
   text-align: center;
 }
 
-.team .member h4 {
+.team .member h4, .team .member-new h4 {
   font-weight: 700;
   margin-bottom: 10px;
   font-size: 16px;
@@ -52,7 +52,7 @@
   padding-bottom: 10px;
 }
 
-.team .member h4::after {
+.team .member h4::after, .team .member-new h4::after {
   content: '';
   position: absolute;
   display: block;
@@ -63,27 +63,27 @@
   left: calc(50% - 25px);
 }
 
-.team .member span {
+.team .member span, .team .member-new span {
   font-style: italic;
   display: block;
   font-size: 13px;
   color: #fff;
 }
 
-.team .member .social {
+.team .member .social, .team .member-new .social {
   margin-top: 15px;
 }
 
-.team .member .social a {
+.team .member .social a, .team .member-new .social a {
   transition: color 0.3s;
   color: #fff;
 }
 
-.team .member .social a:hover {
+.team .member .social a:hover, .team .member-new .social a:hover {
   color: #9eccf4;
 }
 
-.team .member .social i {
+.team .member .social i, .team .member-new .social i {
   font-size: 16px;
   margin: 0 2px;
 }
