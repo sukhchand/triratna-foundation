@@ -272,3 +272,53 @@ input[type=password]:hover {
     display: none;
   }
 }
+
+@media (max-width: 991px) {
+  .navbar-nav li {
+    text-align: center;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-bottom: 0;
+  }
+  .dropdown-menu li {
+    border: 0;
+    padding: 0;
+  }
+  .user-dropdown {
+    display: block;
+    width: 100%;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.2);
+    padding: 10px;
+    margin-bottom: 30px;
+  }
+  .tf-header .user-dropdown.dropdown>a:after {
+    right: 1.5%;
+  }
+  .account-menu {
+    position: relative !important;
+    transform: none !important;
+    border: 1px solid rgba(0,0,0,.15);
+    width: 100%;
+    text-align: center;
+  }
+  .countrySelector {
+    padding: 10px;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-bottom: 0;
+  }
+  .countrySelector.unAuthorised {
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+  }
+  .country-drpdwn {
+    width: 70%;
+    margin: auto;
+    text-align: center;
+    text-align-last:center;
+  }
+  .login-btn {
+    margin: auto;
+    width: 70%;
+  }
+}
