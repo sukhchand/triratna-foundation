@@ -6,7 +6,88 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse" #menuList>
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto big-screen">
+                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    <a class="" routerLink="/"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Home</a>
+                </li>
+                <li class="nav-item dropdown" routerLinkActive="active" >
+                    <a>About Us </a>
+                    <ul class="dropdown-menu" >
+                        <li class=""><a class="dropdown-item" routerLink="about_us/leadership">Leadership</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="about_us/supporters">Supporters</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="about_us/financials">Financials</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="about_us/careers">Careers</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown" routerLinkActive="active">
+                    <a>
+                        Services
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class=""><a class="dropdown-item" routerLink="services/food_cloths_and_shelter">Food, Cloths
+                                & Shelter</a></li>
+                        <li class=""><a class="dropdown-item"
+                                routerLink="services/health_hygiene_and_sanitation">Health, Hygiene & Sanitation</a>
+                        </li>
+                        <li class=""><a class="dropdown-item" routerLink="services/fresh_air_clean_water">Fresh Air &
+                                Clean Water</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="services/organic_soil_and_green_view">Organic
+                                Soil & Green View</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="services/safety_and_protection">Safety &
+                                Protection</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="services/animal_safety_rights">Animal Safety &
+                                Rights</a></li>
+                        <li class=""><a class="dropdown-item"
+                                routerLink="services/save_children_vulnerable_and_old">Save Children, Vulnerable &
+                                Old</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="services/emergency_reliefs">Emergency
+                                Reliefs</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="services/education_and_training">Education &
+                                Training</a></li>
+                        <li class=""><a class="dropdown-item"
+                                routerLink="services/teaching_of_buddha_and_spirituality">Teaching of Buddha &
+                                Spirituality</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="services/rehearsal_of_panchasila">Rehearsal of
+                                Panchasila</a></li>
+                        <li class=""><a class="dropdown-item"
+                                routerLink="services/forgiveness_and_reconciliation">Forgiveness & Reconciliation</a>
+                        </li>
+                        <li class=""><a class="dropdown-item" routerLink="services/research_and_innovation">Research &
+                                Innovation</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown" routerLinkActive="active">
+                    <a>Volunteers</a>
+                    <ul class="dropdown-menu">
+                        <li class=""><a class="dropdown-item" routerLink="volunteers/monksandnuns">Monks & Nuns</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="volunteers/devotee">Devotee</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="volunteers/wellwishers">Well-Wishers</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="volunteers/donoragency">Donor Agency</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="volunteers/partners">Affiliates or Partners</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="volunteers/sponsers">Sponsor</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="volunteers/donors">Donors</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown" routerLinkActive="active">
+                    <a>Informations</a>
+                    <ul class="dropdown-menu">
+                        <li class=""><a class="dropdown-item" routerLink="informations/calendar">Calendar</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="informations/events">Events</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="informations/stories">Stories</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="informations/news">News</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="informations/gallery">Gallery</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="informations/policiesandstandard">Policies and Standard</a></li>
+                        <li class=""><a class="dropdown-item" routerLink="informations/termandcondition">Terms and Conditions</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                  <a class="" routerLink="/donations">Donate</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="" routerLink="contact_us">Contact us</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto small-screen">
                 <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                     <a class="" routerLink="/"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Home</a>
                 </li>

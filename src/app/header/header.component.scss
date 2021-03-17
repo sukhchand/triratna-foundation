@@ -243,3 +243,32 @@ input[type=password]:hover {
 }
 
 // Header CSS End
+@media screen and (max-width: 1168px) {
+  .tf-header .navbar-default .navbar-nav>li>a {
+    line-height: 29px;
+    padding: 29px 8px 30px;
+  }
+}
+@media screen and (max-width: 1060px) {
+  .country-drpdwn {
+    width: 60px;
+    margin-right: 7px;
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 1010px) {
+  .tf-header .navbar-default .navbar-nav>li>a {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .big-screen {
+    display: none;
+  }
+}
+@media screen and (min-width: 992px) {
+  .small-screen {
+    display: none;
+  }
+}
