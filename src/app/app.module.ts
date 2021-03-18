@@ -83,6 +83,8 @@ import { DonorsComponent } from './volunteers/components/donors/donors.component
 import { PoliciesandstandardComponent } from './policiesandstandard/policiesandstandard.component';
 import { TermandconditionComponent } from './termandcondition/termandcondition.component';
 import { DonationBarComponent } from './donation-bar/donation-bar.component';
+import { AgmCoreModule } from '@agm/core';
+
 
 @NgModule({
   declarations: [
@@ -152,7 +154,8 @@ import { DonationBarComponent } from './donation-bar/donation-bar.component';
     DonorsComponent,
     PoliciesandstandardComponent,
     TermandconditionComponent,
-    DonationBarComponent
+    DonationBarComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -172,7 +175,10 @@ import { DonationBarComponent } from './donation-bar/donation-bar.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     NgxDatatableModule,
-    CsvModule
+    CsvModule,
+    AgmCoreModule.forRoot({
+      apiKey: ''
+    })
   ],
   providers: [
     {

@@ -67,11 +67,33 @@
 
   </div>
 </section>
+<!-- <agm-map [latitude]="location.latitude" [longitude]="location.longitude" (mapClick)="getLocation($event)" [zoom]="2" > 
+  <agm-marker *ngFor="let m of location.markers; let i = index"
+  [latitude]="m.lat"
+  [longitude]="m.lng"
+  (mouseOver)="onMouseOver($event)" 
+  (mouseOut)="onMouseOut($event)"  
+  >
+  <agm-info-window [disableAutoPan]="false" #infoWindow>
+
+    <div>
+       <h2>"m.lat"</h2>
+    </div>
+    <div>
+      <h2>Location</h2>
+   </div>
+
+</agm-info-window>
+  </agm-marker>
+</agm-map> -->
+
+
+
 <!-- <div class=""
   style="-webkit-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.21);
     -moz-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.21);box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.21);">
   <div id="controls" class="mapControl"></div>
   <div class="popin">
-    <div id="gmap" style="height: 395px;"></div>
+    <div id="gmap" style="height: 500px;"></div>
   </div>
 </div> -->
