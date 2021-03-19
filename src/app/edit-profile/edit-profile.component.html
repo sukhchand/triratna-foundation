@@ -1,19 +1,5 @@
 <div class="row edit-profile-container">
-  <a
-    class="sub-menu-icon"
-    *ngIf="isSuperAdmin || isAdmin"
-    (click)="showSubMenu = !showSubMenu"
-  >
-    <i class="fa fa-bars"></i>
-  </a>
-  <div
-    class="col-2 sidenav"
-    *ngIf="isSuperAdmin || isAdmin"
-    [ngClass]="{ showSubMenu: showSubMenu }"
-  >
-    <div class="close-sub-menu" (click)="showSubMenu = false">
-      <i class="fa fa-times" aria-hidden="true"></i>
-    </div>
+  <div class="sidebar" *ngIf="isSuperAdmin || isAdmin" [ngClass]="{ showSubMenu: showSubMenu }">
     <ul class="edit-nav-menu">
       <li routerLinkActive="active" *ngIf="isSuperAdmin || isAdmin">
         <a routerLink="calendar">Calendar</a>
@@ -35,10 +21,7 @@
       </li>
     </ul>
   </div>
-  <div
-    class="col profile-content"
-    [ngClass]="{ noPermission: !isSuperAdmin || !isAdmin }"
-  >
+  <div class="col profile-content" [ngClass]="{ noPermission: !isSuperAdmin || !isAdmin }">
     <router-outlet></router-outlet>
     <donation-bar></donation-bar>
 

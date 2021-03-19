@@ -29,11 +29,11 @@ background-image: linear-gradient(180deg, #000000 0%, #414141 74%);
 .edit-nav-menu {
   padding: 0;
   list-style: none;
-  margin-top: 50px;
+  // margin-top: 50px;
 }
 
 .edit-nav-menu li.active {
-  background-color:#adb5bd;
+  background-color:#555;
 }
 
 .edit-nav-menu li.active a {
@@ -51,9 +51,9 @@ background-image: linear-gradient(180deg, #000000 0%, #414141 74%);
   flex: 0 0 100%;
 }
 .profile-content {
-  flex: 0 0 83.333333%;
-  max-width: 83.333333%;
-  margin-left: 16.666667%;
+  flex: 0 0 88%;
+  max-width: 88%;
+  margin-left: 12%;
 }
 
 @media (max-width: 500px) {
@@ -61,10 +61,7 @@ background-image: linear-gradient(180deg, #000000 0%, #414141 74%);
     display: none;
     border-radius: 20px;
   }
-  .profile-content {
-    max-width: 100%;
-    padding-top: 0;
-  }
+  
   .sub-menu-icon {
     display: block;
     height: 30px;
@@ -97,5 +94,65 @@ background-image: linear-gradient(180deg, #000000 0%, #414141 74%);
 @media (max-width: 414px) {
   .profile-content {
     margin: 0;
+  }
+}
+
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #adb5bd;
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 992px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  .edit-nav-menu li.active a {
+    background-color:#555;
+  }
+  div.content {margin-left: 0;}
+  .profile-content {
+    max-width: none;
+    margin-left: 0;
+    padding-top: 0;
+    flex: none;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
   }
 }
