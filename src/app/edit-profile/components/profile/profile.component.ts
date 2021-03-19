@@ -96,10 +96,10 @@ export class ProfileComponent implements OnInit {
     })
   }
 
-
   updateUserDetails() {
     let user = this.profileForm.value;
     user['id'] = this.userId;
+    user['userType'] = [user.userType];
     this.loginService.updateUser(this.profileForm.value).subscribe((result) => {
       this.toastr.success(result.message, '', {
         closeButton: true,

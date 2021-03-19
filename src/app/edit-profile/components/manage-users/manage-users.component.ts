@@ -93,7 +93,6 @@ export class ManageUsersComponent implements OnInit {
   onPage(event) {
     clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
-      console.log('paged!', event);
     }, 100);
   }
 
@@ -133,7 +132,6 @@ export class ManageUsersComponent implements OnInit {
     };
     confirmationModal.result.then((data) => {
       if (data == 'success') {
-        console.log(data);
       } else {
         event.target.checked = !event.target.checked;
       }

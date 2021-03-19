@@ -18,23 +18,36 @@ export class ContactusComponent implements OnInit {
   location: Location = {
     latitude: 19.0760,
     longitude: 72.8777,
-    zoom: 10,
+    zoom: 17,
     isFullScreen: true,
     markers: [
       {
-        lat: 19.0760,
-        lng: 72.8777,
+        lat: 27.0352532,
+        lng: 89.0147344,
+        address:"Samtse Bhutan"
+        
       },
       {
-        lat: 20.0760,
-        lng: 62.8777,
+        lat: 27.2475715,
+        lng: 88.6197175,
+        address:"Pakyong, Sikkim, India"
+      },
+      {
+        lat: 41.2994275,
+        lng: -96.0097445,
+        address:"6313 Ames Avenue, Omaha, NE 68104, United State"
+      },      
+      {
+        lat: 26.7311718,
+        lng: 87.9804833,
+        address:"Khudunabari, Jhapa, Nepal"
       }
     ]
   };
 
   constructor() { }
   getLocation(event){
-    console.log(event)
+    console.log(event);
   }
 
   ngOnInit(): void {
@@ -52,4 +65,5 @@ export interface Location {
 export interface Marker {
   lat: number;
   lng: number;
+  address:string;
 }
