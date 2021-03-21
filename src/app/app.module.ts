@@ -84,6 +84,7 @@ import { PoliciesandstandardComponent } from './policiesandstandard/policiesands
 import { TermandconditionComponent } from './termandcondition/termandcondition.component';
 import { DonationBarComponent } from './donation-bar/donation-bar.component';
 import { AgmCoreModule } from '@agm/core';
+import { FaciltyRentalsComponent } from './facilty-rentals/facilty-rentals.component';
 
 
 @NgModule({
@@ -155,6 +156,7 @@ import { AgmCoreModule } from '@agm/core';
     PoliciesandstandardComponent,
     TermandconditionComponent,
     DonationBarComponent,
+    FaciltyRentalsComponent,
     
   ],
   imports: [
@@ -177,7 +179,7 @@ import { AgmCoreModule } from '@agm/core';
     NgxDatatableModule,
     CsvModule,
     AgmCoreModule.forRoot({
-      apiKey: ''
+      apiKey: 'AIzaSyDW7b_40dK_w4IE7StDYQ8wGMVJ7138uGc'
     })
   ],
   providers: [
