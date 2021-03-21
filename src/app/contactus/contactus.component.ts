@@ -40,7 +40,7 @@ export class ContactusComponent implements OnInit {
       {
         lat: 26.7311718,
         lng: 87.9804833,
-        address:"Khudunabari, Jhapa, Nepal"
+        address:"Arjundhara-3, Jhapa, Nepal"
       }
     ]
   };

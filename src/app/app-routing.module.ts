@@ -51,6 +51,7 @@ import { WellwishersComponent } from './volunteers/components/wellwishers/wellwi
 import { DonorsComponent } from './volunteers/components/donors/donors.component';
 import { PoliciesandstandardComponent } from './policiesandstandard/policiesandstandard.component';
 import { TermandconditionComponent } from './termandcondition/termandcondition.component';
+import { FaciltyRentalsComponent } from './facilty-rentals/facilty-rentals.component';
 
 const routes: Routes = [
   {
@@ -206,6 +207,7 @@ const routes: Routes = [
 
   { path: 'informations/videos', component: VideosComponent },
   { path: 'informations/photos', component: PhotosComponent },
+  { path: 'informations/facility-rentals', component: FaciltyRentalsComponent },
   { path: 'donations', component: DonateComponent },
   { path: 'volunteers/devotee', component: DevoteeComponent },
   { path: 'volunteers/donoragency', component: DonoragencyComponent },
