@@ -130,12 +130,12 @@
 
     <div class="login-help">
       <span *ngIf="formType != 'Login'" (click)="changeForm('Login')"
-        >Login •
+        style="margin-right: 60%;">Login 
       </span>
       <span *ngIf="formType != 'Register'" (click)="changeForm('Register')"
-        >Register <span *ngIf="formType != 'Forgot Password'"> • </span></span
+        >Register <span *ngIf="formType != 'Forgot Password'">  </span></span
       >
-      <span
+      <span style="float: right;"
         *ngIf="formType != 'Forgot Password'"
         (click)="changeForm('Forgot Password')"
         >Forgot Password</span
