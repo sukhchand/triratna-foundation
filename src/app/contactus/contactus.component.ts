@@ -81,6 +81,17 @@ export class ContactusComponent implements OnInit {
         lat: 37.9949705,
         lng: -105.7009757,
         address:"Crestone Colorado 81131, USA"
+      },
+      {
+        lat: 50.44876,
+        lng: -104.61731,
+        address:"Regina, SK, Canada"
+      }
+      ,
+      {
+        lat: 51.5256078,
+        lng: 4.4847057,
+        address:"Amarildijk 139, 4706 AD Roosendaal, Netherlands"
       }
     ]
   };
