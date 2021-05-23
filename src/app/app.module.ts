@@ -85,6 +85,9 @@ import { TermandconditionComponent } from './termandcondition/termandcondition.c
 import { DonationBarComponent } from './donation-bar/donation-bar.component';
 import { AgmCoreModule } from '@agm/core';
 import { FaciltyRentalsComponent } from './facilty-rentals/facilty-rentals.component';
+import { LibraryComponent } from './library/library.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { CustomPDFViewerComponent } from './library/custom-pdf-viewer/custom-pdf-viewer.component';
 
 
 @NgModule({
@@ -157,6 +160,8 @@ import { FaciltyRentalsComponent } from './facilty-rentals/facilty-rentals.compo
     TermandconditionComponent,
     DonationBarComponent,
     FaciltyRentalsComponent,
+    LibraryComponent,
+    CustomPDFViewerComponent,
     
   ],
   imports: [
@@ -178,6 +183,7 @@ import { FaciltyRentalsComponent } from './facilty-rentals/facilty-rentals.compo
     ToastrModule.forRoot(),
     NgxDatatableModule,
     CsvModule,
+    PdfViewerModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDW7b_40dK_w4IE7StDYQ8wGMVJ7138uGc'
     })

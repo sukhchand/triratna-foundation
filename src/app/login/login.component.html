@@ -42,13 +42,15 @@
         formControlName="userName"
         [class.is-invalid]="signupForm.get('userName').invalid && signupForm.get('userName').touched"
       />
+      <div class="input-group">
       <input
         type="password"
         name="pass"
         placeholder="Password"
         formControlName="password"
         [class.is-invalid]="signupForm.get('password').invalid && signupForm.get('password').touched"
-      />
+      />     
+    </div>
       <input
         type="password"
         name="pass"

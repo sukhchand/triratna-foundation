@@ -1,0 +1,32 @@
+pdf-viewer {
+  display: block;
+  height: 70vh;
+}
+
+.page {
+  margin-top: -5px;
+  margin-left: -20px;
+}
+
+.modal-body {
+  overflow: hidden !Important;
+}
+.modal-header{
+    height: 59px;
+    background: firebrick;
+    color: white;
+}
+h5{
+  color: black;
+}
+.margin-left-right{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.modal-body{
+  background-color: #d8d8d8;
+}
+svg{
+  color:white
+}
