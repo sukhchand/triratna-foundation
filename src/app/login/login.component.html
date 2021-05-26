@@ -20,11 +20,14 @@
         autofocus
       />
       <input
-        type="password"
+        class="password"
+        type="{{passwordType}}"
         name="pass"
         placeholder="Password"
         formControlName="password"
       />
+      <span class="passwordEye" *ngIf="showPassword" (click)="toggleShowPassword()"><i class="fa fa-eye" aria-hidden="true"></i></span>
+      <span class="passwordEye" *ngIf="!showPassword"  (click)="toggleShowPassword()"><i class="fa fa-eye-slash" aria-hidden="true"></i></span>
       <input
         type="submit"
         name="login"
@@ -33,6 +36,7 @@
         value="login"
         [disabled]="!loginForm.valid"
       />
+
     </form>
     <form [formGroup]="signupForm" *ngIf="formType == 'Register'">
       <input
@@ -49,7 +53,7 @@
         placeholder="Password"
         formControlName="password"
         [class.is-invalid]="signupForm.get('password').invalid && signupForm.get('password').touched"
-      />     
+      />
     </div>
       <input
         type="password"
@@ -132,7 +136,7 @@
 
     <div class="login-help">
       <span *ngIf="formType != 'Login'" (click)="changeForm('Login')"
-        style="margin-right: 60%;">Login 
+        style="margin-right: 60%;">Login
       </span>
       <span *ngIf="formType != 'Register'" (click)="changeForm('Register')"
         >Register <span *ngIf="formType != 'Forgot Password'">  </span></span
