@@ -23,6 +23,8 @@ export class LoginComponent implements OnInit {
   forgotPasswordForm: FormGroup;
   formType: string = 'Login';
   error: string = '';
+  showPassword: boolean = false;
+  passwordType: string = 'password';
   userroles: any = ['MONKS', 'DEVOTEE', 'WELLWISHER', 'SPONSOR', 'DONOR', 'ORG'];
 
 
@@ -137,5 +139,10 @@ export class LoginComponent implements OnInit {
     } else {
       this.signupForm.controls['confirmPassword'].setErrors({'invalid': true, touched: true});
     }
+  }
+
+  toggleShowPassword() {
+    this.showPassword = !this.showPassword;
+    this.passwordType = this.showPassword ? 'text' : 'password';
   }
 }
