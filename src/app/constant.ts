@@ -1,4 +1,5 @@
-export const BASE_URL = "http://localhost:8088";
+export const BASE_URL = "https://service.triratnafoundation.com";
+//"https://service.triratnafoundation.com";
 export const COUNTRY_DATA = [
   {
     "name": "Israel",
