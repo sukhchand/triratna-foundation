@@ -170,4 +170,13 @@
       width: 80vw;
     }
   }
-  
+  button{
+    background: rgb(141, 73, 4);
+    background: -moz-linear-gradient(0deg, rgba(168, 91, 13, 0.962) 98%, rgba(237,66,66,1) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(255,127,0,0.9615196420365021) 98%, rgba(237,66,66,1) 100%);
+    background: linear-gradient(0deg, rgba(255,127,0,0.9615196420365021) 98%, rgba(237,66,66,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff7f00",endColorstr="#ed4242",GradientType=1);
+}
+button>a{
+    color:white;
+}  
